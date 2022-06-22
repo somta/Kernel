@@ -1,0 +1,12 @@
+<!-- 一般情况 maven 的通用 settings.xml 在 .m2 文件夹下, 项目内 settings.xml 也可以进行设置，优先级更高 -->
+<settings>
+    <!-- omitted xml -->
+    <!-- 请妥善保管好您的配置，不要随意分享给他人 -->
+    <servers>
+        <server>
+            <id>somta-somta-spring-somta-maven</id>
+            <username>somta-maven-1655866699163</username>
+            <password>fa3579099e21f354f052bc446d91334a17f7a9f1</password>
+        </server>
+    </servers>
+</settings>
