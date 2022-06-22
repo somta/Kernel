@@ -1,4 +1,4 @@
-package net.somta.container.config;
+package net.somta.container;
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;

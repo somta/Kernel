@@ -13,7 +13,7 @@ import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import javax.validation.ValidationException;
+//import javax.validation.ValidationException;
 import java.util.StringJoiner;
 
 /**
@@ -45,11 +45,11 @@ public class GlobalExceptionHandler {
      * @param ex
      * @return
      */
-    @ExceptionHandler(ValidationException.class)
+    /*@ExceptionHandler(ValidationException.class)
     public ResponseDataResult handleValidationException(ValidationException ex) {
         return handleBizException(new BizException("request.param.notvalid","参数绑定错误：" + ex.getMessage()));
         //return ResponseDataResult.setErrorResponseResult("request.param.notvalid","参数绑定错误：" + ex.getMessage());
-    }
+    }*/
 
     /**
      * 字段校验不通过异常
