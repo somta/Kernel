@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>net.somta</groupId>
+    <artifactId>somta-core</artifactId>
+    <version>1.0.6</version>
+
+    <name>somta-core</name>
+    <description>Use Somta for rapid development</description>
+    <url>https://github.com/somta/Somta/tree/master/somta-core</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/somta/Somta.git</url>
+        <connection>git@github.com:somta/Somta.git</connection>
+        <developerConnection>http://www.somta.net</developerConnection>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>somta</name>
+            <email>somta@qq.com</email>
+            <url>http://www.somta.net</url>
+        </developer>
+    </developers>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.12.0</version>
+        </dependency>
+
+    </dependencies>
+
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
+</project>
