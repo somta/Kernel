@@ -76,10 +76,11 @@
         </plugins>
     </build>
 
-    <parent>
+    <!-- 推送到公共仓库的时候在打开 -->
+    <!--<parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
         <version>7</version>
-    </parent>
+    </parent>-->
 
 </project>
