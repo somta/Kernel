@@ -1,9 +1,9 @@
 package net.somta.container.feign;
 
-import com.alibaba.cloud.nacos.NacosServiceInstance;
 import feign.Client;
 import feign.Request;
 import feign.Response;
+import net.somta.container.properties.DevProxyProperties;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.cloud.client.ServiceInstance;
@@ -21,7 +21,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 
-public class DevProxyLoadBalancerClient extends FeignBlockingLoadBalancerClient {
+public class DevProxyLoadBalancerClient implements Client {
 
     private static final Log LOG = LogFactory.getLog(FeignBlockingLoadBalancerClient.class);
 
@@ -31,14 +31,16 @@ public class DevProxyLoadBalancerClient extends FeignBlockingLoadBalancerClient 
 
     private final LoadBalancerProperties properties;
 
-    private final LoadBalancerClientFactory loadBalancerClientFactory;
+    private final DevProxyProperties devProxyProperties;
 
-    public DevProxyLoadBalancerClient(Client delegate, LoadBalancerClient loadBalancerClient, LoadBalancerProperties properties, LoadBalancerClientFactory loadBalancerClientFactory) {
-        super(delegate, loadBalancerClient, properties, loadBalancerClientFactory);
+    public DevProxyLoadBalancerClient(Client delegate, LoadBalancerClient loadBalancerClient,
+                                      LoadBalancerProperties properties,
+                                      LoadBalancerClientFactory loadBalancerClientFactory,
+                                      DevProxyProperties devProxyProperties) {
         this.delegate = delegate;
         this.loadBalancerClient = loadBalancerClient;
         this.properties = properties;
-        this.loadBalancerClientFactory = loadBalancerClientFactory;
+        this.devProxyProperties = devProxyProperties;
     }
 
     @Override
@@ -49,6 +51,9 @@ public class DevProxyLoadBalancerClient extends FeignBlockingLoadBalancerClient 
         String hint = getHint(serviceId);
         DefaultRequest<RequestDataContext> lbRequest = new DefaultRequest<>(new RequestDataContext(buildRequestData(request), hint));
         ServiceInstance instance = loadBalancerClient.choose(serviceId, lbRequest);
+
+        org.springframework.cloud.client.loadbalancer.Response<ServiceInstance> lbResponse = new DefaultResponse(
+                instance);
         if (instance == null) {
             String message = "Load balancer does not contain an instance for the service " + serviceId;
             if (LOG.isWarnEnabled()) {
@@ -57,8 +62,6 @@ public class DevProxyLoadBalancerClient extends FeignBlockingLoadBalancerClient 
             return Response.builder().request(request).status(HttpStatus.SERVICE_UNAVAILABLE.value())
                     .body(message, StandardCharsets.UTF_8).build();
         }
-        //String reconstructedUrl = loadBalancerClient.reconstructURI(instance, originalUri).toString();
-        //Request newRequest = buildRequest(request, reconstructedUrl);
         Request newRequest = buildCustomRequest(request,instance, originalUri);
         try {
             Response response = delegate.execute(newRequest, options);
@@ -69,22 +72,21 @@ public class DevProxyLoadBalancerClient extends FeignBlockingLoadBalancerClient 
     }
 
 
-
+    /**
+     * 构建自定义的Custom,填充代理需要的请求头信息
+     * @param request
+     * @param serviceInstance
+     * @param original
+     * @return
+     */
     private Request buildCustomRequest(Request request,ServiceInstance serviceInstance, URI original){
         Map<String, Collection<String>> newHeaders = new HashMap<>();
-        //
         request.headers().forEach((key, value) -> newHeaders.put(key, new ArrayList<>(value)));
-        //
+        // 填充代理需要的请求头信息
         newHeaders.put("x-remote-service-name", Collections.singletonList(serviceInstance.getServiceId()));
         newHeaders.put("x-remote-service-host", Collections.singletonList(serviceInstance.getHost()));
         newHeaders.put("x-remote-service-port", Collections.singletonList(String.valueOf(serviceInstance.getPort())));
-
-        NacosServiceInstance instance = (NacosServiceInstance)serviceInstance;
-        instance.setHost("127.0.0.1");
-        instance.setPort(8888);
-        String host = instance.getHost();
-        String reconstructedUrl = "http://"+host + ":" + instance.getPort() + original.getPath();
-
+        String reconstructedUrl = devProxyProperties.getProxyUrl() + original.getPath();
         return Request.create(request.httpMethod(), reconstructedUrl, newHeaders, request.body(),
                 request.charset(), request.requestTemplate());
     }

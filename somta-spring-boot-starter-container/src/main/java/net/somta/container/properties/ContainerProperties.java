@@ -1,11 +1,12 @@
-package net.somta.container.config;
+package net.somta.container.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-
+/**
+ * 容器相关配置
+ */
 @ConfigurationProperties(prefix = "somta.container")
-@Component
 public class ContainerProperties {
 
     private Boolean enable = true;
