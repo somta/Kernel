@@ -3,6 +3,7 @@ package net.somta.container.config;
 import feign.Client;
 import net.somta.container.feign.DevProxyLoadBalancerClient;
 import net.somta.container.properties.DevProxyProperties;
+import net.somta.container.utils.DevUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -25,8 +26,7 @@ public class ApplicationConfig {
     @Conditional(OnRetryNotEnabledCondition.class)
     public Client feignClient(LoadBalancerClient loadBalancerClient, LoadBalancerProperties properties,
                               LoadBalancerClientFactory loadBalancerClientFactory) {
-        // todo 还有调用devUtil所有本地开发电脑自动开启
-        if(devProxyProperties.isEnable()){
+        if(devProxyProperties.isEnable() && DevUtil.isInDevelopmentMode()){
             return new DevProxyLoadBalancerClient(new Client.Default(null, null), loadBalancerClient, properties,
                     loadBalancerClientFactory,devProxyProperties);
         } else {
