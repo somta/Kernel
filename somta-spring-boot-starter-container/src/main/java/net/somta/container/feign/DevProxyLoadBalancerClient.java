@@ -14,6 +14,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.Assert;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
 import java.net.URI;
@@ -86,7 +87,15 @@ public class DevProxyLoadBalancerClient implements Client {
         newHeaders.put("x-remote-service-name", Collections.singletonList(serviceInstance.getServiceId()));
         newHeaders.put("x-remote-service-host", Collections.singletonList(serviceInstance.getHost()));
         newHeaders.put("x-remote-service-port", Collections.singletonList(String.valueOf(serviceInstance.getPort())));
-        String reconstructedUrl = devProxyProperties.getProxyUrl() + original.getPath();
+        boolean encoded = containsEncodedParts(original);
+        UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromUri(original);
+        final URI proxyUri = URI.create(devProxyProperties.getProxyUrl());
+        uriComponentsBuilder.scheme(proxyUri.getScheme());
+        uriComponentsBuilder.host(proxyUri.getHost());
+        if(proxyUri.getPort() > 0){
+            uriComponentsBuilder.port(proxyUri.getPort());
+        }
+        String reconstructedUrl = uriComponentsBuilder.build(encoded).toUri().toString();
         return Request.create(request.httpMethod(), reconstructedUrl, newHeaders, request.body(),
                 request.charset(), request.requestTemplate());
     }
@@ -103,5 +112,19 @@ public class DevProxyLoadBalancerClient implements Client {
         String defaultHint = properties.getHint().getOrDefault("default", "default");
         String hintPropertyValue = properties.getHint().get(serviceId);
         return hintPropertyValue != null ? hintPropertyValue : defaultHint;
+    }
+
+    private static boolean containsEncodedParts(URI uri) {
+        boolean encoded = uri.getRawQuery() != null && uri.getRawQuery().contains("%") || uri.getRawPath() != null && uri.getRawPath().contains("%") || uri.getRawFragment() != null && uri.getRawFragment().contains("%");
+        if (encoded) {
+            try {
+                UriComponentsBuilder.fromUri(uri).build(true);
+                return true;
+            } catch (IllegalArgumentException var3) {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 }
