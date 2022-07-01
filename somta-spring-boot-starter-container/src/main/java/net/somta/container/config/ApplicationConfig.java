@@ -27,6 +27,7 @@ public class ApplicationConfig {
     public Client feignClient(LoadBalancerClient loadBalancerClient, LoadBalancerProperties properties,
                               LoadBalancerClientFactory loadBalancerClientFactory) {
         if(devProxyProperties.isEnable() && DevUtil.isInDevelopmentMode()){
+            System.out.println("============================当前为本地开发环境，会将请求自动代理到指定环境============================");
             return new DevProxyLoadBalancerClient(new Client.Default(null, null), loadBalancerClient, properties,
                     loadBalancerClientFactory,devProxyProperties);
         } else {
