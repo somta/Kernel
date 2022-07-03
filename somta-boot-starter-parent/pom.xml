@@ -13,13 +13,13 @@
 
     <groupId>net.somta</groupId>
     <artifactId>somta-boot-starter-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <somta-dependencies.varsion>1.0-SNAPSHOT</somta-dependencies.varsion>
+        <somta-dependencies.varsion>1.0.0-SNAPSHOT</somta-dependencies.varsion>
     </properties>
 
     <dependencies>
