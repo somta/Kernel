@@ -32,6 +32,10 @@ public class ResponsePaginationDataResult<T> extends ResponseResult {
         return r;
     }
 
+    public static ResponsePaginationDataResult setErrorResponseResult(IBaseError baseError) {
+        return setErrorResponseResult(baseError.getErrorCode(),baseError.getErrorMessage(), null);
+    }
+
     public static ResponsePaginationDataResult setErrorResponseResult(String errorCode ,String errorMessage) {
     	return setErrorResponseResult(errorCode,errorMessage, null);
     }
