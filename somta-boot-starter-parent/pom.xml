@@ -48,15 +48,6 @@
 
     </dependencyManagement>
 
-   <!-- <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>-->
-
     <!-- 推送到自动化平台maven仓库 -->
     <distributionManagement>
         <repository>
