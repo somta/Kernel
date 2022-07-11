@@ -16,6 +16,10 @@
         <spring-cloud.version>2020.0.1</spring-cloud.version>
         <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
         <spring-cloud-openfeign.version>3.0.1</spring-cloud-openfeign.version>
+        <!--第三方依赖 start -->
+        <commons-lang3.version>3.12.0</commons-lang3.version>
+        <reflections.version>0.9.11</reflections.version>
+        <!--第三方依赖 end -->
     </properties>
 
 
@@ -47,6 +51,19 @@
                 <artifactId>spring-cloud-openfeign-core</artifactId>
                 <version>${spring-cloud-openfeign.version}</version>
             </dependency>
+
+            <!--第三方依赖 start -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.reflections</groupId>
+                <artifactId>reflections</artifactId>
+                <version>${reflections.version}</version>
+            </dependency>
+            <!--第三方依赖 end -->
         </dependencies>
     </dependencyManagement>
 

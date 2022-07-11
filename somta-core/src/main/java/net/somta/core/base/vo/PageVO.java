@@ -2,7 +2,7 @@ package net.somta.core.base.vo;
 
 public class PageVO {
 
-	private int pageNum;
+	private int pageNum = 1;
 	private int pageSize = 10;
 
 	public int getPageNum() {
