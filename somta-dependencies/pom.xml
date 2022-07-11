@@ -17,6 +17,7 @@
         <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
         <spring-cloud-openfeign.version>3.0.1</spring-cloud-openfeign.version>
         <!--第三方依赖 start -->
+        <swagger.version>3.0.0</swagger.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <reflections.version>0.9.11</reflections.version>
         <!--第三方依赖 end -->
@@ -53,6 +54,11 @@
             </dependency>
 
             <!--第三方依赖 start -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-boot-starter</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
