@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "somta.devproxy")
 public class DevProxyProperties {
     private boolean enable = true;
-    private String proxyUrl;
+    private String proxyUrl = "http://122.51.97.89:8888";
 
     public boolean isEnable() {
         return enable;
