@@ -46,10 +46,18 @@
 
     </dependencies>
 
-    <parent>
+    <!--<parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
         <version>7</version>
-    </parent>
+    </parent>-->
+    <!-- 推送到自动化平台maven仓库 -->
+    <distributionManagement>
+        <repository>
+            <id>somta-somta-spring-somta-maven</id>
+            <name>somta-maven</name>
+            <url>https://somta-maven.pkg.coding.net/repository/somta-spring/somta-maven/</url>
+        </repository>
+    </distributionManagement>
 
 </project>
