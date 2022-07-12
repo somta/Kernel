@@ -33,6 +33,12 @@
             <version>0.0.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>net.somta</groupId>
+            <artifactId>somta-cache-spring-boot-starter</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+
         <!--mysql start-->
         <dependency>
             <groupId>mysql</groupId>

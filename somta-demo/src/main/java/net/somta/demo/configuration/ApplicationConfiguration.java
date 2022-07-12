@@ -1,5 +1,7 @@
 package net.somta.demo.configuration;
 
+import net.somta.cache.impl.CacheTemplateFactory;
+import net.somta.cache.impl.ICacheTemplate;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -12,6 +14,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ApplicationConfiguration {
 
+
+   /* @Bean
+    public ICacheTemplate getCacheBean(CacheProperties cacheProperties,RedisProperties redisProperties){
+        ICacheTemplate cacheTemplate = CacheTemplateFactory.getCacheTemplate(cacheProperties,redisProperties);
+        return cacheTemplate;
+    }*/
 
 
 }
