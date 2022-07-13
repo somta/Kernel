@@ -1,6 +1,8 @@
 package net.somta.core.base.result;
 
 
+import net.somta.core.exception.IBaseError;
+
 public class ResponseDataResult<T> extends ResponseResult {
 
     private T result;
@@ -28,11 +30,11 @@ public class ResponseDataResult<T> extends ResponseResult {
         return setErrorResponseResult(baseError.getErrorCode(),baseError.getErrorMessage(), null);
     }
 
-    public static ResponseDataResult setErrorResponseResult(String errorCode ,String errorMessage) {
+    public static ResponseDataResult setErrorResponseResult(int errorCode ,String errorMessage) {
     	return setErrorResponseResult(errorCode,errorMessage, null);
     }
 
-    public static ResponseDataResult setErrorResponseResult(String errorCode ,String errorMessage,Object data) {
+    public static ResponseDataResult setErrorResponseResult(int errorCode ,String errorMessage,Object data) {
         ResponseDataResult r = new ResponseDataResult();
         r.setSuccess(false);
         r.setErrorCode(errorCode);

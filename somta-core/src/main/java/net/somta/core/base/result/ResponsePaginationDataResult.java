@@ -1,6 +1,8 @@
 package net.somta.core.base.result;
 
 
+import net.somta.core.exception.IBaseError;
+
 import java.util.List;
 
 public class ResponsePaginationDataResult<T> extends ResponseResult {
@@ -36,11 +38,11 @@ public class ResponsePaginationDataResult<T> extends ResponseResult {
         return setErrorResponseResult(baseError.getErrorCode(),baseError.getErrorMessage(), null);
     }
 
-    public static ResponsePaginationDataResult setErrorResponseResult(String errorCode ,String errorMessage) {
+    public static ResponsePaginationDataResult setErrorResponseResult(int errorCode ,String errorMessage) {
     	return setErrorResponseResult(errorCode,errorMessage, null);
     }
 
-    public static ResponsePaginationDataResult setErrorResponseResult(String errorCode ,String errorMessage,List data) {
+    public static ResponsePaginationDataResult setErrorResponseResult(int errorCode ,String errorMessage,List data) {
         ResponsePaginationDataResult r = new ResponsePaginationDataResult();
         r.setTotal(0L);
         r.setSuccess(false);

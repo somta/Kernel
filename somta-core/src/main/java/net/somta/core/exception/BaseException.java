@@ -17,11 +17,22 @@ public abstract class BaseException extends RuntimeException {
      */
     private String errorType;
 
+    /**
+     * 异常信息
+     */
+    private Throwable throwable;
+
     protected BaseException(int errorCode, String errorMessage, String errorType) {
         super("BaseException(errorCode=" + errorCode + ",errorMessage=" + errorMessage + ",errorType=" + errorType + ")");
         this.errorMessage = errorMessage;
         this.errorType = errorType;
+    }
 
+    protected BaseException(int errorCode, String errorMessage, String errorType,Throwable throwable) {
+        super("BaseException(errorCode=" + errorCode + ",errorMessage=" + errorMessage + ",errorType=" + errorType + ")",throwable);
+        this.errorMessage = errorMessage;
+        this.errorType = errorType;
+        this.throwable = throwable;
     }
 
     public int getErrorCode() {
@@ -46,5 +57,13 @@ public abstract class BaseException extends RuntimeException {
 
     public void setErrorType(String errorType) {
         this.errorType = errorType;
+    }
+
+    public Throwable getThrowable() {
+        return throwable;
+    }
+
+    public void setThrowable(Throwable throwable) {
+        this.throwable = throwable;
     }
 }

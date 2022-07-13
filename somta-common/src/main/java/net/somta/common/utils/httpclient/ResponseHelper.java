@@ -17,7 +17,7 @@ public class ResponseHelper {
             HttpEntity entity = response.getEntity();
             if (statusCode >= HttpStatus.SC_MULTIPLE_CHOICES) {
                 responseDataResult.setSuccess(false);
-                responseDataResult.setErrorCode(String.valueOf(statusCode));
+                responseDataResult.setErrorCode(statusCode);
                 responseDataResult.setErrorMessage(response.getStatusLine().getReasonPhrase());
                 return responseDataResult;
             }

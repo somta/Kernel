@@ -10,7 +10,7 @@ public class ResponseResult {
 	/**
 	 * 返回码
 	 */
-	private String errorCode;
+	private int errorCode;
 	/**
 	 * 返回消息
 	 */
@@ -24,11 +24,11 @@ public class ResponseResult {
 		this.success = success;
 	}
 
-	public String getErrorCode() {
+	public int getErrorCode() {
 		return errorCode;
 	}
 
-	public void setErrorCode(String errorCode) {
+	public void setErrorCode(int errorCode) {
 		this.errorCode = errorCode;
 	}
 
