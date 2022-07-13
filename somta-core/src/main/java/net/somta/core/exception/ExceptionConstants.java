@@ -4,16 +4,11 @@ public class ExceptionConstants {
     /**
      * 业务异常
      */
-    public static final String ERROR_TYPE_BIZ = "BIZ";
+    public static final String ERROR_TYPE_BIZ = "biz";
 
     /**
      * 系统异常
      */
-    public static final String ERROR_TYPE_SYS = "SYS";
+    public static final String ERROR_TYPE_SYS = "sys";
 
-
-    /**
-     * errorCode 不支持
-     */
-    public static final String ERRORCODE_NOT_SUPPORT_ERROR = "errorCode.not.support";
 }

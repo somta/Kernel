@@ -1,14 +1,11 @@
 package net.somta.core.exception;
 
-
-import org.apache.commons.lang3.StringUtils;
-
 public abstract class BaseException extends RuntimeException {
 
     /**
      * 错误码
      */
-    private String errorCode;
+    private int errorCode;
 
     /**
      * 错误消息
@@ -20,23 +17,18 @@ public abstract class BaseException extends RuntimeException {
      */
     private String errorType;
 
-    protected BaseException(String errorCode, String errorMessage, String errorType) {
+    protected BaseException(int errorCode, String errorMessage, String errorType) {
         super("BaseException(errorCode=" + errorCode + ",errorMessage=" + errorMessage + ",errorType=" + errorType + ")");
-        if (StringUtils.isEmpty(errorCode)) {
-            this.errorCode = ExceptionConstants.ERRORCODE_NOT_SUPPORT_ERROR;
-        } else {
-            this.errorCode = errorCode;
-        }
         this.errorMessage = errorMessage;
         this.errorType = errorType;
 
     }
 
-    public String getErrorCode() {
+    public int getErrorCode() {
         return errorCode;
     }
 
-    public void setErrorCode(String errorCode) {
+    public void setErrorCode(int errorCode) {
         this.errorCode = errorCode;
     }
 

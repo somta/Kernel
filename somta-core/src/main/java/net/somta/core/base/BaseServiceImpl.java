@@ -12,21 +12,21 @@ public abstract class BaseServiceImpl implements IBaseService {
 
     public <T> ResponseDataResult add(T t){
             if(getMapper().add(t) > 0){
-                throw new BizException("add.error","新增数据失败");
+                throw new BizException(1,"新增数据失败");
         }
         return ResponseDataResult.setResponseResult();
     }
 
     public ResponseDataResult deleteById(Object id){
         if(getMapper().deleteById(id) > 0){
-            throw new BizException("delete.error","根据ID删除数据失败");
+            throw new BizException(1,"根据ID删除数据失败");
         }
         return ResponseDataResult.setResponseResult();
     }
 
     public <T> ResponseDataResult update(T t){
         if(getMapper().update(t) > 0){
-            throw new BizException("update.error","修改数据失败");
+            throw new BizException(1,"修改数据失败");
         }
         return ResponseDataResult.setResponseResult();
     }
