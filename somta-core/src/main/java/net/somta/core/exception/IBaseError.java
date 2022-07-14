@@ -9,9 +9,6 @@ public interface IBaseError {
 
     int getErrorCode();
 
-    void setErrorCode(int errorCode);
-
     String getErrorMessage();
 
-    void setErrorMessage(String errorMessage);
 }
