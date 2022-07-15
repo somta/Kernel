@@ -5,7 +5,7 @@ public abstract class BaseException extends RuntimeException {
     /**
      * 错误码
      */
-    private int errorCode;
+    private long errorCode;
 
     /**
      * 错误消息
@@ -22,24 +22,24 @@ public abstract class BaseException extends RuntimeException {
      */
     private Throwable throwable;
 
-    protected BaseException(int errorCode, String errorMessage, String errorType) {
+    protected BaseException(long errorCode, String errorMessage, String errorType) {
         super("BaseException(errorCode=" + errorCode + ",errorMessage=" + errorMessage + ",errorType=" + errorType + ")");
         this.errorMessage = errorMessage;
         this.errorType = errorType;
     }
 
-    protected BaseException(int errorCode, String errorMessage, String errorType,Throwable throwable) {
+    protected BaseException(long errorCode, String errorMessage, String errorType,Throwable throwable) {
         super("BaseException(errorCode=" + errorCode + ",errorMessage=" + errorMessage + ",errorType=" + errorType + ")",throwable);
         this.errorMessage = errorMessage;
         this.errorType = errorType;
         this.throwable = throwable;
     }
 
-    public int getErrorCode() {
+    public long getErrorCode() {
         return errorCode;
     }
 
-    public void setErrorCode(int errorCode) {
+    public void setErrorCode(long errorCode) {
         this.errorCode = errorCode;
     }
 

@@ -6,27 +6,29 @@ import net.somta.core.exception.BizException;
 
 import java.util.List;
 
+import static net.somta.core.enums.SystemErrorEnum.*;
+
 public abstract class BaseServiceImpl implements IBaseService {
 
     public abstract IBaseMapper getMapper();
 
     public <T> ResponseDataResult add(T t){
             if(getMapper().add(t) > 0){
-                throw new BizException(1,"新增数据失败");
+                throw new BizException(BASE_ADD_ERROR);
         }
         return ResponseDataResult.setResponseResult();
     }
 
     public ResponseDataResult deleteById(Object id){
         if(getMapper().deleteById(id) > 0){
-            throw new BizException(1,"根据ID删除数据失败");
+            throw new BizException(BASE_DELETE_BY_ID_ERROR);
         }
         return ResponseDataResult.setResponseResult();
     }
 
     public <T> ResponseDataResult update(T t){
         if(getMapper().update(t) > 0){
-            throw new BizException(1,"修改数据失败");
+            throw new BizException(BASE_UPDATE_ERROR);
         }
         return ResponseDataResult.setResponseResult();
     }

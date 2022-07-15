@@ -34,7 +34,7 @@ public class ResponseDataResult<T> extends ResponseResult {
     	return setErrorResponseResult(errorCode,errorMessage, null);
     }
 
-    public static ResponseDataResult setErrorResponseResult(int errorCode ,String errorMessage,Object data) {
+    public static ResponseDataResult setErrorResponseResult(long errorCode ,String errorMessage,Object data) {
         ResponseDataResult r = new ResponseDataResult();
         r.setSuccess(false);
         r.setErrorCode(errorCode);

@@ -7,7 +7,7 @@ package net.somta.core.exception;
  **/
 public interface IBaseError {
 
-    int getErrorCode();
+    long getErrorCode();
 
     String getErrorMessage();
 

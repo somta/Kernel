@@ -3,6 +3,18 @@
     <groupId>net.somta</groupId>
     <artifactId>somta-core</artifactId>
     <version>1.0.6</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>6</source>
+                    <target>6</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <name>somta-core</name>
     <description>Use Somta for rapid development</description>

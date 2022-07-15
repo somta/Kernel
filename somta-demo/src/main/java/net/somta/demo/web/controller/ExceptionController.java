@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static net.somta.demo.enums.CommonErrorEnum.BIZ_ERROR;
+import static net.somta.demo.enums.CommonErrorEnum.SYS_ERROR;
+
 /**
  *
  * @Date:        2021-02-03
@@ -31,7 +34,7 @@ public class ExceptionController {
 	public ResponseDataResult<String> getBizException(){
 		loger.info("方法执行了");
 		if(true){
-			throw new BizException(100002,"这是一个业务异常");
+			throw new BizException(BIZ_ERROR);
 		}
 		return ResponseDataResult.setResponseResult("success");
 	}
@@ -50,7 +53,7 @@ public class ExceptionController {
 			int b = 0;
 			int c = a/b;
 		}catch (ArithmeticException exception){
-			throw new SysException(1,"处理成自己的异常",exception);
+			throw new SysException(SYS_ERROR,exception);
 		}
 
 		return ResponseDataResult.setResponseResult("success");
