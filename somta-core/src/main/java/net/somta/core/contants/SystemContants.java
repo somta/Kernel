@@ -11,6 +11,11 @@ public class SystemContants {
     public final static int BASE_CODE_PREFIX = 100;
 
     /**
+     * common的code
+     */
+    public final static long COMMON_CODE = (BASE_CODE_PREFIX * 1000 + 001) * 10000;
+
+    /**
      * 缓存starter的code
      */
     public final static long STATER_CACHE_CODE = (BASE_CODE_PREFIX * 1000 + 100) * 10000;
