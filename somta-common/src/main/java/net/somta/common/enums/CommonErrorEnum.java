@@ -12,9 +12,6 @@ public enum CommonErrorEnum implements IBaseError {
     SERIALIZE_ERROR(0001,"序列化异常"),
     DSERIALIZE_ERROR(0002,"反序列化异常");
 
-    private long code;
-    private String errorMsg;
-
     private int errorCode;
     private String errorMessage;
 

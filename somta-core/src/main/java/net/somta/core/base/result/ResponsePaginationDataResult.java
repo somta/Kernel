@@ -35,19 +35,16 @@ public class ResponsePaginationDataResult<T> extends ResponseResult {
     }
 
     public static ResponsePaginationDataResult setErrorResponseResult(IBaseError baseError) {
-        return setErrorResponseResult(baseError.getErrorCode(),baseError.getErrorMessage(), null);
+        return setErrorResponseResult(baseError, null);
     }
 
-    public static ResponsePaginationDataResult setErrorResponseResult(long errorCode ,String errorMessage) {
-    	return setErrorResponseResult(errorCode,errorMessage, null);
-    }
-
-    public static ResponsePaginationDataResult setErrorResponseResult(long errorCode ,String errorMessage,List data) {
+    public static ResponsePaginationDataResult setErrorResponseResult(IBaseError baseError,List data) {
         ResponsePaginationDataResult r = new ResponsePaginationDataResult();
         r.setTotal(0L);
         r.setSuccess(false);
-        r.setErrorCode(errorCode);
-        r.setErrorMessage(errorMessage);
+        r.setErrorCode(baseError.getErrorCode());
+        r.setErrorMessage(baseError.getErrorMessage());
+        r.setResult(data);
         return r;
     }
 
