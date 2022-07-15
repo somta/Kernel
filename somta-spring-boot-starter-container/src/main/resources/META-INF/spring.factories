@@ -1,3 +1,0 @@
-#指定java配置类, \ 是换行连接符
-org.springframework.boot.autoconfigure.EnableAutoConfiguration= \
-  net.somta.container.ContainerAutoConfiguration 
