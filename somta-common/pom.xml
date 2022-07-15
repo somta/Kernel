@@ -47,14 +47,7 @@
         <dependency>
             <groupId>net.somta</groupId>
             <artifactId>somta-core</artifactId>
-            <version>1.0.6</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-
 
         <!-- httpclient start -->
         <dependency>
