@@ -6,4 +6,8 @@ public class BizException extends BaseException {
         super(baseError.getErrorCode(), String.format(baseError.getErrorMessage(),args), ExceptionConstants.ERROR_TYPE_BIZ);
     }
 
+    public BizException(IBaseError baseError,Throwable throwable,Object... args) {
+        super(baseError.getErrorCode(), String.format(baseError.getErrorMessage(),args), ExceptionConstants.ERROR_TYPE_BIZ,throwable);
+    }
+
 }

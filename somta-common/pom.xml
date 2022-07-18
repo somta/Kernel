@@ -6,7 +6,7 @@
 
     <groupId>net.somta</groupId>
     <artifactId>somta-common</artifactId>
-    <version>0.0.3</version>
+    <version>1.1.0-SNAPSHOT</version>
 
     <name>somta-common</name>
     <description>somta common</description>
@@ -47,14 +47,7 @@
         <dependency>
             <groupId>net.somta</groupId>
             <artifactId>somta-core</artifactId>
-            <version>1.0.6</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-
 
         <!-- httpclient start -->
         <dependency>

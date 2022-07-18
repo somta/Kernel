@@ -30,7 +30,7 @@ public class ResponseDataResult<T> extends ResponseResult {
         return setErrorResponseResult(baseError.getErrorCode(),baseError.getErrorMessage(), null);
     }
 
-    public static ResponseDataResult setErrorResponseResult(int errorCode ,String errorMessage) {
+    public static ResponseDataResult setErrorResponseResult(long errorCode ,String errorMessage) {
     	return setErrorResponseResult(errorCode,errorMessage, null);
     }
 
