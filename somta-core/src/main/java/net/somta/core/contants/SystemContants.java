@@ -13,7 +13,12 @@ public class SystemContants {
     /**
      * common的code
      */
-    public final static long COMMON_CODE = (BASE_CODE_PREFIX * 1000 + 001) * 10000;
+    public final static long CORE_CODE = (BASE_CODE_PREFIX * 1000 + 001) * 10000;
+
+    /**
+     * common的code
+     */
+    public final static long COMMON_CODE = (BASE_CODE_PREFIX * 1000 + 002) * 10000;
 
     /**
      * 缓存starter的code

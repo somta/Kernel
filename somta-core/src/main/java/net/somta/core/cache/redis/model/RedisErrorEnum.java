@@ -10,9 +10,9 @@ import net.somta.core.exception.IBaseError;
  **/
 public enum RedisErrorEnum implements IBaseError {
 
-    REDIS_MODE_ERROR(1101,  "不存在%s这种Redis的模式"),
-    REDIS_ADDRESS_ERROR(1100,  "Redis的地址不能为空"),
-    REDIS_SENTINEL_MASTER_NAME_ERROR(1102,  "哨兵模式下主服务名称不能为空"),;
+    REDIS_MODE_ERROR(1001,  "不存在%s这种Redis的模式"),
+    REDIS_ADDRESS_ERROR(1002,  "Redis的地址不能为空"),
+    REDIS_SENTINEL_MASTER_NAME_ERROR(1003,  "哨兵模式下主服务名称不能为空"),;
 
     private int errorCode;
     private String errorMessage;
@@ -24,7 +24,7 @@ public enum RedisErrorEnum implements IBaseError {
 
     @Override
     public long getErrorCode() {
-        return SystemContants.STATER_CACHE_CODE + errorCode;
+        return SystemContants.CORE_CODE + errorCode;
     }
 
     @Override

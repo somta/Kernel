@@ -10,7 +10,6 @@ import net.somta.core.cache.redis.model.RedisErrorEnum;
 import net.somta.core.cache.redis.model.RedisModeEnum;
 import net.somta.core.cache.redis.serialize.InterfaceSerializable;
 import net.somta.core.cache.redis.serialize.JsonSerializable;
-import org.redisson.api.RedissonClient;
 
 /**
  * @desc: Redis客户端构建类，构建不同类型的client
