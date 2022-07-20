@@ -9,8 +9,7 @@ import net.somta.core.exception.IBaseError;
  * @date: 2022/7/14
  **/
 public enum CommonErrorEnum implements IBaseError {
-    SERIALIZE_ERROR(0001,"序列化异常"),
-    DSERIALIZE_ERROR(0002,"反序列化异常");
+    ;
 
     private int errorCode;
     private String errorMessage;
