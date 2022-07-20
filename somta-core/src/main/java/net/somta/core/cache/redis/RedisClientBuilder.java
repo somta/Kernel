@@ -11,12 +11,17 @@ import net.somta.core.cache.redis.model.RedisModeEnum;
 import net.somta.core.cache.redis.serialize.InterfaceSerializable;
 import net.somta.core.cache.redis.serialize.JsonSerializable;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @desc: Redis客户端构建类，构建不同类型的client
  * @author: husong
  * @date: 2022/7/13
  **/
 public class RedisClientBuilder {
+
+    private static Map<String,AbstractRedisClient> redisClients = new HashMap<>();
 
     /**
      * 构建Redis客户端
@@ -33,8 +38,13 @@ public class RedisClientBuilder {
      * @param interfaceSerializable
      * @return
      */
-    public static AbstractRedisClient buildRedisClient(RedisConfigItem redisConfigItem,
+    public synchronized static AbstractRedisClient buildRedisClient(RedisConfigItem redisConfigItem,
                                                        InterfaceSerializable interfaceSerializable){
+        AbstractRedisClient cacheRedisClient = redisClients.get(redisConfigItem.getAddress().toString());
+        if(cacheRedisClient != null){
+            return cacheRedisClient;
+        }
+
         if (interfaceSerializable == null) {
             interfaceSerializable = new JsonSerializable();
         }
@@ -55,6 +65,8 @@ public class RedisClientBuilder {
         redisClient.init(redisConfigItem);
         // 挂载序列化器
         redisClient.setInterfaceSerializable(interfaceSerializable);
+        // 存储本地缓存
+        redisClients.put(redisConfigItem.getAddress().toString(),redisClient);
         return redisClient;
     }
 }
