@@ -19,4 +19,9 @@ public class SystemContants {
      * 缓存starter的code
      */
     public final static long STATER_CACHE_CODE = (BASE_CODE_PREFIX * 1000 + 100) * 10000;
+
+    /**
+     * 分布式锁starter的code
+     */
+    public final static long STATER_LOCK_CODE = (BASE_CODE_PREFIX * 1000 + 200) * 10000;
 }

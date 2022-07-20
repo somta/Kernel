@@ -1,10 +1,10 @@
-package net.somta.common.helper;
+package net.somta.core.helper;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import net.somta.common.enums.CommonErrorEnum;
+import net.somta.core.enums.SystemErrorEnum;
 import net.somta.core.exception.SysException;
 
 import java.io.IOException;
@@ -35,7 +35,7 @@ public final class JsonSerializeHelper {
         try {
             return objectMapper.writeValueAsString(value);
         } catch (JsonProcessingException e) {
-            throw new SysException(CommonErrorEnum.SERIALIZE_ERROR,e);
+            throw new SysException(SystemErrorEnum.SERIALIZE_ERROR,e);
         }
     }
 
@@ -52,7 +52,7 @@ public final class JsonSerializeHelper {
         try {
             return objectMapper.readValue(value, valueClass);
         } catch (JsonProcessingException e) {
-            throw new SysException(CommonErrorEnum.DSERIALIZE_ERROR,e);
+            throw new SysException(SystemErrorEnum.DSERIALIZE_ERROR,e);
         }
     }
 
