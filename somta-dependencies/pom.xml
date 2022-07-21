@@ -26,7 +26,7 @@
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <jackson.version>2.11.4</jackson.version>
         <reflections.version>0.9.11</reflections.version>
-        <redisson.version>3.17.4</redisson.version>
+        <redisson.version>3.14.0</redisson.version>
         <swagger.version>3.0.0</swagger.version>
         <!--第三方依赖 end -->
     </properties>

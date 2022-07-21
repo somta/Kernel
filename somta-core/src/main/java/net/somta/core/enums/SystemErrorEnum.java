@@ -12,7 +12,7 @@ public enum SystemErrorEnum implements IBaseError {
     BASE_ADD_ERROR(0001,  "新增数据失败"),
     BASE_DELETE_BY_ID_ERROR(0002,  "根据ID删除数据失败"),
     BASE_UPDATE_ERROR(0003,  "修改数据失败"),
-    SERIALIZE_ERROR(0003,"序列化异常"),
+    SERIALIZE_ERROR(0004,"序列化异常"),
     DSERIALIZE_ERROR(0005,"反序列化异常");
 
     private int errorCode;

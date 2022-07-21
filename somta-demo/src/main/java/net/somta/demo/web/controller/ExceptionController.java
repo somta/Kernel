@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static net.somta.demo.enums.CommonErrorEnum.BIZ_ERROR;
-import static net.somta.demo.enums.CommonErrorEnum.SYS_ERROR;
+import static net.somta.demo.enums.DemoErrorEnum.BIZ_ERROR;
+import static net.somta.demo.enums.DemoErrorEnum.SYS_ERROR;
 
 /**
  *

@@ -11,6 +11,7 @@ import net.somta.core.cache.redis.model.RedisModeEnum;
 import net.somta.core.cache.redis.serialize.InterfaceSerializable;
 import net.somta.core.cache.redis.serialize.JsonSerializable;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,7 +41,7 @@ public class RedisClientBuilder {
      */
     public synchronized static AbstractRedisClient buildRedisClient(RedisConfigItem redisConfigItem,
                                                        InterfaceSerializable interfaceSerializable){
-        AbstractRedisClient cacheRedisClient = redisClients.get(redisConfigItem.getAddress().toString());
+        AbstractRedisClient cacheRedisClient = redisClients.get(Arrays.toString(redisConfigItem.getAddress()));
         if(cacheRedisClient != null){
             return cacheRedisClient;
         }
@@ -66,7 +67,7 @@ public class RedisClientBuilder {
         // 挂载序列化器
         redisClient.setInterfaceSerializable(interfaceSerializable);
         // 存储本地缓存
-        redisClients.put(redisConfigItem.getAddress().toString(),redisClient);
+        redisClients.put(Arrays.toString(redisConfigItem.getAddress()),redisClient);
         return redisClient;
     }
 }

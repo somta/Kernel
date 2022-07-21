@@ -22,8 +22,9 @@ public class CacheController {
 
     @GetMapping("/testString")
     public ResponseDataResult<String> testString() throws Exception{
-        cacheTemplate.getCache("name");
-        return ResponseDataResult.setResponseResult("success");
+        cacheTemplate.setCache("name","明天的地平线");
+        String cacheName = cacheTemplate.getCache("name");
+        return ResponseDataResult.setResponseResult("success"+cacheName);
     }
 
 }

@@ -24,12 +24,14 @@ public abstract class BaseException extends RuntimeException {
 
     protected BaseException(long errorCode, String errorMessage, String errorType) {
         super("BaseException(errorCode=" + errorCode + ",errorMessage=" + errorMessage + ",errorType=" + errorType + ")");
+        this.errorCode = errorCode;
         this.errorMessage = errorMessage;
         this.errorType = errorType;
     }
 
     protected BaseException(long errorCode, String errorMessage, String errorType,Throwable throwable) {
         super("BaseException(errorCode=" + errorCode + ",errorMessage=" + errorMessage + ",errorType=" + errorType + ")",throwable);
+        this.errorCode = errorCode;
         this.errorMessage = errorMessage;
         this.errorType = errorType;
         this.throwable = throwable;

@@ -5,7 +5,7 @@ import net.somta.core.exception.IBaseError;
 
 /**
  * @desc: TODO 类描述
- * @author: mijunjie
+ * @author: husong
  * @date: 2022/7/14
  **/
 public enum CommonErrorEnum implements IBaseError {
