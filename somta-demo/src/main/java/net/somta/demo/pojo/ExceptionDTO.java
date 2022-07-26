@@ -1,20 +1,16 @@
 package net.somta.demo.pojo;
 
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-public class Student {
-    private Integer id;
+public class ExceptionDTO {
     @NotNull
     private String userName;
+    @NotNull(message = "昵称不能为空")
+    private String nickName;
+    @Max(100)
     private Integer age;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getUserName() {
         return userName;
@@ -22,6 +18,14 @@ public class Student {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
     public Integer getAge() {
