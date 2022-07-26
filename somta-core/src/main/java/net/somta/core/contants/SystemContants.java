@@ -29,4 +29,9 @@ public class SystemContants {
      * 分布式锁starter的code
      */
     public final static long STATER_LOCK_CODE = (BASE_CODE_PREFIX * 1000 + 200) * 10000;
+
+    /**
+     * ElasticSearch starter的code
+     */
+    public final static long STATER_SEARCH_CODE = (BASE_CODE_PREFIX * 1000 + 300) * 10000;
 }
