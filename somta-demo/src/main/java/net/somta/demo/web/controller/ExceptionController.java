@@ -3,8 +3,8 @@ package net.somta.demo.web.controller;
 import net.somta.core.base.result.ResponseDataResult;
 import net.somta.core.exception.BizException;
 import net.somta.core.exception.SysException;
+import net.somta.demo.enums.DemoErrorEnum;
 import net.somta.demo.pojo.ExceptionDTO;
-import net.somta.demo.pojo.Student;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-
-import static net.somta.demo.enums.DemoErrorEnum.BIZ_ERROR;
-import static net.somta.demo.enums.DemoErrorEnum.SYS_ERROR;
 
 /**
  *
@@ -38,7 +35,7 @@ public class ExceptionController {
 	public ResponseDataResult<String> getBizException(){
 		loger.info("方法执行了");
 		if(true){
-			throw new BizException(BIZ_ERROR);
+			throw new BizException(DemoErrorEnum.BIZ_ERROR);
 		}
 		return ResponseDataResult.setResponseResult("success");
 	}
@@ -57,7 +54,7 @@ public class ExceptionController {
 			int b = 0;
 			int c = a/b;
 		}catch (ArithmeticException exception){
-			throw new SysException(SYS_ERROR,exception);
+			throw new SysException(DemoErrorEnum.SYS_ERROR,exception);
 		}
 
 		return ResponseDataResult.setResponseResult("success");

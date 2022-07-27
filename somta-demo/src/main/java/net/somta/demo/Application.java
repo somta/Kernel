@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Blog: https://www.somta.net/
  * @Version: 1.0.0
  */
-@SpringBootApplication(scanBasePackages = {"net.somta"})
+@SpringBootApplication
 public class Application {
 
     public static void main(String[] args) {

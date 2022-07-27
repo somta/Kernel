@@ -37,9 +37,6 @@ public abstract class AbstractRedisClient {
      * @param redisConfigItem
      */
     public void init(RedisConfigItem redisConfigItem){
-        if(ArrayUtils.isEmpty(redisConfigItem.getAddress())){
-            throw new RedisException(RedisErrorEnum.REDIS_ADDRESS_ERROR);
-        }
         Config redisConfig = new Config();
         // 默认编码器转换的字节流带有乱码，执行lua脚本或其它redis库读取就会报错
         redisConfig.setCodec(StringCodec.INSTANCE);

@@ -10,6 +10,7 @@ import net.somta.core.cache.redis.model.RedisErrorEnum;
 import net.somta.core.cache.redis.model.RedisModeEnum;
 import net.somta.core.cache.redis.serialize.InterfaceSerializable;
 import net.somta.core.cache.redis.serialize.JsonSerializable;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -41,6 +42,9 @@ public class RedisClientBuilder {
      */
     public synchronized static AbstractRedisClient buildRedisClient(RedisConfigItem redisConfigItem,
                                                        InterfaceSerializable interfaceSerializable){
+        if(ArrayUtils.isEmpty(redisConfigItem.getAddress())){
+            throw new RedisException(RedisErrorEnum.REDIS_ADDRESS_ERROR);
+        }
         AbstractRedisClient cacheRedisClient = redisClients.get(Arrays.toString(redisConfigItem.getAddress()));
         if(cacheRedisClient != null){
             return cacheRedisClient;
