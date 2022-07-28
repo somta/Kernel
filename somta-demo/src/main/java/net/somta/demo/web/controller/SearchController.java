@@ -2,6 +2,8 @@ package net.somta.demo.web.controller;
 
 import net.somta.core.base.result.ResponseDataResult;
 import net.somta.search.impl.ISearchTemplate;
+import net.somta.search.model.Field;
+import net.somta.search.model.FieldTypeEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,16 +34,10 @@ public class SearchController {
     public ResponseDataResult<String> testIndex() throws Exception{
         String indexName = "test-hs";
         // 新增索引
-        Map<String, Object> columnMap = new HashMap<>();
-        // name
-        Map<String,Object> nameTypeMap = new HashMap<>();
-        nameTypeMap.put("type","text");
-        // age
-        Map<String,Object> ageTypeMap = new HashMap<>();
-        ageTypeMap.put("type","integer");
+        Map<String, Field> columnMap = new HashMap<>();
 
-        columnMap.put("name",nameTypeMap);
-        columnMap.put("age",ageTypeMap);
+        columnMap.put("name",new Field(FieldTypeEnum.BASE_TEXT.getValue()));
+        columnMap.put("age",new Field(FieldTypeEnum.BASE_INTEGER.getValue()));
         // 创建索引
         searchTemplate.createIndex(indexName,columnMap);
 
