@@ -31,9 +31,13 @@ public class RedisConfigItem {
      */
     private Integer database = 0;
     /**
-     * 连接超时时间（毫秒）
+     * 命令等待超时时间（毫秒）
      */
-    private Integer timeout = 5000;
+    private Integer timeout = 3000;
+    /**
+     * 连接超时时间
+     */
+    private Integer connectTimeout = 10000;
     /**
      * 命令失败重试次数
      */
@@ -45,15 +49,11 @@ public class RedisConfigItem {
     /**
      * 连接池大小
      */
-    private Integer poolSize = 64;
+    private Integer poolSize = 16;
     /**
      * 连接池中的最小空闲连接
      */
-    private Integer poolMinIdle = 64;
-    /**
-     * 连接超时时间
-     */
-    private Integer poolConnectTimeout = 10000;
+    private Integer poolMinIdle = 8;
 
 
     ///////////////////哨兵配置//////////////////////
@@ -69,9 +69,9 @@ public class RedisConfigItem {
      */
     private Integer scanInterval = 5000;
     // 主节点连接池大小
-    private Integer masterConnectionPoolSize = 64;
+    private Integer masterConnectionPoolSize = 16;
     // 从节点连接池大小
-    private Integer slaveConnectionPoolSize = 64;
+    private Integer slaveConnectionPoolSize = 16;
 
     public String getModel() {
         return model;
@@ -121,6 +121,14 @@ public class RedisConfigItem {
         this.timeout = timeout;
     }
 
+    public Integer getConnectTimeout() {
+        return connectTimeout;
+    }
+
+    public void setConnectTimeout(Integer connectTimeout) {
+        this.connectTimeout = connectTimeout;
+    }
+
     public Integer getRetryAttempts() {
         return retryAttempts;
     }
@@ -151,14 +159,6 @@ public class RedisConfigItem {
 
     public void setPoolMinIdle(Integer poolMinIdle) {
         this.poolMinIdle = poolMinIdle;
-    }
-
-    public Integer getPoolConnectTimeout() {
-        return poolConnectTimeout;
-    }
-
-    public void setPoolConnectTimeout(Integer poolConnectTimeout) {
-        this.poolConnectTimeout = poolConnectTimeout;
     }
 
     public String getSentinelMaster() {
