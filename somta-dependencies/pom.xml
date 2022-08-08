@@ -17,6 +17,11 @@
         <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
         <spring-cloud-openfeign.version>3.0.1</spring-cloud-openfeign.version>
 
+        <!-- test start -->
+        <mockito.version>3.6.28</mockito.version>
+        <podam.version>7.2.9.RELEASE</podam.version>
+        <!-- test end -->
+
         <!-- somta start -->
         <somta-core.version>1.1.0-SNAPSHOT</somta-core.version>
         <somta-common.version>1.1.0-SNAPSHOT</somta-common.version>
@@ -26,10 +31,12 @@
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <jackson.version>2.11.4</jackson.version>
         <reflections.version>0.9.11</reflections.version>
+        <hibernate-validator.version>6.1.7.Final</hibernate-validator.version>
         <nacos.version>1.4.3</nacos.version>
         <redisson.version>3.14.0</redisson.version>
-        <knife4j.version>3.0.3</knife4j.version>
         <!--第三方依赖 end -->
+
+        <knife4j.version>3.0.3</knife4j.version>
     </properties>
 
 
@@ -62,6 +69,19 @@
                 <version>${spring-cloud-openfeign.version}</version>
             </dependency>
 
+            <!-- test dependencies start -->
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-inline</artifactId>
+                <version>${mockito.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>uk.co.jemos.podam</groupId>
+                <artifactId>podam</artifactId>
+                <version>${podam.version}</version>
+            </dependency>
+            <!-- test dependencies end -->
+
             <!-- somta start -->
             <dependency>
                 <groupId>net.somta</groupId>
@@ -90,6 +110,11 @@
                 <groupId>org.reflections</groupId>
                 <artifactId>reflections</artifactId>
                 <version>${reflections.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba.nacos</groupId>
