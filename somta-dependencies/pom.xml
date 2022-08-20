@@ -32,7 +32,7 @@
         <jackson.version>2.11.4</jackson.version>
         <reflections.version>0.9.11</reflections.version>
         <hibernate-validator.version>6.1.7.Final</hibernate-validator.version>
-        <nacos.version>1.4.3</nacos.version>
+        <nacos.version>2.1.1</nacos.version>
         <redisson.version>3.14.0</redisson.version>
         <jsoup.version>1.15.2</jsoup.version>
         <!--第三方依赖 end -->
