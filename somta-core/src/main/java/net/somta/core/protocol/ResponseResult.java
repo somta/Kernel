@@ -1,7 +1,6 @@
-package net.somta.core.base.result;
+package net.somta.core.protocol;
 
 
-@Deprecated
 public class ResponseResult {
 
 	/**

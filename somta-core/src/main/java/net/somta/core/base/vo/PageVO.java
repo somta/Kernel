@@ -1,5 +1,6 @@
 package net.somta.core.base.vo;
 
+@Deprecated
 public class PageVO {
 
 	private int pageNum = 1;

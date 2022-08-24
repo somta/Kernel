@@ -1,11 +1,10 @@
-package net.somta.core.base.result;
+package net.somta.core.protocol;
 
 
 import net.somta.core.exception.IBaseError;
 
 import java.util.List;
 
-@Deprecated
 public class ResponsePaginationDataResult<T> extends ResponseResult {
 
     private Long total;

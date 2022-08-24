@@ -1,9 +1,8 @@
-package net.somta.core.base.result;
+package net.somta.core.protocol;
 
 
 import net.somta.core.exception.IBaseError;
 
-@Deprecated
 public class ResponseDataResult<T> extends ResponseResult {
 
     private T result;
