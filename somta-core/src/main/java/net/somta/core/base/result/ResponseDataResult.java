@@ -28,7 +28,7 @@ public class ResponseDataResult<T> extends ResponseResult {
     }
 
     public static ResponseDataResult setErrorResponseResult(IBaseError baseError) {
-        return setErrorResponseResult(baseError.getErrorCode(),baseError.getErrorMessage(), null);
+        return setErrorResponseResult(baseError.getErrorCode(),baseError.getErrorMsg(), null);
     }
 
     public static ResponseDataResult setErrorResponseResult(long errorCode ,String errorMessage) {

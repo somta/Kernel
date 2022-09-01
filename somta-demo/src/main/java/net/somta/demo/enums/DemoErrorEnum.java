@@ -7,11 +7,11 @@ public enum DemoErrorEnum implements IBaseError {
     SYS_ERROR(2000004,  "这是一个系统异常");
 
     private int errorCode;
-    private String errorMessage;
+    private String errorMsg;
 
-    DemoErrorEnum(int errorCode, String errorMessage) {
+    DemoErrorEnum(int errorCode, String errorMsg) {
         this.errorCode = errorCode;
-        this.errorMessage = errorMessage;
+        this.errorMsg = errorMsg;
     }
 
     @Override
@@ -20,7 +20,7 @@ public enum DemoErrorEnum implements IBaseError {
     }
 
     @Override
-    public String getErrorMessage() {
-        return errorMessage;
+    public String getErrorMsg() {
+        return errorMsg;
     }
 }

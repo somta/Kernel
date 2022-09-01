@@ -10,7 +10,7 @@ public abstract class BaseException extends RuntimeException {
     /**
      * 错误消息
      */
-    private String errorMessage;
+    private String errorMsg;
 
     /**
      * 错误类型
@@ -22,17 +22,17 @@ public abstract class BaseException extends RuntimeException {
      */
     private Throwable throwable;
 
-    protected BaseException(long errorCode, String errorMessage, String errorType) {
-        super("BaseException(errorCode=" + errorCode + ",errorMessage=" + errorMessage + ",errorType=" + errorType + ")");
+    protected BaseException(long errorCode, String errorMsg, String errorType) {
+        super("BaseException(errorCode=" + errorCode + ",errorMsg=" + errorMsg + ",errorType=" + errorType + ")");
         this.errorCode = errorCode;
-        this.errorMessage = errorMessage;
+        this.errorMsg = errorMsg;
         this.errorType = errorType;
     }
 
-    protected BaseException(long errorCode, String errorMessage, String errorType,Throwable throwable) {
-        super("BaseException(errorCode=" + errorCode + ",errorMessage=" + errorMessage + ",errorType=" + errorType + ")",throwable);
+    protected BaseException(long errorCode, String errorMsg, String errorType,Throwable throwable) {
+        super("BaseException(errorCode=" + errorCode + ",errorMsg=" + errorMsg + ",errorType=" + errorType + ")",throwable);
         this.errorCode = errorCode;
-        this.errorMessage = errorMessage;
+        this.errorMsg = errorMsg;
         this.errorType = errorType;
         this.throwable = throwable;
     }
@@ -45,12 +45,12 @@ public abstract class BaseException extends RuntimeException {
         this.errorCode = errorCode;
     }
 
-    public String getErrorMessage() {
-        return errorMessage;
+    public String getErrorMsg() {
+        return errorMsg;
     }
 
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
     }
 
     public String getErrorType() {

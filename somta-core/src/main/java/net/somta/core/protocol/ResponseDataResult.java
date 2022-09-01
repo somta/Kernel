@@ -27,18 +27,18 @@ public class ResponseDataResult<T> extends ResponseResult {
     }
 
     public static ResponseDataResult setErrorResponseResult(IBaseError baseError) {
-        return setErrorResponseResult(baseError.getErrorCode(),baseError.getErrorMessage(), null);
+        return setErrorResponseResult(baseError.getErrorCode(),baseError.getErrorMsg(), null);
     }
 
-    public static ResponseDataResult setErrorResponseResult(long errorCode ,String errorMessage) {
-    	return setErrorResponseResult(errorCode,errorMessage, null);
+    public static ResponseDataResult setErrorResponseResult(long errorCode ,String errorMsg) {
+    	return setErrorResponseResult(errorCode,errorMsg, null);
     }
 
-    public static ResponseDataResult setErrorResponseResult(long errorCode ,String errorMessage,Object data) {
+    public static ResponseDataResult setErrorResponseResult(long errorCode ,String errorMsg,Object data) {
         ResponseDataResult r = new ResponseDataResult();
         r.setSuccess(false);
         r.setErrorCode(errorCode);
-        r.setErrorMessage(errorMessage);
+        r.setErrorMsg(errorMsg);
         r.setResult(data);
         return r;
     }

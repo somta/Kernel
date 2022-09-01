@@ -9,6 +9,6 @@ public interface IBaseError {
 
     long getErrorCode();
 
-    String getErrorMessage();
+    String getErrorMsg();
 
 }

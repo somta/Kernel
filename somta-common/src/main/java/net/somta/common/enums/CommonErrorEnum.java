@@ -12,11 +12,11 @@ public enum CommonErrorEnum implements IBaseError {
     ;
 
     private int errorCode;
-    private String errorMessage;
+    private String errorMsg;
 
-    CommonErrorEnum(int errorCode, String errorMessage) {
+    CommonErrorEnum(int errorCode, String errorMsg) {
         this.errorCode = errorCode;
-        this.errorMessage = errorMessage;
+        this.errorMsg = errorMsg;
     }
 
     @Override
@@ -25,7 +25,7 @@ public enum CommonErrorEnum implements IBaseError {
     }
 
     @Override
-    public String getErrorMessage() {
-        return errorMessage;
+    public String getErrorMsg() {
+        return errorMsg;
     }
 }

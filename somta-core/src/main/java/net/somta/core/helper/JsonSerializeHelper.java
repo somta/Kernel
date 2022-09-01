@@ -2,6 +2,7 @@ package net.somta.core.helper;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import net.somta.core.enums.SystemErrorEnum;
@@ -25,7 +26,6 @@ public final class JsonSerializeHelper {
 
     /**
      * 序列化
-     *
      * @param value
      * @param <T>
      * @return
@@ -41,7 +41,6 @@ public final class JsonSerializeHelper {
 
     /**
      * 反序列化
-     *
      * @param value
      * @param valueClass
      * @param <T>
@@ -56,5 +55,30 @@ public final class JsonSerializeHelper {
         }
     }
 
+    /**
+     * 反序列化,支持泛型
+     * @param data
+     * @param clazz 集合类型
+     * @param elementClass 元素类型
+     * @param <T>
+     * @return
+     */
+    public static <T> T deserialize(String data, Class<T> clazz, Class<?> elementClass) {
+        try {
+            return objectMapper.readValue(data, getGenericsType(clazz, elementClass));
+        } catch (IOException e) {
+            throw new SysException(SystemErrorEnum.DSERIALIZE_ERROR,e);
+        }
+    }
+
+    /**
+     * 获取泛型类型
+     * @param clazz 主类类型
+     * @param elementClasses 主类下的泛型类类型
+     * @return
+     */
+    private static JavaType getGenericsType(Class<?> clazz, Class<?>... elementClasses) {
+        return objectMapper.getTypeFactory().constructParametricType(clazz, elementClasses);
+    }
 }
 

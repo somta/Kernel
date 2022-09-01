@@ -14,7 +14,7 @@ public class ResponseResult {
 	/**
 	 * 返回消息
 	 */
-	private String errorMessage;
+	private String errorMsg;
 
 	public boolean isSuccess() {
 		return success;
@@ -32,11 +32,11 @@ public class ResponseResult {
 		this.errorCode = errorCode;
 	}
 
-	public String getErrorMessage() {
-		return errorMessage;
+	public String getErrorMsg() {
+		return errorMsg;
 	}
 
-	public void setErrorMessage(String errorMessage) {
-		this.errorMessage = errorMessage;
+	public void setErrorMsg(String errorMsg) {
+		this.errorMsg = errorMsg;
 	}
 }

@@ -44,7 +44,7 @@ public class ResponsePaginationDataResult<T> extends ResponseResult {
         r.setTotal(0L);
         r.setSuccess(false);
         r.setErrorCode(baseError.getErrorCode());
-        r.setErrorMessage(baseError.getErrorMessage());
+        r.setErrorMessage(baseError.getErrorMsg());
         r.setResult(data);
         return r;
     }

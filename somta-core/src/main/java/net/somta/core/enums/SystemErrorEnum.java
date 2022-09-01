@@ -16,11 +16,11 @@ public enum SystemErrorEnum implements IBaseError {
     DSERIALIZE_ERROR(0005,"反序列化异常");
 
     private int errorCode;
-    private String errorMessage;
+    private String errorMsg;
 
-    SystemErrorEnum(int errorCode, String errorMessage) {
+    SystemErrorEnum(int errorCode, String errorMsg) {
         this.errorCode = errorCode;
-        this.errorMessage = errorMessage;
+        this.errorMsg = errorMsg;
     }
 
     @Override
@@ -29,7 +29,7 @@ public enum SystemErrorEnum implements IBaseError {
     }
 
     @Override
-    public String getErrorMessage() {
-        return errorMessage;
+    public String getErrorMsg() {
+        return errorMsg;
     }
 }

@@ -15,11 +15,11 @@ public enum RedisErrorEnum implements IBaseError {
     REDIS_SENTINEL_MASTER_NAME_ERROR(1003,  "哨兵模式下主服务名称不能为空"),;
 
     private int errorCode;
-    private String errorMessage;
+    private String errorMsg;
 
-    RedisErrorEnum(int errorCode, String errorMessage) {
+    RedisErrorEnum(int errorCode, String errorMsg) {
         this.errorCode = errorCode;
-        this.errorMessage = errorMessage;
+        this.errorMsg = errorMsg;
     }
 
     @Override
@@ -28,7 +28,7 @@ public enum RedisErrorEnum implements IBaseError {
     }
 
     @Override
-    public String getErrorMessage() {
-        return errorMessage;
+    public String getErrorMsg() {
+        return errorMsg;
     }
 }
