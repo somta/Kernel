@@ -56,7 +56,7 @@ public final class JsonSerializeHelper {
     }
 
     /**
-     * 反序列化,支持泛型
+     * 反序列化,支持反序列化带有泛型的类，并且序列化后的类携带泛型类，避免强转的问题
      * @param data
      * @param clazz 集合类型
      * @param elementClass 元素类型
