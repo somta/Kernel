@@ -1,6 +1,6 @@
 package net.somta.demo.enums;
 
-import net.somta.core.exception.IBaseError;
+import net.somta.core.base.IBaseError;
 
 public enum DemoErrorEnum implements IBaseError {
     BIZ_ERROR(2000003,  "这是一个业务异常"),

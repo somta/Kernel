@@ -1,6 +1,5 @@
 package net.somta.demo.web.controller;
 
-import net.somta.core.base.result.ResponseDataResult;
 import net.somta.core.exception.BizException;
 import net.somta.core.exception.SysException;
 import net.somta.demo.enums.DemoErrorEnum;
@@ -26,18 +25,18 @@ public class ExceptionController {
 	private final static Logger loger = LoggerFactory.getLogger(ExceptionController.class);
 
 	@GetMapping("/info")
-    public ResponseDataResult<String> queryById(){
+    public String queryById(){
 		loger.info("方法执行了");
-		return ResponseDataResult.setResponseResult("success");
+		return "success";
     }
 
 	@GetMapping("/biz")
-	public ResponseDataResult<String> getBizException(){
+	public String getBizException(){
 		loger.info("方法执行了");
 		if(true){
 			throw new BizException(DemoErrorEnum.BIZ_ERROR);
 		}
-		return ResponseDataResult.setResponseResult("success");
+		return "success";
 	}
 
 	@GetMapping("/sys")

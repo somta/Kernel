@@ -1,7 +1,7 @@
 package net.somta.core.enums;
 
 import net.somta.core.contants.SystemContants;
-import net.somta.core.exception.IBaseError;
+import net.somta.core.base.IBaseError;
 
 /**
  * @desc: 核心系统最基础的异常枚举，以0001 - 1000

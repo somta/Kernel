@@ -1,6 +1,6 @@
 package net.somta.common.utils.httpclient;
 
-import net.somta.core.base.result.ResponseDataResult;
+import net.somta.core.protocol.ResponseDataResult;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -100,7 +100,7 @@ public class HttpClientUtil {
 
         } catch (IOException e) {
             responseDataResult.setSuccess(false);
-            responseDataResult.setErrorMessage(e.getMessage());
+            responseDataResult.setErrorMsg(e.getMessage());
             return responseDataResult;
         } finally {
             if (response != null) {
@@ -154,7 +154,7 @@ public class HttpClientUtil {
             return ResponseHelper.buildResponse(response,responseDataResult);
         } catch (IOException e) {
             responseDataResult.setSuccess(false);
-            responseDataResult.setErrorMessage(e.getMessage());
+            responseDataResult.setErrorMsg(e.getMessage());
             return responseDataResult;
         } finally {
             if (response != null) {
@@ -211,7 +211,7 @@ public class HttpClientUtil {
             return ResponseHelper.buildResponse(response,responseDataResult);
         } catch (Exception e) {
             responseDataResult.setSuccess(false);
-            responseDataResult.setErrorMessage(e.getMessage());
+            responseDataResult.setErrorMsg(e.getMessage());
             return responseDataResult;
         } finally {
             if (response != null) {
@@ -262,7 +262,7 @@ public class HttpClientUtil {
             return ResponseHelper.buildResponse(response,responseDataResult);
         } catch (Exception e) {
             responseDataResult.setSuccess(false);
-            responseDataResult.setErrorMessage(e.getMessage());
+            responseDataResult.setErrorMsg(e.getMessage());
             return responseDataResult;
         } finally {
             try {
@@ -317,7 +317,7 @@ public class HttpClientUtil {
             return ResponseHelper.buildResponse(response,responseDataResult);
         } catch (Exception e) {
             responseDataResult.setSuccess(false);
-            responseDataResult.setErrorMessage(e.getMessage());
+            responseDataResult.setErrorMsg(e.getMessage());
             return responseDataResult;
         } finally {
             if (response != null) {
@@ -368,7 +368,7 @@ public class HttpClientUtil {
             return ResponseHelper.buildResponse(response,responseDataResult);
         } catch (Exception e) {
             responseDataResult.setSuccess(false);
-            responseDataResult.setErrorMessage(e.getMessage());
+            responseDataResult.setErrorMsg(e.getMessage());
             return responseDataResult;
         } finally {
             try {

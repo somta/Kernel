@@ -1,12 +1,12 @@
 package net.somta.common.enums;
 
 import net.somta.core.contants.SystemContants;
-import net.somta.core.exception.IBaseError;
+import net.somta.core.base.IBaseError;
 
 /**
- * @desc: TODO 类描述
- * @author: husong
- * @date: 2022/7/14
+ * 公共错误枚举类
+ * @author husong
+ * @date 2022/7/14
  **/
 public enum CommonErrorEnum implements IBaseError {
     ;

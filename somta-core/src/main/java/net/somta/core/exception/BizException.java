@@ -1,8 +1,10 @@
 package net.somta.core.exception;
 
+import net.somta.core.base.IBaseError;
+
 public class BizException extends BaseException {
 
-    public BizException(IBaseError baseError,Object... args) {
+    public BizException(IBaseError baseError, Object... args) {
         super(baseError.getErrorCode(), String.format(baseError.getErrorMsg(),args), ExceptionConstants.ERROR_TYPE_BIZ);
     }
 

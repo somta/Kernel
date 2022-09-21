@@ -1,8 +1,10 @@
 package net.somta.core.exception;
 
+import net.somta.core.base.IBaseError;
+
 public class SysException extends BaseException {
 
-    public SysException(IBaseError baseError,Object... args) {
+    public SysException(IBaseError baseError, Object... args) {
         super(baseError.getErrorCode(), String.format(baseError.getErrorMsg(),args), ExceptionConstants.ERROR_TYPE_SYS);
     }
 

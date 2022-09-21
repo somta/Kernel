@@ -1,7 +1,8 @@
 package net.somta.core.base;
 
-import net.somta.core.base.result.ResponseDataResult;
-import net.somta.core.base.result.ResponsePaginationDataResult;
+
+import net.somta.core.protocol.ResponseDataResult;
+import net.somta.core.protocol.ResponsePaginationDataResult;
 
 public interface IBaseService {
 

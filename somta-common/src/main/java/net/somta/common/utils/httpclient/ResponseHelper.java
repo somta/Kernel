@@ -1,6 +1,6 @@
 package net.somta.common.utils.httpclient;
 
-import net.somta.core.base.result.ResponseDataResult;
+import net.somta.core.protocol.ResponseDataResult;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -18,7 +18,7 @@ public class ResponseHelper {
             if (statusCode >= HttpStatus.SC_MULTIPLE_CHOICES) {
                 responseDataResult.setSuccess(false);
                 responseDataResult.setErrorCode(statusCode);
-                responseDataResult.setErrorMessage(response.getStatusLine().getReasonPhrase());
+                responseDataResult.setErrorMsg(response.getStatusLine().getReasonPhrase());
                 return responseDataResult;
             }
             if(entity != null){

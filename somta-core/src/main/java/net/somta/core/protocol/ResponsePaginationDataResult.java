@@ -1,7 +1,7 @@
 package net.somta.core.protocol;
 
 
-import net.somta.core.exception.IBaseError;
+import net.somta.core.base.IBaseError;
 
 import java.util.List;
 
