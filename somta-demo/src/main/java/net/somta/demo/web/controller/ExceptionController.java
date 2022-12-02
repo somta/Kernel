@@ -40,7 +40,7 @@ public class ExceptionController {
 	}
 
 	@GetMapping("/sys")
-	public ResponseDataResult<String> getSysException(){
+	public String getSysException(){
 		/*
 		// 第一种情况：不处理第三方的异常，交给统一异常处理类处理
 		int a = 1;
@@ -56,7 +56,7 @@ public class ExceptionController {
 			throw new SysException(DemoErrorEnum.SYS_ERROR,exception);
 		}
 
-		return ResponseDataResult.setResponseResult("success");
+		return "success";
 	}
 
 	/**
@@ -66,9 +66,9 @@ public class ExceptionController {
 	 * @return
 	 */
 	@GetMapping("/testBindException")
-	public ResponseDataResult<String> testBindException(@Valid ExceptionDTO exceptionDTO){
+	public String testBindException(@Valid ExceptionDTO exceptionDTO){
 		loger.info("方法执行了{}",exceptionDTO);
-		return ResponseDataResult.setResponseResult("success");
+		return "success";
 	}
 
 }

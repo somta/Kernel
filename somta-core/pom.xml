@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.somta</groupId>
     <artifactId>somta-core</artifactId>
-    <version>1.1.0-SNAPSHOT</version>
+    <version>1.2.0-SNAPSHOT</version>
 
     <name>somta-core</name>
     <description>Use Somta for rapid development</description>
@@ -14,7 +14,7 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <java.version>1.8</java.version>
-        <somta-dependencies.varsion>1.0.0-SNAPSHOT</somta-dependencies.varsion>
+        <somta-dependencies.varsion>1.2.0-SNAPSHOT</somta-dependencies.varsion>
     </properties>
 
     <licenses>

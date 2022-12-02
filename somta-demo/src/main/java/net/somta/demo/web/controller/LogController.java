@@ -1,6 +1,5 @@
 package net.somta.demo.web.controller;
 
-import net.somta.core.base.result.ResponseDataResult;
 import net.somta.core.exception.BizException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,11 +26,11 @@ public class LogController {
 	 * @throws Exception
 	 */
 	@GetMapping("/info")
-    public ResponseDataResult<String> queryById() throws Exception{
+    public String queryById() throws Exception{
 		loger.debug("debug log");
 		loger.debug("debug log");
 		loger.info("info log");
-		return ResponseDataResult.setResponseResult("success");
+		return "success";
     }
 
 
