@@ -20,6 +20,7 @@
         <!-- test start -->
         <mockito.version>3.6.28</mockito.version>
         <podam.version>7.2.9.RELEASE</podam.version>
+        <h2.version>1.4.200</h2.version>
         <!-- test end -->
 
         <!-- somta start -->
@@ -80,6 +81,11 @@
                 <groupId>uk.co.jemos.podam</groupId>
                 <artifactId>podam</artifactId>
                 <version>${podam.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <scope>${h2.version}</scope>
             </dependency>
             <!-- test dependencies end -->
 
