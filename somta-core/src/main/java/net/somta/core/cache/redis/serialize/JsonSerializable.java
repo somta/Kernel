@@ -33,4 +33,14 @@ public class JsonSerializable implements InterfaceSerializable {
             return null;
         }
     }
+
+    @Override
+    public <T> T deserialize(String data, Class<T> clazz, Class<?> elementClasses) {
+        try {
+            return JsonSerializeHelper.deserialize(data, clazz, elementClasses);
+        } catch (SysException e) {
+            logger.error("json deserialize error", e);
+            return null;
+        }
+    }
 }
