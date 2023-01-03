@@ -24,8 +24,8 @@
         <!-- test end -->
 
         <!-- somta start -->
-        <somta-core.version>1.1.0-SNAPSHOT</somta-core.version>
-        <somta-common.version>1.1.0-SNAPSHOT</somta-common.version>
+        <somta-core.version>1.2.0-SNAPSHOT</somta-core.version>
+        <somta-common.version>1.2.0-SNAPSHOT</somta-common.version>
         <!-- somta start -->
 
         <!--第三方依赖 start -->
