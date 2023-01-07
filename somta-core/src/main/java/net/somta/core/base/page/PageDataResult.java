@@ -19,7 +19,7 @@ public class PageDataResult<T extends List> {
      * 分页数据列表
      * @isNull: 返回错误的时候可为空
      **/
-    private T data;
+    private T list;
 
     public long getTotal() {
         return total;
@@ -29,19 +29,19 @@ public class PageDataResult<T extends List> {
         this.total = total;
     }
 
-    public T getData() {
-        return data;
+    public T getList() {
+        return list;
     }
 
-    public void setData(T data) {
-        this.data = data;
+    public void setList(T list) {
+        this.list = list;
     }
 
     @Override
     public String toString() {
         return "PageDataResult{" +
                 "total=" + total +
-                ", data=" + data +
+                ", list=" + list +
                 '}';
     }
 }
