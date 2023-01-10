@@ -30,15 +30,15 @@
 
         <!--第三方依赖 start -->
         <commons-lang3.version>3.12.0</commons-lang3.version>
-        <jackson.version>2.11.4</jackson.version>
+        <jackson.version>2.13.1</jackson.version>
         <reflections.version>0.9.11</reflections.version>
-        <hibernate-validator.version>6.1.7.Final</hibernate-validator.version>
+        <hibernate-validator.version>6.2.0.Final</hibernate-validator.version>
         <nacos.version>2.1.1</nacos.version>
         <redisson.version>3.14.0</redisson.version>
         <jsoup.version>1.15.2</jsoup.version>
         <!--第三方依赖 end -->
 
-        <knife4j.version>3.0.3</knife4j.version>
+        <knife4j.version>4.0.0</knife4j.version>
     </properties>
 
 
@@ -143,7 +143,7 @@
             <!-- doc start -->
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
-                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
             </dependency>
             <!-- doc end -->
