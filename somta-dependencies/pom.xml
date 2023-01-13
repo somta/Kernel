@@ -39,7 +39,7 @@
         <!--第三方依赖 end -->
 
         <elasticsearch.version>7.14.2</elasticsearch.version>
-        <knife4j.version>3.0.3</knife4j.version>
+        <knife4j.version>4.0.0</knife4j.version>
     </properties>
 
 
@@ -162,7 +162,7 @@
             <!-- doc start -->
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
-                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
             </dependency>
             <!-- doc end -->
