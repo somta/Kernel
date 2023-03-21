@@ -30,6 +30,7 @@
 
         <!--第三方依赖 start -->
         <commons-lang3.version>3.12.0</commons-lang3.version>
+        <commons-collections.version>4.4</commons-collections.version>
         <jackson.version>2.13.1</jackson.version>
         <reflections.version>0.9.11</reflections.version>
         <hibernate-validator.version>6.2.0.Final</hibernate-validator.version>
@@ -108,6 +109,11 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collections.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
