@@ -39,8 +39,7 @@
         <jsoup.version>1.15.2</jsoup.version>
         <!--第三方依赖 end -->
 
-        <knife4j.version>4.0.0</knife4j.version>
-        <springdoc.version>1.6.9</springdoc.version>
+        <knife4j.version>4.1.0</knife4j.version>
     </properties>
 
 
@@ -152,11 +151,6 @@
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springdoc</groupId>
-                <artifactId>springdoc-openapi-ui</artifactId>
-                <version>${springdoc.version}</version>
             </dependency>
             <!-- doc end -->
 
