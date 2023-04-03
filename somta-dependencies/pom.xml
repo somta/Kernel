@@ -17,6 +17,11 @@
         <spring-cloud-alibaba.version>2021.0.1.0</spring-cloud-alibaba.version>
         <spring-cloud-openfeign.version>3.1.1</spring-cloud-openfeign.version>
 
+        <!-- doc start -->
+        <knife4j.version>4.1.0</knife4j.version>
+        <swagger.version>2.2.8</swagger.version>
+        <!-- doc end -->
+
         <!-- test start -->
         <mockito.version>3.6.28</mockito.version>
         <podam.version>7.2.9.RELEASE</podam.version>
@@ -26,7 +31,7 @@
         <!-- somta start -->
         <somta-core.version>1.2.0-SNAPSHOT</somta-core.version>
         <somta-common.version>1.2.0-SNAPSHOT</somta-common.version>
-        <!-- somta start -->
+        <!-- somta end -->
 
         <!--第三方依赖 start -->
         <commons-lang3.version>3.12.0</commons-lang3.version>
@@ -39,7 +44,6 @@
         <jsoup.version>1.15.2</jsoup.version>
         <!--第三方依赖 end -->
 
-        <knife4j.version>4.1.0</knife4j.version>
     </properties>
 
 
@@ -71,6 +75,19 @@
                 <artifactId>spring-cloud-openfeign-core</artifactId>
                 <version>${spring-cloud-openfeign.version}</version>
             </dependency>
+
+            <!-- doc start -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <!-- doc end -->
 
             <!-- test dependencies start -->
             <dependency>
@@ -146,13 +163,6 @@
             </dependency>
             <!--第三方依赖 end -->
 
-            <!-- doc start -->
-            <dependency>
-                <groupId>com.github.xiaoymin</groupId>
-                <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
-                <version>${knife4j.version}</version>
-            </dependency>
-            <!-- doc end -->
 
         </dependencies>
     </dependencyManagement>
