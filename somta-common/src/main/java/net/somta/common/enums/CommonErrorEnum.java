@@ -9,7 +9,7 @@ import net.somta.core.base.IBaseError;
  * @date 2022/7/14
  **/
 public enum CommonErrorEnum implements IBaseError {
-    ;
+    SNOW_FLAKE_ERROR(1001,  "雪花ID错误，系统时钟回退了"),;
 
     private int errorCode;
     private String errorMsg;
