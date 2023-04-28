@@ -6,7 +6,7 @@
 
     <groupId>net.somta</groupId>
     <artifactId>somta-common</artifactId>
-    <version>1.2.0-SNAPSHOT</version>
+    <version>1.3.0-SNAPSHOT</version>
 
     <name>somta-common</name>
     <description>somta common</description>
@@ -17,7 +17,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <somta-dependencies.varsion>1.2.0-SNAPSHOT</somta-dependencies.varsion>
+        <somta-dependencies.varsion>1.3.0-SNAPSHOT</somta-dependencies.varsion>
     </properties>
 
     <licenses>
@@ -53,12 +53,11 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.3.5</version>
+            <version>4.5.13</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.6</version>
         </dependency>
         <!-- httpclient end -->
 

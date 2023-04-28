@@ -6,16 +6,18 @@
 
     <groupId>net.somta</groupId>
     <artifactId>somta-dependencies</artifactId>
-    <version>1.2.0-SNAPSHOT</version>
+    <version>1.3.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <spring-boot.version>2.6.3</spring-boot.version>
-        <spring-cloud.version>2021.0.1</spring-cloud.version>
-        <spring-cloud-alibaba.version>2021.0.1.0</spring-cloud-alibaba.version>
-        <spring-cloud-openfeign.version>3.1.1</spring-cloud-openfeign.version>
+        <!-- core start -->
+        <spring-boot.version>2.6.11</spring-boot.version>
+        <spring-cloud.version>2021.0.4</spring-cloud.version>
+        <spring-cloud-alibaba.version>2021.0.4.0</spring-cloud-alibaba.version>
+        <spring-cloud-openfeign.version>3.1.4</spring-cloud-openfeign.version>
+        <!-- core end -->
 
         <!-- doc start -->
         <knife4j.version>4.1.0</knife4j.version>
@@ -29,17 +31,18 @@
         <!-- test end -->
 
         <!-- somta start -->
-        <somta-core.version>1.2.0-SNAPSHOT</somta-core.version>
-        <somta-common.version>1.2.0-SNAPSHOT</somta-common.version>
+        <somta-core.version>1.3.0-SNAPSHOT</somta-core.version>
+        <somta-common.version>1.3.0-SNAPSHOT</somta-common.version>
         <!-- somta end -->
 
         <!--第三方依赖 start -->
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <commons-collections.version>4.4</commons-collections.version>
-        <jackson.version>2.13.1</jackson.version>
+        <commons-io.version>2.11.0</commons-io.version>
+        <jackson.version>2.13.3</jackson.version>
         <reflections.version>0.9.11</reflections.version>
         <hibernate-validator.version>6.2.0.Final</hibernate-validator.version>
-        <nacos.version>1.4.2</nacos.version>
+        <nacos.version>2.0.4</nacos.version>
         <redisson.version>3.14.0</redisson.version>
         <jsoup.version>1.15.2</jsoup.version>
         <!--第三方依赖 end -->
@@ -130,6 +133,11 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-collections4</artifactId>
                 <version>${commons-collections.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
