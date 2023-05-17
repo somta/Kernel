@@ -4,7 +4,9 @@ package net.somta.core.base;
 import net.somta.core.protocol.ResponseDataResult;
 import net.somta.core.protocol.ResponsePaginationDataResult;
 
-public interface IBaseService {
+import java.util.List;
+
+public interface IBaseService<T> {
 
     abstract IBaseMapper getMapper();
 
@@ -40,6 +42,14 @@ public interface IBaseService {
     <T> T queryById(Object id);
 
     /**
+     * 查询列表
+     * @param param 查询参数
+     * @param <T> 实体
+     * @return 返回结果列表
+     */
+    <T> List<T> queryByList(Object param);
+
+    /**
      * 查询列表总数
      * @param param 请求参数
      * @return 列表总数
@@ -47,13 +57,13 @@ public interface IBaseService {
     Long queryListCount(Object param);
 
     /**
-     * 查询列表
+     * 查询分页列表
      * @param pageNum 页数
      * @param pageSize 每页条数
      * @param param 查询参数
      * @param <T> 实体
      * @return 返回结果列表
      */
-    <T> ResponsePaginationDataResult queryByList(Integer pageNum, Integer pageSize, Object param);
+    <T> ResponsePaginationDataResult queryByPageList(Integer pageNum, Integer pageSize, Object param);
 
 }
