@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
  * 雪花id工具类，总共64位 第一位保留位 + 41位时间戳 + 随机12位 + sequence10位,
  * 使用随机12位代替机器ID，防止同机器下多pod会重复的问题，同时将序列号减少了2位，加到机器ID上了
  * @author: husong
- * @date: 2023/4/9
  **/
 public class SnowflakeIdUtil {
 	private Logger logger = LoggerFactory.getLogger(SnowflakeIdUtil.class);

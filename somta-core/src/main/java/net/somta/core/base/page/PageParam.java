@@ -1,9 +1,8 @@
 package net.somta.core.base.page;
 
 /**
- * @desc: 标准分页参数对象，跨领域层包装传递
+ * 标准分页参数对象，跨领域层包装传递
  * @author: husong
- * @date: 2022/7/28
  **/
 public class PageParam {
 

@@ -7,17 +7,16 @@ import java.lang.reflect.Modifier;
 import java.util.*;
 
 /**
- * @desc: Map相关操作工具类
+ * Map相关操作工具类
  * @author: husong
- * @date: 2022/7/26
  **/
 public class MapUtil {
 
     /**
      * map转java对象
-     * @param map
-     * @param beanClass
-     * @return
+     * @param map map
+     * @param beanClass class
+     * @return object instance
      */
     public static Object mapToObject(Map<String, Object> map, Class<?> beanClass) {
         if (map == null) {
@@ -45,8 +44,8 @@ public class MapUtil {
 
     /**
      * java对象转map
-     * @param obj
-     * @return
+     * @param obj object instance
+     * @return map instance
      */
     public static Map<String, Object> objectToMap(Object obj){
         if (obj == null) {
@@ -67,7 +66,7 @@ public class MapUtil {
 
     /**
      * 删除map中的空值,包括null和空字符串
-     * @param map
+     * @param map map
      */
     public static void removeNullValue(Map map){
         Set set = map.keySet();
@@ -85,8 +84,8 @@ public class MapUtil {
      * Iterator 被创建之后会建立一个指向原来对象的单链索引表，当原来的对象数量发生变化时，这个索引表的内容不会同步改变，
      * 所以当索引指针往后移动的时候就找不到要迭代的对象，所以按照 fail-fast 原则 Iterator 会马上抛出 java.util.ConcurrentModificationException 异常。
      * 所以 Iterator 在工作的时候是不允许被迭代的对象被改变的。但你可以使用 Iterator 本身的方法 remove() 来删除对象， Iterator.remove() 方法会在删除当前迭代对象的同时维护索引的一致性。
-     * @param obj
-     * @param iterator
+     * @param obj object instance
+     * @param iterator iterator
      */
     private static void remove(Object obj, Iterator iterator){
         if(obj instanceof String){

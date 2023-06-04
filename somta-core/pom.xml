@@ -2,11 +2,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.somta</groupId>
     <artifactId>somta-core</artifactId>
-    <version>1.3.0-SNAPSHOT</version>
+    <version>1.3.1</version>
 
     <name>somta-core</name>
     <description>Use Somta for rapid development</description>
-    <url>https://github.com/somta/Somta/tree/master/somta-core</url>
+    <url>https://github.com/somta/SomtaCore</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -14,7 +14,7 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <java.version>1.8</java.version>
-        <somta-dependencies.varsion>1.3.0-SNAPSHOT</somta-dependencies.varsion>
+        <somta-dependencies.varsion>1.3.1</somta-dependencies.varsion>
     </properties>
 
     <licenses>
@@ -26,8 +26,8 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/somta/Somta.git</url>
-        <connection>git@github.com:somta/Somta.git</connection>
+        <url>https://github.com/somta/SomtaCore.git</url>
+        <connection>git@github.com:somta/SomtaCore.git</connection>
         <developerConnection>http://www.somta.net</developerConnection>
     </scm>
 
@@ -86,20 +86,57 @@
                     <target>8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
-    <!--<parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>7</version>
-    </parent>-->
-    <!-- 推送到自动化平台maven仓库 -->
     <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
         <repository>
-            <id>somta-somta-spring-somta-maven</id>
-            <name>somta-maven</name>
-            <url>https://somta-maven.pkg.coding.net/repository/somta-spring/somta-maven/</url>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
 

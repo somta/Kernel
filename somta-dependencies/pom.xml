@@ -6,8 +6,34 @@
 
     <groupId>net.somta</groupId>
     <artifactId>somta-dependencies</artifactId>
-    <version>1.3.0-SNAPSHOT</version>
+    <version>1.3.1</version>
     <packaging>pom</packaging>
+
+    <name>somta-dependencies</name>
+    <description>Use Somta for dependencies</description>
+    <url>https://github.com/somta/SomtaCore</url>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/somta/SomtaCore.git</url>
+        <connection>git@github.com:somta/SomtaCore.git</connection>
+        <developerConnection>http://www.somta.net</developerConnection>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>somta</name>
+            <email>somta@qq.com</email>
+            <url>http://www.somta.net</url>
+        </developer>
+    </developers>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -31,8 +57,8 @@
         <!-- test end -->
 
         <!-- somta start -->
-        <somta-core.version>1.3.0-SNAPSHOT</somta-core.version>
-        <somta-common.version>1.3.0-SNAPSHOT</somta-common.version>
+        <somta-core.version>1.3.1</somta-core.version>
+        <somta-common.version>1.3.1</somta-common.version>
         <!-- somta end -->
 
         <!--第三方依赖 start -->
@@ -170,8 +196,6 @@
                 <version>${jsoup.version}</version>
             </dependency>
             <!--第三方依赖 end -->
-
-
         </dependencies>
     </dependencyManagement>
 
@@ -185,6 +209,59 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
 </project>

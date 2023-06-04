@@ -1,7 +1,8 @@
 package net.somta.common.utils;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Calendar;
-import net.somta.core.utils.CommonUtil;
 
 import java.util.Date;
 import java.text.ParseException;
@@ -29,7 +30,7 @@ public class DateUtil {
      * @return date 日期
      */
     public static Date strToDate(String str,String pattern) {
-        if(CommonUtil.isNullOrEmpty(str)){
+        if(StringUtils.isNotEmpty(str)){
             return null;
         }
         SimpleDateFormat format = new SimpleDateFormat(pattern);

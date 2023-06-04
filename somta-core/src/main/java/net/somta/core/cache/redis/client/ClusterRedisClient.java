@@ -10,9 +10,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @desc: 集群的Redis客户端
+ * 集群的Redis客户端
  * @author: husong
- * @date: 2022/7/12
  **/
 public class ClusterRedisClient extends AbstractRedisClient {
     @Override

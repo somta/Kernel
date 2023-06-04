@@ -3,9 +3,8 @@ package net.somta.core.base.page;
 import java.util.List;
 
 /**
- * @desc: 标准分页对象包装类，跨领域层包装传递
+ * 标准分页对象包装类，跨领域层包装传递
  * @author: husong
- * @date: 2022/8/5
  **/
 public class PageDataResult<T extends List> {
 

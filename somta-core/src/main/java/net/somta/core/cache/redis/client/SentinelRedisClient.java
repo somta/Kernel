@@ -13,9 +13,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @desc: 哨兵的Redis客户端
+ * 哨兵的Redis客户端
  * @author: husong
- * @date: 2022/7/12
  **/
 public class SentinelRedisClient extends AbstractRedisClient {
     @Override

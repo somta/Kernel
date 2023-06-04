@@ -4,9 +4,8 @@ import net.somta.core.contants.SystemContants;
 import net.somta.core.base.IBaseError;
 
 /**
- * @desc: 核心系统最基础的异常枚举，以0001 - 1000
+ * 核心系统最基础的异常枚举，以0001 - 1000
  * @author: husong
- * @date: 2022/7/13
  **/
 public enum SystemErrorEnum implements IBaseError {
     BASE_ADD_ERROR(0001,  "新增数据失败"),

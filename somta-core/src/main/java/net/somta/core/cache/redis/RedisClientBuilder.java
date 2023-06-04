@@ -17,9 +17,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @desc: Redis客户端构建类，构建不同类型的client
+ * Redis客户端构建类，构建不同类型的client
  * @author: husong
- * @date: 2022/7/13
  **/
 public class RedisClientBuilder {
 
@@ -27,8 +26,8 @@ public class RedisClientBuilder {
 
     /**
      * 构建Redis客户端
-     * @param redisConfigItem
-     * @return
+     * @param redisConfigItem redis config
+     * @return AbstractRedisClient
      */
     public static AbstractRedisClient buildRedisClient(RedisConfigItem redisConfigItem){
         return buildRedisClient(redisConfigItem,null);
@@ -36,9 +35,9 @@ public class RedisClientBuilder {
 
     /**
      * 构建Redis客户端
-     * @param redisConfigItem
-     * @param interfaceSerializable
-     * @return
+     * @param redisConfigItem redis config
+     * @param interfaceSerializable an serializable
+     * @return AbstractRedisClient
      */
     public synchronized static AbstractRedisClient buildRedisClient(RedisConfigItem redisConfigItem,
                                                        InterfaceSerializable interfaceSerializable){

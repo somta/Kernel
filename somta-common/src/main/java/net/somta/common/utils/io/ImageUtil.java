@@ -14,7 +14,7 @@ import javax.imageio.ImageIO;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.Thumbnails.Builder;
 import net.coobird.thumbnailator.geometry.Position;
-import net.somta.core.utils.CommonUtil;
+import org.apache.commons.lang3.StringUtils;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
@@ -188,7 +188,7 @@ public class ImageUtil {
      * @throws IOException 异常
      */
     public static InputStream imgWatermark(InputStream in, Integer width, Integer height,Position position,
-            String watermark, float transparency, float quality) throws IOException{
+            String watermark, Float transparency, Float quality) throws IOException{
     	if (in == null) {
             return null;
         }
@@ -197,11 +197,11 @@ public class ImageUtil {
         if(width!=null && height!=null){
             builder.size(width.intValue(),height.intValue());
         }
-        if(!CommonUtil.isNullOrEmpty(position) && !CommonUtil.isNullOrEmpty(watermark)
-        		&& !CommonUtil.isNullOrEmpty(transparency)){
+        if(position != null && StringUtils.isNotEmpty(watermark)
+        		&& transparency != null){
         	builder.watermark(position, stringToBufferedImage(watermark), transparency);
         }
-        if(!CommonUtil.isNullOrEmpty(quality)){
+        if(quality != null){
         	builder.outputQuality(quality);
         }
         builder.scale(1);

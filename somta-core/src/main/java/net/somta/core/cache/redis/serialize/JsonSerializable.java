@@ -6,9 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @desc: Json的序列化实现
+ * Json的序列化实现
  * @author: husong
- * @date: 2022/7/13
  **/
 public class JsonSerializable implements InterfaceSerializable {
 

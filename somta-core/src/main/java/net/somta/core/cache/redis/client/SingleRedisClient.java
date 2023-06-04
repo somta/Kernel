@@ -6,9 +6,8 @@ import org.redisson.config.Config;
 import org.redisson.config.SingleServerConfig;
 
 /**
- * @desc: 单机的Redis客户端
+ * 单机的Redis客户端
  * @author: husong
- * @date: 2022/7/12
  **/
 public class SingleRedisClient extends AbstractRedisClient{
     @Override
