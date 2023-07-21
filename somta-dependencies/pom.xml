@@ -6,7 +6,7 @@
 
     <groupId>net.somta</groupId>
     <artifactId>somta-dependencies</artifactId>
-    <version>1.3.1</version>
+    <version>1.4.0</version>
     <packaging>pom</packaging>
 
     <name>somta-dependencies</name>
@@ -39,10 +39,10 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <!-- core start -->
-        <spring-boot.version>2.6.11</spring-boot.version>
-        <spring-cloud.version>2021.0.4</spring-cloud.version>
-        <spring-cloud-alibaba.version>2021.0.4.0</spring-cloud-alibaba.version>
-        <spring-cloud-openfeign.version>3.1.4</spring-cloud-openfeign.version>
+        <spring-boot.version>2.6.13</spring-boot.version>
+        <spring-cloud.version>2021.0.5</spring-cloud.version>
+        <spring-cloud-alibaba.version>2021.0.5.0</spring-cloud-alibaba.version>
+        <spring-cloud-openfeign.version>3.1.5</spring-cloud-openfeign.version>
         <!-- core end -->
 
         <!-- doc start -->
@@ -53,7 +53,7 @@
         <!-- test start -->
         <mockito.version>3.6.28</mockito.version>
         <podam.version>7.2.9.RELEASE</podam.version>
-        <h2.version>1.4.200</h2.version>
+        <h2.version>2.2.220</h2.version>
         <!-- test end -->
 
         <!-- somta start -->
@@ -67,8 +67,8 @@
         <commons-io.version>2.11.0</commons-io.version>
         <jackson.version>2.13.3</jackson.version>
         <reflections.version>0.9.11</reflections.version>
-        <hibernate-validator.version>6.2.0.Final</hibernate-validator.version>
-        <nacos.version>2.0.4</nacos.version>
+        <hibernate-validator.version>6.2.5.Final</hibernate-validator.version>
+        <nacos.version>2.2.0</nacos.version>
         <redisson.version>3.14.0</redisson.version>
         <jsoup.version>1.15.2</jsoup.version>
         <!--第三方依赖 end -->
@@ -209,49 +209,57 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.2.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.9.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.5</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>2.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.9.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.5</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <distributionManagement>
         <snapshotRepository>
