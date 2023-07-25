@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.somta</groupId>
     <artifactId>somta-core</artifactId>
-    <version>1.3.1</version>
+    <version>1.4.0</version>
 
     <name>somta-core</name>
     <description>Use Somta for rapid development</description>
