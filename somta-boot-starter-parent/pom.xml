@@ -79,6 +79,11 @@
            </dependency>
            <dependency>
                <groupId>net.somta</groupId>
+               <artifactId>somta-micro-spring-boot-starter</artifactId>
+               <version>${somta-starter.varsion}</version>
+           </dependency>
+           <dependency>
+               <groupId>net.somta</groupId>
                <artifactId>somta-orm-spring-boot-starter</artifactId>
                <version>${somta-starter.varsion}</version>
            </dependency>
