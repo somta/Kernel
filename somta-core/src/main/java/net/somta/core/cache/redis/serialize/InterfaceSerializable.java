@@ -19,7 +19,7 @@ public interface InterfaceSerializable {
      *
      * @param data deserialize data
      * @param clazz 反序列化的类型
-     * @return
+     * @return 反序列化的对象
      */
     <T> T deserialize(String data, Class<T> clazz);
 
@@ -29,7 +29,7 @@ public interface InterfaceSerializable {
      * @param data deserialize data
      * @param clazz 反序列化的类型
      * @param elementClasses 元素的类型
-     * @return
+     * @return 反序列化的对象
      */
     <T> T deserialize(String data, Class<T> clazz, Class<?> elementClasses);
 }

@@ -7,7 +7,6 @@ import feign.Util;
 /**
  * 自定义openfeign的异常
  * @author husong
- * @date 2022/08/31
  */
 public class FeignBizException extends FeignException {
 

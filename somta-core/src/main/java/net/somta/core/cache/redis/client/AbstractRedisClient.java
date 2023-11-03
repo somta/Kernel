@@ -62,10 +62,8 @@ public abstract class AbstractRedisClient {
 
     /**
      * 初始化客户端配置,交给子类实现
-     *
-     * @param redisConfigItem
+     * @param redisConfigItem redis配置
      */
     protected abstract void initClientConfig(Config redisConfig, RedisConfigItem redisConfigItem);
-
 
 }
