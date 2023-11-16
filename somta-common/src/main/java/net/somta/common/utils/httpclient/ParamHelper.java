@@ -1,45 +1,48 @@
 package net.somta.common.utils.httpclient;
 
-import com.damnhandy.uri.template.UriTemplate;
-import com.damnhandy.uri.template.UriTemplateBuilder;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpDelete;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpPut;
-import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.message.BasicNameValuePair;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.classic.methods.HttpPut;
+import org.apache.hc.client5.http.classic.methods.HttpUriRequestBase;
+import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
+import org.apache.hc.core5.http.NameValuePair;
+import org.apache.hc.core5.http.message.BasicNameValuePair;
+import org.apache.hc.core5.net.URIBuilder;
+
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author husong
+ */
 public class ParamHelper {
 
 
     /**
      * 构建GET请求参数
+     * @param httpRequest http
      * @param url v1/user/info
      * @param params name=gavin
-     * @return eg: v1/user/info?name=gavin
      */
-    public static String buildFormParams(String url, Map<String, Object> params){
-        UriTemplateBuilder templateBuilder = UriTemplate.buildFromTemplate(url);
-        if(params != null){
-            templateBuilder.query(ArrayUtils.toStringArray(params.keySet().toArray()));
-            UriTemplate template = templateBuilder.build();
+    public static void buildFormParams(HttpUriRequestBase httpRequest, String url, Map<String, Object> params){
+        List<NameValuePair> nvps = new ArrayList<>();
+        if (params != null) {
             for (Map.Entry<String, Object> param : params.entrySet()) {
-                template.set(param.getKey(), param.getValue());
+                nvps.add(new BasicNameValuePair(param.getKey(), String.valueOf(param.getValue())));
             }
-            return template.expand();
+            try {
+                URI uri = new URIBuilder(new URI(url))
+                        .addParameters(nvps)
+                        .build();
+                httpRequest.setUri(uri);
+            } catch (URISyntaxException e) {
+                throw new RuntimeException(e);
+            }
         }
-        return url;
     }
 
     /**
@@ -88,28 +91,6 @@ public class ParamHelper {
         }
         httpPut.setEntity(new UrlEncodedFormEntity(pairList, Charset.forName("UTF-8")));
         return httpPut;
-    }
-
-    /**
-     * 填充请求体参数至Delete请求中
-     * @param httpDelete HttpDelete
-     * @param url 请求地址
-     * @param params 请求参数
-     * @return HttpDelete
-     * @throws URISyntaxException url exception
-     */
-    public static HttpDelete setParamsToDelete(HttpDelete httpDelete,String url, Map<String, Object> params) throws URISyntaxException {
-        if (params != null) {
-            URIBuilder uriBuilder = new URIBuilder(url);
-            if (params != null) {
-                for (String key : params.keySet()) {
-                    uriBuilder.setParameter(key, params.get(key).toString());
-                }
-            }
-            URI uri = uriBuilder.build();
-            httpDelete.setURI(uri);
-        }
-        return httpDelete;
     }
 
 
