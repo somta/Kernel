@@ -6,23 +6,26 @@ package net.somta.core.base.page;
  **/
 public class PageParam {
 
-    private int pageNum = 1;
-    private int pageSize = 10;
+    private Integer pageNum = 1;
+    private Integer pageSize = 10;
 
-    public int getPageNum() {
+    public Integer getPageNum() {
         return pageNum;
     }
-    public void setPageNum(int pageNum) {
+
+    public void setPageNum(Integer pageNum) {
         this.pageNum = pageNum;
     }
-    public int getPageSize() {
+
+    public Integer getPageSize() {
         return pageSize;
     }
-    public void setPageSize(int pageSize) {
+
+    public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
     }
 
-    public int getOffset() {
+    public Integer getOffset() {
         return (pageNum-1) * pageSize;
     }
 

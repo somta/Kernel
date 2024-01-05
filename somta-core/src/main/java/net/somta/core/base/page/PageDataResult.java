@@ -12,7 +12,7 @@ public class PageDataResult<T extends List> {
      * @desc: 总页数
      * @isNull: 不可为空
      **/
-    private long total;
+    private Long total;
 
     /**
      * 分页数据列表
@@ -20,11 +20,11 @@ public class PageDataResult<T extends List> {
      **/
     private T list;
 
-    public long getTotal() {
+    public Long getTotal() {
         return total;
     }
 
-    public void setTotal(long total) {
+    public void setTotal(Long total) {
         this.total = total;
     }
 
