@@ -6,7 +6,7 @@
 
     <groupId>net.somta</groupId>
     <artifactId>somta-dependencies</artifactId>
-    <version>1.4.2</version>
+    <version>1.4.3</version>
     <packaging>pom</packaging>
 
     <name>somta-dependencies</name>
@@ -65,14 +65,15 @@
         <!-- test end -->
 
         <!-- somta start -->
-        <somta-core.version>1.4.2</somta-core.version>
-        <somta-common.version>1.4.2</somta-common.version>
+        <somta-core.version>1.4.3</somta-core.version>
+        <somta-common.version>1.4.3</somta-common.version>
         <!-- somta end -->
 
         <!--第三方依赖 start -->
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <commons-collections.version>4.4</commons-collections.version>
         <commons-io.version>2.11.0</commons-io.version>
+        <http-client.version>5.2.1</http-client.version>
         <jackson.version>2.13.5</jackson.version>
         <reflections.version>0.9.11</reflections.version>
         <hibernate-validator.version>6.2.5.Final</hibernate-validator.version>
@@ -198,6 +199,11 @@
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
                 <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents.client5</groupId>
+                <artifactId>httpclient5</artifactId>
+                <version>${http-client.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>

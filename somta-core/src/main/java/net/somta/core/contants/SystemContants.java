@@ -51,7 +51,12 @@ public class SystemContants {
     public final static long STATER_SEARCH_CODE = (BASE_CODE_PREFIX * 1000 + 600) * 10000;
 
     /**
+     * Storage starter的code
+     */
+    public final static long STATER_STORAGE_CODE = (BASE_CODE_PREFIX * 1000 + 700) * 10000;
+
+    /**
      * Web starter的code
      */
-    public final static long STATER_WEB_CODE = (BASE_CODE_PREFIX * 1000 + 700) * 10000;
+    public final static long STATER_WEB_CODE = (BASE_CODE_PREFIX * 1000 + 800) * 10000;
 }

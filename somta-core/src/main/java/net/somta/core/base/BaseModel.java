@@ -2,6 +2,9 @@ package net.somta.core.base;
 
 import java.util.Date;
 
+/**
+ * @author husong
+ */
 public class BaseModel {
     /**
      * 创建时间
@@ -10,7 +13,7 @@ public class BaseModel {
     /**
      * 创建人
      */
-    private Integer createdBy;
+    private Long createdBy;
     /**
      * 更新时间
      */
@@ -18,7 +21,7 @@ public class BaseModel {
     /**
      * 更新人
      */
-    private Integer updatedBy;
+    private Long updatedBy;
 
     public Date getCreatedAt() {
         return createdAt;
@@ -28,11 +31,11 @@ public class BaseModel {
         this.createdAt = createdAt;
     }
 
-    public Integer getCreatedBy() {
+    public Long getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(Integer createdBy) {
+    public void setCreatedBy(Long createdBy) {
         this.createdBy = createdBy;
     }
 
@@ -44,11 +47,11 @@ public class BaseModel {
         this.updatedAt = updatedAt;
     }
 
-    public Integer getUpdatedBy() {
+    public Long getUpdatedBy() {
         return updatedBy;
     }
 
-    public void setUpdatedBy(Integer updatedBy) {
+    public void setUpdatedBy(Long updatedBy) {
         this.updatedBy = updatedBy;
     }
 }
