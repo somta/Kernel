@@ -13,7 +13,7 @@
 
     <groupId>net.somta</groupId>
     <artifactId>somta-boot-starter-parent</artifactId>
-    <version>1.4.3</version>
+    <version>1.4.4</version>
     <packaging>pom</packaging>
 
     <name>somta-boot-starter-parent</name>
@@ -45,8 +45,8 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <somta-dependencies.varsion>1.4.3</somta-dependencies.varsion>
-        <somta-starter.varsion>1.4.2</somta-starter.varsion>
+        <somta-dependencies.varsion>1.4.4</somta-dependencies.varsion>
+        <somta-starter.varsion>1.4.4</somta-starter.varsion>
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     </properties>

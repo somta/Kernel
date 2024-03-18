@@ -6,7 +6,7 @@
 
     <groupId>net.somta</groupId>
     <artifactId>somta-dependencies</artifactId>
-    <version>1.4.3</version>
+    <version>1.4.4</version>
     <packaging>pom</packaging>
 
     <name>somta-dependencies</name>
@@ -65,8 +65,8 @@
         <!-- test end -->
 
         <!-- somta start -->
-        <somta-core.version>1.4.3</somta-core.version>
-        <somta-common.version>1.4.3</somta-common.version>
+        <somta-core.version>1.4.4</somta-core.version>
+        <somta-common.version>1.4.4</somta-common.version>
         <!-- somta end -->
 
         <!--第三方依赖 start -->
