@@ -1,6 +1,7 @@
 package net.somta.common.utils.httpclient;
 
 import net.somta.core.protocol.ResponseDataResult;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.hc.client5.http.classic.methods.HttpDelete;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
@@ -11,7 +12,6 @@ import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
 import org.apache.hc.core5.http.ContentType;
-import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.io.entity.StringEntity;
 import org.apache.hc.core5.util.Timeout;
@@ -189,8 +189,10 @@ public class HttpClientUtil {
         CloseableHttpResponse response = null;
         try {
             httpPost = HeaderHelper.setHeadersToPost(httpPost, headers);
-            StringEntity stringEntity = new StringEntity(json, ContentType.APPLICATION_JSON);;
-            httpPost.setEntity(stringEntity);
+            if(StringUtils.isNotEmpty(json)){
+                StringEntity stringEntity = new StringEntity(json, ContentType.APPLICATION_JSON);;
+                httpPost.setEntity(stringEntity);
+            }
             response = httpClient.execute(httpPost);
             return ResponseHelper.buildResponse(response,responseDataResult);
         } catch (Exception e) {
@@ -292,8 +294,10 @@ public class HttpClientUtil {
         CloseableHttpResponse response = null;
         try {
             httpPut = HeaderHelper.setHeadersToPut(httpPut, headers);
-            StringEntity stringEntity = new StringEntity(json, ContentType.APPLICATION_JSON);;
-            httpPut.setEntity(stringEntity);
+            if(StringUtils.isNotEmpty(json)){
+                StringEntity stringEntity = new StringEntity(json, ContentType.APPLICATION_JSON);;
+                httpPut.setEntity(stringEntity);
+            }
             response = httpClient.execute(httpPut);
             return ResponseHelper.buildResponse(response,responseDataResult);
         } catch (Exception e) {
