@@ -22,6 +22,7 @@ public class ClusterRedisClient extends AbstractRedisClient {
         int retryInterval = redisConfigItem.getRetryInterval();
         int scanInterval = redisConfigItem.getScanInterval();
         int connectTimeout = redisConfigItem.getConnectTimeout();
+        int poolMinIdleSize = redisConfigItem.getPoolMinIdle();
         int masterConnectionPoolSize = redisConfigItem.getMasterConnectionPoolSize();
         int slaveConnectionPoolSize = redisConfigItem.getSlaveConnectionPoolSize();
         String password = redisConfigItem.getPassword();
@@ -39,7 +40,9 @@ public class ClusterRedisClient extends AbstractRedisClient {
                 .setRetryAttempts(retryAttempts)
                 .setRetryInterval(retryInterval)
                 .setMasterConnectionPoolSize(masterConnectionPoolSize)
+                .setMasterConnectionMinimumIdleSize(poolMinIdleSize)
                 .setSlaveConnectionPoolSize(slaveConnectionPoolSize)
+                .setSlaveConnectionMinimumIdleSize(poolMinIdleSize)
                 .setTimeout(timeout);
 
         if (StringUtils.isNotBlank(password)) {
