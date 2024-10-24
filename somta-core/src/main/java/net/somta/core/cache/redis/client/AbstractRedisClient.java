@@ -1,20 +1,16 @@
 package net.somta.core.cache.redis.client;
 
 
-import net.somta.core.cache.redis.exception.RedisException;
 import net.somta.core.cache.redis.model.RedisConfigItem;
-import net.somta.core.cache.redis.model.RedisErrorEnum;
 import net.somta.core.cache.redis.serialize.InterfaceSerializable;
-import org.apache.commons.lang3.ArrayUtils;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.client.codec.StringCodec;
 import org.redisson.config.Config;
 
 /**
- * @desc: 抽象的Redis客户端
+ * 抽象的Redis客户端
  * @author: husong
- * @date: 2022/7/12
  **/
 public abstract class AbstractRedisClient {
 
@@ -34,7 +30,7 @@ public abstract class AbstractRedisClient {
 
     /**
      * 初始化配置
-     * @param redisConfigItem
+     * @param redisConfigItem redis config
      */
     public void init(RedisConfigItem redisConfigItem){
         Config redisConfig = new Config();
@@ -50,7 +46,7 @@ public abstract class AbstractRedisClient {
 
     /**
      * 获取redission的client
-     * @return
+     * @return RedissonClient
      */
     public RedissonClient getRedissonClient(){
         return this.redissonClient;
@@ -58,7 +54,7 @@ public abstract class AbstractRedisClient {
 
     /**
      * 获取序列化器
-     * @return
+     * @return InterfaceSerializable
      */
     public InterfaceSerializable getSerializable(){
         return this.interfaceSerializable;
@@ -66,10 +62,8 @@ public abstract class AbstractRedisClient {
 
     /**
      * 初始化客户端配置,交给子类实现
-     *
-     * @param redisConfigItem
+     * @param redisConfigItem redis配置
      */
     protected abstract void initClientConfig(Config redisConfig, RedisConfigItem redisConfigItem);
-
 
 }

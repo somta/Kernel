@@ -1,19 +1,23 @@
 package net.somta.common.utils.httpclient;
 
 import net.somta.core.protocol.ResponseDataResult;
-import org.apache.commons.io.IOUtils;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.*;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.http.util.EntityUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.hc.client5.http.classic.methods.HttpDelete;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.classic.methods.HttpPut;
+import org.apache.hc.client5.http.config.RequestConfig;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
+import org.apache.hc.core5.http.ContentType;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
+import org.apache.hc.core5.http.io.entity.StringEntity;
+import org.apache.hc.core5.util.Timeout;
+
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.*;
 
 public class HttpClientUtil {
@@ -33,16 +37,13 @@ public class HttpClientUtil {
 
         RequestConfig.Builder configBuilder = RequestConfig.custom();
         // 设置连接超时
-        configBuilder.setConnectTimeout(MAX_TIMEOUT);
+        configBuilder.setConnectionRequestTimeout(Timeout.ofMilliseconds(MAX_TIMEOUT));
         // 设置读取超时
-        configBuilder.setSocketTimeout(MAX_TIMEOUT);
+        configBuilder.setResponseTimeout(Timeout.ofMilliseconds(MAX_TIMEOUT));
         // 设置从连接池获取连接实例的超时
-        configBuilder.setConnectionRequestTimeout(MAX_TIMEOUT);
+        configBuilder.setConnectionRequestTimeout(Timeout.ofMilliseconds(MAX_TIMEOUT));
         // 在提交请求之前 测试连接是否可用
-        configBuilder.setStaleConnectionCheckEnabled(true);
-
-        //后续考虑是否再去请求中可以复写该配置
-        //requestConfig = configBuilder.build();
+        configBuilder.setContentCompressionEnabled(true);
         httpClient = HttpClients.custom().setConnectionManager(connMgr).setDefaultRequestConfig(configBuilder.build()).build();
     }
 
@@ -74,31 +75,16 @@ public class HttpClientUtil {
      */
     public static ResponseDataResult doGet(String url, Map<String, Object> params, Map<String, String> headers) {
         ResponseDataResult responseDataResult = new ResponseDataResult();
-        HttpGet httpGet = null;
         CloseableHttpResponse response = null;
-        String apiUrl = ParamHelper.buildFormParams(url,params);
-        String result = null;
         try {
-            HttpEntity entity = null;
-            httpGet = new HttpGet(apiUrl);
+            HttpGet httpGet = new HttpGet(url);
+            ParamHelper.buildFormParams(httpGet,url,params);
             httpGet = HeaderHelper.setHeadersToGet(httpGet, headers);
             response = httpClient.execute(httpGet);
 
             return ResponseHelper.buildResponse(response,responseDataResult);
 
-            /*if (response != null) {
-                entity = response.getEntity();
-            }
-
-            if (entity != null) {
-                InputStream instream = entity.getContent();
-                result = IOUtils.toString(instream, ENCODING_CODE);
-                responseDataResult.setResult(result);
-            }*/
-
-
-
-        } catch (IOException e) {
+        } catch (Exception e) {
             responseDataResult.setSuccess(false);
             responseDataResult.setErrorMsg(e.getMessage());
             return responseDataResult;
@@ -145,14 +131,15 @@ public class HttpClientUtil {
      */
     public static ResponseDataResult doFormPost(String url, Map<String, Object> params, Map<String, String> headers) {
         ResponseDataResult responseDataResult = new ResponseDataResult();
-        HttpPost httpPost = new HttpPost(ParamHelper.buildFormParams(url,params));
+        HttpPost httpPost = new HttpPost(url);
+        ParamHelper.buildFormParams(httpPost,url,params);
         CloseableHttpResponse response = null;
         try {
             httpPost.setConfig(requestConfig);
             httpPost = HeaderHelper.setHeadersToPost(httpPost, headers);
             response = httpClient.execute(httpPost);
             return ResponseHelper.buildResponse(response,responseDataResult);
-        } catch (IOException e) {
+        } catch (Exception e) {
             responseDataResult.setSuccess(false);
             responseDataResult.setErrorMsg(e.getMessage());
             return responseDataResult;
@@ -201,12 +188,11 @@ public class HttpClientUtil {
         HttpPost httpPost = new HttpPost(url);
         CloseableHttpResponse response = null;
         try {
-            //httpPost.setConfig(requestConfig);
             httpPost = HeaderHelper.setHeadersToPost(httpPost, headers);
-            StringEntity stringEntity = new StringEntity(json, ENCODING_CODE);
-            stringEntity.setContentEncoding(ENCODING_CODE);
-            stringEntity.setContentType("application/json");
-            httpPost.setEntity(stringEntity);
+            if(StringUtils.isNotEmpty(json)){
+                StringEntity stringEntity = new StringEntity(json, ContentType.APPLICATION_JSON);;
+                httpPost.setEntity(stringEntity);
+            }
             response = httpClient.execute(httpPost);
             return ResponseHelper.buildResponse(response,responseDataResult);
         } catch (Exception e) {
@@ -307,12 +293,11 @@ public class HttpClientUtil {
         HttpPut httpPut = new HttpPut(url);
         CloseableHttpResponse response = null;
         try {
-            //httpPut.setConfig(requestConfig);
             httpPut = HeaderHelper.setHeadersToPut(httpPut, headers);
-            StringEntity stringEntity = new StringEntity(json, ENCODING_CODE);
-            stringEntity.setContentEncoding(ENCODING_CODE);
-            stringEntity.setContentType("application/json");
-            httpPut.setEntity(stringEntity);
+            if(StringUtils.isNotEmpty(json)){
+                StringEntity stringEntity = new StringEntity(json, ContentType.APPLICATION_JSON);;
+                httpPut.setEntity(stringEntity);
+            }
             response = httpClient.execute(httpPut);
             return ResponseHelper.buildResponse(response,responseDataResult);
         } catch (Exception e) {
@@ -363,7 +348,7 @@ public class HttpClientUtil {
         try {
             HttpDelete httpDelete = new HttpDelete(url);
             HeaderHelper.setHeadersToDelete(httpDelete,headers);
-            ParamHelper.setParamsToDelete(httpDelete,url,params);
+            ParamHelper.buildFormParams(httpDelete,url,params);
             response = httpClient.execute(httpDelete);
             return ResponseHelper.buildResponse(response,responseDataResult);
         } catch (Exception e) {

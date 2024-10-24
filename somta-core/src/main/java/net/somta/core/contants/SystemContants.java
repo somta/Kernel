@@ -11,7 +11,7 @@ public class SystemContants {
     public final static int BASE_CODE_PREFIX = 100;
 
     /**
-     * common的code
+     * core的code
      */
     public final static long CORE_CODE = (BASE_CODE_PREFIX * 1000 + 001) * 10000;
 
@@ -31,7 +31,32 @@ public class SystemContants {
     public final static long STATER_LOCK_CODE = (BASE_CODE_PREFIX * 1000 + 200) * 10000;
 
     /**
+     * 微服务starter的code
+     */
+    public final static long STATER_MICRO_CODE = (BASE_CODE_PREFIX * 1000 + 300) * 10000;
+
+    /**
+     * mq starter的code
+     */
+    public final static long STATER_MQ_CODE = (BASE_CODE_PREFIX * 1000 + 400) * 10000;
+
+    /**
+     * orm starter的code
+     */
+    public final static long STATER_ORM_CODE = (BASE_CODE_PREFIX * 1000 + 500) * 10000;
+
+    /**
      * ElasticSearch starter的code
      */
-    public final static long STATER_SEARCH_CODE = (BASE_CODE_PREFIX * 1000 + 300) * 10000;
+    public final static long STATER_SEARCH_CODE = (BASE_CODE_PREFIX * 1000 + 600) * 10000;
+
+    /**
+     * Storage starter的code
+     */
+    public final static long STATER_STORAGE_CODE = (BASE_CODE_PREFIX * 1000 + 700) * 10000;
+
+    /**
+     * Web starter的code
+     */
+    public final static long STATER_WEB_CODE = (BASE_CODE_PREFIX * 1000 + 800) * 10000;
 }

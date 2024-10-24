@@ -6,39 +6,82 @@
 
     <groupId>net.somta</groupId>
     <artifactId>somta-dependencies</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.4.4</version>
     <packaging>pom</packaging>
+
+    <name>somta-dependencies</name>
+    <description>Use Somta for dependencies</description>
+    <url>https://github.com/somta/SomtaCore</url>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/somta/SomtaCore.git</url>
+        <connection>git@github.com:somta/SomtaCore.git</connection>
+        <developerConnection>http://www.somta.net</developerConnection>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>somta</name>
+            <email>somta@qq.com</email>
+            <url>http://www.somta.net</url>
+        </developer>
+    </developers>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <spring-boot.version>2.4.2</spring-boot.version>
-        <spring-cloud.version>2020.0.1</spring-cloud.version>
-        <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
-        <spring-cloud-openfeign.version>3.0.1</spring-cloud-openfeign.version>
+        <!-- core start -->
+        <spring-boot.version>2.7.14</spring-boot.version>
+        <spring-cloud.version>2021.0.5</spring-cloud.version>
+        <spring-cloud-alibaba.version>2021.0.5.0</spring-cloud-alibaba.version>
+        <spring-cloud-openfeign.version>3.1.5</spring-cloud-openfeign.version>
+        <!-- core end -->
+
+        <!-- doc start -->
+        <knife4j.version>4.1.0</knife4j.version>
+        <swagger.version>2.2.8</swagger.version>
+        <!-- doc end -->
+
+        <!-- db start -->
+        <mysql-connector.version>8.0.22</mysql-connector.version>
+        <!-- db end -->
+
+        <!-- es start -->
+        <elasticsearch.version>7.14.2</elasticsearch.version>
+        <!-- es end -->
 
         <!-- test start -->
         <mockito.version>3.6.28</mockito.version>
         <podam.version>7.2.9.RELEASE</podam.version>
-        <h2.version>1.4.200</h2.version>
+        <h2.version>2.2.220</h2.version>
         <!-- test end -->
 
         <!-- somta start -->
-        <somta-core.version>1.1.0-SNAPSHOT</somta-core.version>
-        <somta-common.version>1.1.0-SNAPSHOT</somta-common.version>
-        <!-- somta start -->
+        <somta-core.version>1.4.4</somta-core.version>
+        <somta-common.version>1.4.4</somta-common.version>
+        <!-- somta end -->
 
         <!--第三方依赖 start -->
         <commons-lang3.version>3.12.0</commons-lang3.version>
-        <jackson.version>2.11.4</jackson.version>
+        <commons-collections.version>4.4</commons-collections.version>
+        <commons-io.version>2.11.0</commons-io.version>
+        <http-client.version>5.2.1</http-client.version>
+        <jackson.version>2.13.5</jackson.version>
         <reflections.version>0.9.11</reflections.version>
-        <hibernate-validator.version>6.1.7.Final</hibernate-validator.version>
-        <nacos.version>2.1.1</nacos.version>
+        <hibernate-validator.version>6.2.5.Final</hibernate-validator.version>
+        <nacos.version>2.2.0</nacos.version>
         <redisson.version>3.14.0</redisson.version>
         <jsoup.version>1.15.2</jsoup.version>
         <!--第三方依赖 end -->
 
-        <knife4j.version>3.0.3</knife4j.version>
     </properties>
 
 
@@ -70,6 +113,45 @@
                 <artifactId>spring-cloud-openfeign-core</artifactId>
                 <version>${spring-cloud-openfeign.version}</version>
             </dependency>
+
+            <!-- doc start -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <!-- doc end -->
+
+            <!-- db start -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector.version}</version>
+            </dependency>
+            <!-- db end -->
+
+            <!--es dependencies start -->
+            <dependency>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-client</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-high-level-client</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+            <!--es dependencies end -->
 
             <!-- test dependencies start -->
             <dependency>
@@ -109,6 +191,21 @@
                 <version>${commons-lang3.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collections.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents.client5</groupId>
+                <artifactId>httpclient5</artifactId>
+                <version>${http-client.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
                 <version>${jackson.version}</version>
@@ -139,24 +236,79 @@
                 <version>${jsoup.version}</version>
             </dependency>
             <!--第三方依赖 end -->
-
-            <!-- doc start -->
-            <dependency>
-                <groupId>com.github.xiaoymin</groupId>
-                <artifactId>knife4j-spring-boot-starter</artifactId>
-                <version>${knife4j.version}</version>
-            </dependency>
-            <!-- doc end -->
-
         </dependencies>
     </dependencyManagement>
 
-    <!-- 推送到自动化平台maven仓库 -->
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.8.2</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>2.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.9.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.5</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
     <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
         <repository>
-            <id>somta-somta-spring-somta-maven</id>
-            <name>somta-maven</name>
-            <url>https://somta-maven.pkg.coding.net/repository/somta-spring/somta-maven/</url>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
 

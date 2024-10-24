@@ -1,10 +1,13 @@
 package net.somta.common.utils;
 
+/**
+ * @author husong
+ */
 public class DevUtil {
 
     /**
      * 是否是开发模式
-     * @return
+     * @return boolean
      */
     public static boolean isInDevelopmentMode() {
         return isWindows()
@@ -14,7 +17,7 @@ public class DevUtil {
 
     /**
      *  是否是Window系统
-     * @return
+     * @return boolean
      */
     public static boolean isWindows() {
         String os = System.getProperty("os.name");
@@ -26,7 +29,7 @@ public class DevUtil {
 
     /**
      * 是否是Mac系统
-     * @return
+     * @return boolean
      */
     public static boolean isMac() {
         String os = System.getProperty("os.name");

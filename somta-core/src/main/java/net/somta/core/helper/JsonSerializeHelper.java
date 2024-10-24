@@ -11,9 +11,8 @@ import net.somta.core.exception.SysException;
 import java.io.IOException;
 
 /**
- * @desc: 统一序列化类
+ * 统一序列化类
  * @author: husong
- * @date: 2022/7/12
  **/
 public final class JsonSerializeHelper {
 
@@ -26,10 +25,8 @@ public final class JsonSerializeHelper {
 
     /**
      * 序列化
-     * @param value
-     * @param <T>
-     * @return
-     * @throws IOException
+     * @param value deserialize data
+     * @return deserialize object instance
      */
     public static <T> String serialize(T value) {
         try {
@@ -41,11 +38,9 @@ public final class JsonSerializeHelper {
 
     /**
      * 反序列化
-     * @param value
-     * @param valueClass
-     * @param <T>
-     * @return
-     * @throws IOException
+     * @param value deserialize data
+     * @param valueClass deserialize class
+     * @return deserialize object instance
      */
     public static <T> T deserialize(String value, Class<T> valueClass)  {
         try {
@@ -57,11 +52,11 @@ public final class JsonSerializeHelper {
 
     /**
      * 反序列化,支持反序列化带有泛型的类，并且序列化后的类携带泛型类，避免强转的问题
-     * @param data
+     * @param data deserialize data
      * @param clazz 集合类型
      * @param elementClass 元素类型
-     * @param <T>
-     * @return
+     * @param <T> deserialize class
+     * @return deserialize object instance
      */
     public static <T> T deserialize(String data, Class<T> clazz, Class<?> elementClass) {
         try {
@@ -75,7 +70,7 @@ public final class JsonSerializeHelper {
      * 获取泛型类型
      * @param clazz 主类类型
      * @param elementClasses 主类下的泛型类类型
-     * @return
+     * @return JavaType
      */
     private static JavaType getGenericsType(Class<?> clazz, Class<?>... elementClasses) {
         return objectMapper.getTypeFactory().constructParametricType(clazz, elementClasses);

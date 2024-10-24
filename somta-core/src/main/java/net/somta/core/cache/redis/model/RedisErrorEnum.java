@@ -4,9 +4,8 @@ import net.somta.core.contants.SystemContants;
 import net.somta.core.base.IBaseError;
 
 /**
- * @desc: Redis异常枚举
+ * Redis异常枚举
  * @author: husong
- * @date: 2022/7/15
  **/
 public enum RedisErrorEnum implements IBaseError {
 

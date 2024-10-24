@@ -1,9 +1,8 @@
 package net.somta.core.cache.redis.model;
 
 /**
- * @desc: Redis配置类
+ * Redis配置类
  * @author: husong
- * @date: 2022/7/12
  **/
 public class RedisConfigItem {
 

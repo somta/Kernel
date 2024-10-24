@@ -3,9 +3,8 @@ package net.somta.core.base.page;
 import java.util.List;
 
 /**
- * @desc: 标准分页对象包装类，跨领域层包装传递
+ * 标准分页对象包装类，跨领域层包装传递
  * @author: husong
- * @date: 2022/8/5
  **/
 public class PageDataResult<T extends List> {
 
@@ -13,35 +12,35 @@ public class PageDataResult<T extends List> {
      * @desc: 总页数
      * @isNull: 不可为空
      **/
-    private long total;
+    private Long total;
 
     /**
      * 分页数据列表
      * @isNull: 返回错误的时候可为空
      **/
-    private T data;
+    private T list;
 
-    public long getTotal() {
+    public Long getTotal() {
         return total;
     }
 
-    public void setTotal(long total) {
+    public void setTotal(Long total) {
         this.total = total;
     }
 
-    public T getData() {
-        return data;
+    public T getList() {
+        return list;
     }
 
-    public void setData(T data) {
-        this.data = data;
+    public void setList(T list) {
+        this.list = list;
     }
 
     @Override
     public String toString() {
         return "PageDataResult{" +
                 "total=" + total +
-                ", data=" + data +
+                ", list=" + list +
                 '}';
     }
 }

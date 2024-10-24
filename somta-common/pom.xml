@@ -6,18 +6,18 @@
 
     <groupId>net.somta</groupId>
     <artifactId>somta-common</artifactId>
-    <version>1.1.0-SNAPSHOT</version>
+    <version>1.4.4</version>
 
     <name>somta-common</name>
     <description>somta common</description>
-    <url>https://github.com/somta/Somta/tree/master/somta-common</url>
+    <url>https://github.com/somta/SomtaCore</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <somta-dependencies.varsion>1.0.0-SNAPSHOT</somta-dependencies.varsion>
+        <somta-dependencies.varsion>1.4.4</somta-dependencies.varsion>
     </properties>
 
     <licenses>
@@ -29,8 +29,8 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/somta/Somta.git</url>
-        <connection>git@github.com:somta/Somta.git</connection>
+        <url>https://github.com/somta/SomtaCore.git</url>
+        <connection>https://github.com/somta/SomtaCore.git</connection>
         <developerConnection>http://www.somta.net</developerConnection>
     </scm>
 
@@ -49,23 +49,9 @@
             <artifactId>somta-core</artifactId>
         </dependency>
 
-        <!-- httpclient start -->
         <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.3.5</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.6</version>
-        </dependency>
-        <!-- httpclient end -->
-
-        <dependency>
-            <groupId>com.damnhandy</groupId>
-            <artifactId>handy-uri-templates</artifactId>
-            <version>2.1.8</version>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
         </dependency>
 
         <!-- 二维码 start -->
@@ -105,57 +91,64 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>8</source>
+                    <target>8</target>
                 </configuration>
             </plugin>
-            <!-- Source -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.2.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <!-- Javadoc -->
-            <!--<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.9.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>-->
-            <!-- GPG mvn clean deploy -P release -Dgpg.passphrase=YourPassphase -->
-           <!-- <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.5</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>-->
         </plugins>
     </build>
 
-    <!--<distributionManagement>
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>2.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.9.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.5</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
@@ -164,13 +157,6 @@
             <id>ossrh</id>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
-    </distributionManagement>-->
-    <!-- 推送到自动化平台maven仓库 -->
-    <distributionManagement>
-        <repository>
-            <id>somta-somta-spring-somta-maven</id>
-            <name>somta-maven</name>
-            <url>https://somta-maven.pkg.coding.net/repository/somta-spring/somta-maven/</url>
-        </repository>
     </distributionManagement>
+
 </project>
