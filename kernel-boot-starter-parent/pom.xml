@@ -29,8 +29,8 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/somta/SomtaCore.git</url>
-        <connection>git@github.com:somta/SomtaCore.git</connection>
+        <url>https://github.com/somta/Kernel.git</url>
+        <connection>git@github.com:somta/Kernel.git</connection>
         <developerConnection>https://www.somta.net</developerConnection>
     </scm>
 

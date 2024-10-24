@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * 统一序列化类
- * @author: husong
+ * @author husong
  **/
 public final class JsonSerializeHelper {
 
@@ -43,7 +43,6 @@ public final class JsonSerializeHelper {
      * @param data deserialize data
      * @param clazz 集合类型
      * @param elementClass 元素类型
-     * @param <T> deserialize class
      * @return deserialize object instance
      */
     public static <T> T deserialize(String data, Class<T> clazz, Class<?> elementClass) throws JsonProcessingException {

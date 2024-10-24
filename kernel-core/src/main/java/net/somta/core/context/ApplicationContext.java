@@ -6,7 +6,6 @@ import java.util.Map;
  *
  * 从header中取出应该相关的信息，并放到ThreadLocal中作为上下文传递
  * @author husong
- * @date  2022/9/7
  **/
 public class ApplicationContext {
     private static ThreadLocal<IdentityContext> identityContextThreadLocal = new ThreadLocal<>();
