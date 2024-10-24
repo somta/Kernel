@@ -56,7 +56,7 @@ public class SnowflakeIdUtil {
     public synchronized long nextId() {
         long currentTimestamp = getCurrentTimestamp();
         if (currentTimestamp < lastTimestamp) {
-            throw new SysException(CommonErrorEnum.SNOW_FLAKE_ERROR, lastTimestamp - currentTimestamp);
+            throw new RuntimeException("时钟混乱了");
         }
 
         if (lastTimestamp == currentTimestamp) {
