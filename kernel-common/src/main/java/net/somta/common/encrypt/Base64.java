@@ -1,5 +1,6 @@
 package net.somta.common.encrypt;
 
+@Deprecated
 public final class Base64 {
 
     private static final Base64Coder coder = new Base64Coder();
