@@ -72,7 +72,7 @@
         <!-- test end -->
 
         <!-- kernel start -->
-        <kernel-core.version>1.0.1</kernel-core.version>
+        <kernel-core.version>1.0.0</kernel-core.version>
         <kernel-common.version>1.0.1</kernel-common.version>
         <!-- kernel end -->
 
