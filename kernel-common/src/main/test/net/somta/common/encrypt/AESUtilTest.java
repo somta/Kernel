@@ -11,7 +11,7 @@ public class AESUtilTest {
     /**
      * 密钥字符串 32位
      */
-    private final String secretKeyStr = "123456789qwertyuiopasdfghjklzxcv";
+    private final String secretKeyStr = "123456789abcdefg";
 
     /**
      * 默认原始数据
@@ -21,7 +21,7 @@ public class AESUtilTest {
     /**
      * 加密后base64加密数据
      */
-    private final String aesBase64Content = "lO3nMg9sFtnWo8r0zmWyfw==";
+    private final String aesBase64Content = "sL8hT+JmtXoEQWe8xu8QvA==";
 
     @Test
     public void generateSecretKeyTest(){

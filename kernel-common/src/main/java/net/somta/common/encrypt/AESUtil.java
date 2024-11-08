@@ -19,10 +19,6 @@ public final class AESUtil {
     private static final String ALGORITHM_NAME = "AES";
 
     /**
-     * 密钥长度
-     */
-    private static final int KEY_SIZE = 256;
-    /**
      * 默认密钥长度
      */
     public static final int DEFAULT_KEY_SIZE = 128;
@@ -48,6 +44,7 @@ public final class AESUtil {
      * 
      * @param content 待加密数据（Base64编码）
      * @param secretKey AES密钥（Base64编码）
+     * @param keyMode 密码模式
      * @return 返回Base64转码后的加密数据
      */
     public static String encrypt(String content, SecretKey secretKey,KeyModeEnum keyMode) {
@@ -61,6 +58,7 @@ public final class AESUtil {
      *
      * @param content 待加密数据（Base64编码）
      * @param secretKey AES密钥（Base64编码）
+     * @param keyMode 密码模式
      * @return 返回Base64转码后的加密数据
      */
     public static String encrypt(String content, SecretKey secretKey,KeyModeEnum keyMode,String ivStr) {
@@ -74,6 +72,7 @@ public final class AESUtil {
      *
      * @param contentBytes 待加密数据byte[]
      * @param secretKey AES密钥对象
+     * @param keyMode 密码模式
      * @return 返回加密数据byte[]
      */
     public static byte[] encrypt(byte[] contentBytes, SecretKey secretKey,KeyModeEnum keyMode,byte[] ivByte) {
@@ -110,6 +109,7 @@ public final class AESUtil {
      *
      * @param base64Content 待解密base64数据
      * @param secretKey AES密钥
+     * @param keyMode 密码模式
      * @return 解密后的原始数据
      */
     public static String decrypt(String base64Content, SecretKey secretKey,KeyModeEnum keyMode) {
@@ -123,6 +123,7 @@ public final class AESUtil {
      *
      * @param base64Content 待解密base64数据
      * @param secretKey AES密钥
+     * @param keyMode 密码模式
      * @return 解密后的原始数据
      */
     public static String decrypt(String base64Content, SecretKey secretKey,KeyModeEnum keyMode,String ivStr) {
@@ -136,6 +137,7 @@ public final class AESUtil {
      *
      * @param contentBytes 待解密内容byte[]
      * @param secretKey AES密钥
+     * @param keyMode 密码模式
      * @return 返回解密数据byte[]
      */
     public static byte[] decrypt(byte[] contentBytes, SecretKey secretKey,KeyModeEnum keyMode,byte[] ivByte) {
@@ -179,8 +181,8 @@ public final class AESUtil {
      * @return 密钥对象
      */
     public static SecretKeySpec stringToSecretKey(String secretKeyStr) {
-        if (secretKeyStr == null || secretKeyStr.length() != KEY_SIZE / 8) {
-            throw new IllegalArgumentException("Key string must be exactly " + KEY_SIZE / 8 + " characters long");
+        if (secretKeyStr == null || secretKeyStr.length() != DEFAULT_KEY_SIZE / 8) {
+            throw new IllegalArgumentException("Key string must be exactly " + DEFAULT_KEY_SIZE / 8 + " characters long");
         }
         byte[] keyBytes = secretKeyStr.getBytes(StandardCharsets.UTF_8);
         return new SecretKeySpec(keyBytes, ALGORITHM_NAME);
