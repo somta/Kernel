@@ -52,7 +52,20 @@ public final class AESUtil {
      */
     public static String encrypt(String content, SecretKey secretKey,KeyModeEnum keyMode) {
         byte[] contentBytes = content.getBytes(StandardCharsets.UTF_8);
-        byte[] result = encrypt(contentBytes, secretKey,keyMode);
+        byte[] result = encrypt(contentBytes, secretKey,keyMode,DEFAULT_IV.getBytes());
+        return Base64Util.encode(result);
+    }
+
+    /**
+     * AES 加密操作
+     *
+     * @param content 待加密数据（Base64编码）
+     * @param secretKey AES密钥（Base64编码）
+     * @return 返回Base64转码后的加密数据
+     */
+    public static String encrypt(String content, SecretKey secretKey,KeyModeEnum keyMode,String ivStr) {
+        byte[] contentBytes = content.getBytes(StandardCharsets.UTF_8);
+        byte[] result = encrypt(contentBytes, secretKey,keyMode,ivStr.getBytes());
         return Base64Util.encode(result);
     }
 
@@ -63,12 +76,12 @@ public final class AESUtil {
      * @param secretKey AES密钥对象
      * @return 返回加密数据byte[]
      */
-    public static byte[] encrypt(byte[] contentBytes, SecretKey secretKey,KeyModeEnum keyMode) {
+    public static byte[] encrypt(byte[] contentBytes, SecretKey secretKey,KeyModeEnum keyMode,byte[] ivByte) {
         try {
             Cipher cipher = Cipher.getInstance(String.format("%s/%s/PKCS5Padding", ALGORITHM_NAME, keyMode.getName()));
             if (KeyModeEnum.CBC.equals(keyMode)) {
                 // 使用CBC模式，需要一个向量iv，增加加密算法的强度
-                IvParameterSpec iv = new IvParameterSpec(DEFAULT_IV.getBytes());
+                IvParameterSpec iv = new IvParameterSpec(ivByte);
                 cipher.init(Cipher.ENCRYPT_MODE, secretKey, iv);
             } else {
                 cipher.init(Cipher.ENCRYPT_MODE, secretKey);
@@ -88,7 +101,7 @@ public final class AESUtil {
      */
     public static String decrypt(String base64Content, SecretKey secretKey) {
         byte[] contentBytes = Base64Util.decodeToByte(base64Content);
-        byte[] result = decrypt(contentBytes, secretKey,KeyModeEnum.ECB);
+        byte[] result = decrypt(contentBytes, secretKey,KeyModeEnum.ECB,DEFAULT_IV.getBytes());
         return new String(result, StandardCharsets.UTF_8);
     }
 
@@ -101,7 +114,20 @@ public final class AESUtil {
      */
     public static String decrypt(String base64Content, SecretKey secretKey,KeyModeEnum keyMode) {
         byte[] contentBytes = Base64Util.decodeToByte(base64Content);
-        byte[] result = decrypt(contentBytes, secretKey,keyMode);
+        byte[] result = decrypt(contentBytes, secretKey,keyMode,DEFAULT_IV.getBytes());
+        return new String(result, StandardCharsets.UTF_8);
+    }
+
+    /**
+     * AES 解密操作
+     *
+     * @param base64Content 待解密base64数据
+     * @param secretKey AES密钥
+     * @return 解密后的原始数据
+     */
+    public static String decrypt(String base64Content, SecretKey secretKey,KeyModeEnum keyMode,String ivStr) {
+        byte[] contentBytes = Base64Util.decodeToByte(base64Content);
+        byte[] result = decrypt(contentBytes, secretKey,keyMode,ivStr.getBytes());
         return new String(result, StandardCharsets.UTF_8);
     }
 
@@ -112,12 +138,12 @@ public final class AESUtil {
      * @param secretKey AES密钥
      * @return 返回解密数据byte[]
      */
-    public static byte[] decrypt(byte[] contentBytes, SecretKey secretKey,KeyModeEnum keyMode) {
+    public static byte[] decrypt(byte[] contentBytes, SecretKey secretKey,KeyModeEnum keyMode,byte[] ivByte) {
         try {
             Cipher cipher = Cipher.getInstance(String.format("%s/%s/PKCS5Padding", ALGORITHM_NAME, keyMode.getName()));
             if (KeyModeEnum.CBC.equals(keyMode)) {
                 // 使用CBC模式，需要一个向量iv，增加加密算法的强度
-                IvParameterSpec iv = new IvParameterSpec(DEFAULT_IV.getBytes());
+                IvParameterSpec iv = new IvParameterSpec(ivByte);
                 cipher.init(Cipher.DECRYPT_MODE, secretKey, iv);
             } else {
                 cipher.init(Cipher.DECRYPT_MODE, secretKey);
