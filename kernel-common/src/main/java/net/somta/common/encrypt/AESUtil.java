@@ -18,7 +18,6 @@ public final class AESUtil {
 
     private static final String ALGORITHM_NAME = "AES";
 
-    private static final String TRANSFORMATION = "AES/CBC/PKCS5Padding";
     /**
      * 密钥长度
      */
