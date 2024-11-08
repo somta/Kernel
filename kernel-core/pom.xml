@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.somta</groupId>
     <artifactId>kernel-core</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <name>kernel-core</name>
     <description>Use Somta for rapid development</description>
@@ -68,6 +68,12 @@
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

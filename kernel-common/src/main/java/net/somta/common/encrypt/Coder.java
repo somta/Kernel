@@ -3,6 +3,7 @@ package net.somta.common.encrypt;
 /**
  * 加密解密公共接口
  */
+@Deprecated
 public interface Coder {
 
     /**
