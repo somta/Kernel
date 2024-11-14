@@ -50,6 +50,14 @@ public final class JsonSerializeHelper {
     }
 
     /**
+     * 获取一个ObjectMapper实例
+     * @return ObjectMapper Instance
+     */
+    public static ObjectMapper getObjectMapper(){
+        return objectMapper;
+    }
+
+    /**
      * 获取泛型类型
      * @param clazz 主类类型
      * @param elementClasses 主类下的泛型类类型
