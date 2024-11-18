@@ -6,7 +6,7 @@
 
     <groupId>net.somta</groupId>
     <artifactId>kernel-common</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 
     <name>kernel-common</name>
     <description>kernel common</description>
@@ -17,7 +17,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <kernel-dependencies.varsion>1.0.1</kernel-dependencies.varsion>
+        <kernel-dependencies.varsion>1.0.2</kernel-dependencies.varsion>
     </properties>
 
     <licenses>
@@ -52,6 +52,11 @@
         <dependency>
             <groupId>org.apache.httpcomponents.client5</groupId>
             <artifactId>httpclient5</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk18on</artifactId>
         </dependency>
 
         <dependency>

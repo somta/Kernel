@@ -11,7 +11,7 @@ import java.security.SecureRandom;
 
 /**
  * 
- * AES加解密工具类
+ * AES对称加解密工具类
  * @author husong
  **/
 public final class AESUtil {
