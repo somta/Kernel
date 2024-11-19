@@ -59,6 +59,7 @@ public final class AESUtil {
      * @param content 待加密数据（Base64编码）
      * @param secretKey AES密钥（Base64编码）
      * @param keyMode 密码模式
+     * @param ivStr IV字符串
      * @return 返回Base64转码后的加密数据
      */
     public static String encrypt(String content, SecretKey secretKey,KeyModeEnum keyMode,String ivStr) {
@@ -73,6 +74,7 @@ public final class AESUtil {
      * @param contentBytes 待加密数据byte[]
      * @param secretKey AES密钥对象
      * @param keyMode 密码模式
+     * @param ivByte IV字节数组
      * @return 返回加密数据byte[]
      */
     public static byte[] encrypt(byte[] contentBytes, SecretKey secretKey,KeyModeEnum keyMode,byte[] ivByte) {
@@ -124,6 +126,7 @@ public final class AESUtil {
      * @param base64Content 待解密base64数据
      * @param secretKey AES密钥
      * @param keyMode 密码模式
+     * @param ivStr IV字符串
      * @return 解密后的原始数据
      */
     public static String decrypt(String base64Content, SecretKey secretKey,KeyModeEnum keyMode,String ivStr) {
@@ -138,6 +141,7 @@ public final class AESUtil {
      * @param contentBytes 待解密内容byte[]
      * @param secretKey AES密钥
      * @param keyMode 密码模式
+     * @param ivByte IV字节数组
      * @return 返回解密数据byte[]
      */
     public static byte[] decrypt(byte[] contentBytes, SecretKey secretKey,KeyModeEnum keyMode,byte[] ivByte) {

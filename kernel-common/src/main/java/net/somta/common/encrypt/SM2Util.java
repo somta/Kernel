@@ -131,9 +131,7 @@ public class SM2Util {
     }
 
     /**
-     * 用私钥对信息生成数字签名
-     *
-     * @link 使用verify()方法验签
+     * 用私钥对信息生成数字签名，使用verify()方法验签
      *
      * @param data 待签名数据，须转成二进制格式
      * @param privateKey SM2私钥
@@ -145,9 +143,7 @@ public class SM2Util {
     }
 
     /**
-     * 用私钥对信息生成数字签名
-     *
-     * @link 使用verify()方法验签
+     * 用私钥对信息生成数字签名，使用verify()方法验签
      *
      * @param data 待签名数据，须转成二进制格式
      * @param privateKey SM2私钥
@@ -174,8 +170,7 @@ public class SM2Util {
     }
 
     /**
-     * 校验数字签名
-     * 使用sign()签名后，可用此方法验签
+     * 校验数字签名，使用sign()签名后，可用此方法验签
      *
      * @param data 待签名数据
      * @param sign SM2私钥签名
@@ -187,8 +182,7 @@ public class SM2Util {
     }
 
     /**
-     * 校验数字签名
-     * 使用signToByte()签名后，可用此方法验签
+     * 校验数字签名，使用signToByte()签名后，可用此方法验签
      *
      * @param data 未签名原始数据,
      * @param sign SM2私钥签名的签名数据
