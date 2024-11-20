@@ -43,6 +43,7 @@
         <spring-cloud.version>2022.0.0</spring-cloud.version>
         <spring-cloud-alibaba.version>2022.0.0.0</spring-cloud-alibaba.version>
         <spring-cloud-openfeign.version>4.0.0</spring-cloud-openfeign.version>
+        <aspectj.version>1.9.22.1</aspectj.version>
         <!-- core end -->
 
         <!-- util start -->
@@ -117,6 +118,11 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-openfeign-core</artifactId>
                 <version>${spring-cloud-openfeign.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectj.version}</version>
             </dependency>
 
             <!-- util start -->
