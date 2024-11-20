@@ -6,7 +6,7 @@
 
     <groupId>net.somta</groupId>
     <artifactId>kernel-dependencies</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
     <packaging>pom</packaging>
 
     <name>kernel-dependencies</name>
@@ -73,7 +73,7 @@
 
         <!-- kernel start -->
         <kernel-core.version>1.0.0</kernel-core.version>
-        <kernel-common.version>1.0.0</kernel-common.version>
+        <kernel-common.version>1.0.2</kernel-common.version>
         <!-- kernel end -->
 
         <!--第三方依赖 start -->
@@ -83,6 +83,7 @@
         <nacos.version>2.2.0</nacos.version>
         <redisson.version>3.14.0</redisson.version>
         <jsoup.version>1.15.2</jsoup.version>
+        <bcprov.version>1.78.1</bcprov.version>
         <!--第三方依赖 end -->
 
     </properties>
@@ -240,6 +241,11 @@
                 <groupId>org.jsoup</groupId>
                 <artifactId>jsoup</artifactId>
                 <version>${jsoup.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk18on</artifactId>
+                <version>${bcprov.version}</version>
             </dependency>
             <!--第三方依赖 end -->
         </dependencies>

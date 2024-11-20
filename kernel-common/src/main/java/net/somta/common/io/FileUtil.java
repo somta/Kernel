@@ -5,7 +5,6 @@ import java.io.*;
 /**
  * 文件工具类
  * Blog: https://www.somta.net/
- * Date: 2020/1/7
  * @author 明天的地平线
  * @version 1.0.0
  */
