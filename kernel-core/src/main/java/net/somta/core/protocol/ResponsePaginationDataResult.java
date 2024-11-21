@@ -38,13 +38,12 @@ public class ResponsePaginationDataResult<T> extends ResponseResult {
         return setErrorResponseResult(baseError, null);
     }
 
-    public static ResponsePaginationDataResult setErrorResponseResult(IBaseError baseError,List data) {
+    public static ResponsePaginationDataResult setErrorResponseResult(IBaseError baseError, Object... args) {
         ResponsePaginationDataResult r = new ResponsePaginationDataResult();
         r.setTotal(0L);
         r.setSuccess(false);
         r.setErrorCode(baseError.getErrorCode());
-        r.setErrorMsg(baseError.getErrorMsg());
-        r.setResult(data);
+        r.setErrorMsg(String.format(baseError.getErrorMsg(),args));
         return r;
     }
 

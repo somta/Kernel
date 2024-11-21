@@ -34,6 +34,10 @@ public class ResponseDataResult<T> extends ResponseResult {
         return setErrorResponseResult(baseError.getErrorCode(),baseError.getErrorMsg(), null);
     }
 
+    public static ResponseDataResult setErrorResponseResult(IBaseError baseError, Object... args) {
+        return setErrorResponseResult(baseError.getErrorCode(),String.format(baseError.getErrorMsg(),args), null);
+    }
+
     public static ResponseDataResult setErrorResponseResult(long errorCode ,String errorMsg) {
     	return setErrorResponseResult(errorCode,errorMsg, null);
     }
