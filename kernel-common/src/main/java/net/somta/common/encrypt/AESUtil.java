@@ -185,8 +185,12 @@ public final class AESUtil {
      * @return 密钥对象
      */
     public static SecretKeySpec stringToSecretKey(String secretKeyStr) {
-        if (secretKeyStr == null || secretKeyStr.length() != DEFAULT_KEY_SIZE / 8) {
-            throw new IllegalArgumentException("Key string must be exactly " + DEFAULT_KEY_SIZE / 8 + " characters long");
+        if (secretKeyStr == null) {
+            throw new IllegalArgumentException("Key string cannot be null");
+        }
+        int keyLength = secretKeyStr.length();
+        if (keyLength != DEFAULT_KEY_SIZE / 8 && keyLength != DEFAULT_KEY_SIZE * 2 / 8) {
+            throw new IllegalArgumentException("Key string must be exactly " + DEFAULT_KEY_SIZE / 8 + " or " + DEFAULT_KEY_SIZE*2 / 8 + " characters long");
         }
         byte[] keyBytes = secretKeyStr.getBytes(StandardCharsets.UTF_8);
         return new SecretKeySpec(keyBytes, ALGORITHM_NAME);

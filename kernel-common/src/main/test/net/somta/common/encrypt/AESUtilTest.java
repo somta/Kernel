@@ -9,9 +9,9 @@ import javax.crypto.spec.SecretKeySpec;
 public class AESUtilTest {
 
     /**
-     * 密钥字符串 32位
+     * 密钥字符串 32位，也支持16位
      */
-    private final String secretKeyStr = "123456789abcdefg";
+    private final String secretKeyStr = "123456789abcdefghijklmnopqrstuvw";
 
     /**
      * 默认原始数据
@@ -21,7 +21,7 @@ public class AESUtilTest {
     /**
      * 加密后base64加密数据
      */
-    private final String aesBase64Content = "sL8hT+JmtXoEQWe8xu8QvA==";
+    private final String aesBase64Content = "4Y8egH0ARhqlrEOYb5cFhw==";
 
     @Test
     public void generateSecretKeyTest(){
