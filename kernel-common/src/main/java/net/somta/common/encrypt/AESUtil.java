@@ -32,6 +32,18 @@ public final class AESUtil {
      * AES 加密操作（默认采用PKCS5填充算法、ECB密码模式）
      *
      * @param content 待加密数据（Base64编码）
+     * @param secretKeyStr AES密钥字符串
+     * @return 返回Base64转码后的加密数据
+     */
+    public static String encrypt(String content, String secretKeyStr) {
+        SecretKeySpec secretKey = stringToSecretKey(secretKeyStr);
+        return encrypt(content, secretKey,KeyModeEnum.ECB);
+    }
+
+    /**
+     * AES 加密操作（默认采用PKCS5填充算法、ECB密码模式）
+     *
+     * @param content 待加密数据（Base64编码）
      * @param secretKey AES密钥（Base64编码）
      * @return 返回Base64转码后的加密数据
      */
@@ -91,6 +103,20 @@ public final class AESUtil {
         } catch (Exception e) {
             throw new RuntimeException("AES "+e.getMessage());
         }
+    }
+
+    /**
+     * AES 解密操作
+     *
+     * @param base64Content 待解密base64数据
+     * @param secretKeyStr AES密钥字符串
+     * @return 解密后的原始数据
+     */
+    public static String decrypt(String base64Content, String secretKeyStr) {
+        byte[] contentBytes = Base64Util.decodeToByte(base64Content);
+        SecretKeySpec secretKey = stringToSecretKey(secretKeyStr);
+        byte[] result = decrypt(contentBytes, secretKey,KeyModeEnum.ECB,DEFAULT_IV.getBytes());
+        return new String(result, StandardCharsets.UTF_8);
     }
 
     /**
