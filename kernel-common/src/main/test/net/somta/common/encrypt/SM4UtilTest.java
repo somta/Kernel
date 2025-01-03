@@ -34,7 +34,7 @@ public class SM4UtilTest {
     }
 
     /**
-     * 设置密码模式和填充算法加密，解密
+     * 设置密码模式和填充算法加密， 解密
      */
     @Test
     public void encryptAndDecryptTest2(){
