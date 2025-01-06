@@ -1,6 +1,6 @@
 package net.somta.core.cache.redis.model;
 
-import net.somta.core.contants.SystemContants;
+import net.somta.core.constants.SystemConstants;
 import net.somta.core.base.IBaseError;
 
 /**
@@ -23,7 +23,7 @@ public enum RedisErrorEnum implements IBaseError {
 
     @Override
     public long getErrorCode() {
-        return SystemContants.CORE_CODE + errorCode;
+        return SystemConstants.CORE_CODE + errorCode;
     }
 
     @Override

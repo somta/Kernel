@@ -1,7 +1,7 @@
 package net.somta.core.enums;
 
-import net.somta.core.contants.SystemContants;
 import net.somta.core.base.IBaseError;
+import net.somta.core.constants.SystemConstants;
 
 /**
  * 核心系统最基础的异常枚举，以0001 - 1000
@@ -20,7 +20,7 @@ public enum SystemErrorEnum implements IBaseError {
 
     @Override
     public long getErrorCode() {
-        return SystemContants.CORE_CODE + errorCode;
+        return SystemConstants.CORE_CODE + errorCode;
     }
 
     @Override
