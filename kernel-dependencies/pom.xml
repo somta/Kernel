@@ -6,7 +6,7 @@
 
     <groupId>net.somta</groupId>
     <artifactId>kernel-dependencies</artifactId>
-    <version>3.0.1</version>
+    <version>3.0.2</version>
     <packaging>pom</packaging>
 
     <name>kernel-dependencies</name>
@@ -75,7 +75,7 @@
 
         <!-- kernel start -->
         <kernel-core.version>3.0.1</kernel-core.version>
-        <kernel-common.version>3.0.1</kernel-common.version>
+        <kernel-common.version>3.0.2</kernel-common.version>
         <!-- kernel end -->
 
         <!--第三方依赖 start -->

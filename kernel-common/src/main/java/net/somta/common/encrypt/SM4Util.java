@@ -13,10 +13,9 @@ import java.security.Security;
 import java.util.Objects;
 
 /**
- * SM4算法加密工具类
+ * SM4对称加密工具类
  * 
- * @author lyon.chen
- * @date 2023/9/1
+ * @author husong
  */
 public class SM4Util {
 
