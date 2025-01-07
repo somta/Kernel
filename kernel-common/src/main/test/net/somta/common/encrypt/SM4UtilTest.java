@@ -45,4 +45,16 @@ public class SM4UtilTest {
         Assertions.assertEquals(srcContent, tempSrcContent);
     }
 
+    /**
+     * 设置密码模式和填充算法加密
+     */
+    @Test
+    public void encryptTest2(){
+        String tempSm4Base64Content = SM4Util.encrypt(srcContent,secretKey,KeyModeEnum.ECB, PaddingEnum.PKCS5_PADDING);
+        System.out.println(tempSm4Base64Content);
+        String tempSrcContent = SM4Util.encrypt(srcContent, secretKey,KeyModeEnum.CBC, PaddingEnum.PKCS5_PADDING);
+        System.out.println(tempSrcContent);
+    }
+
+
 }

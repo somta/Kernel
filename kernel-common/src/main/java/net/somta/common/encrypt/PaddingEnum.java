@@ -13,11 +13,7 @@ public enum PaddingEnum {
     /**
      * PKCS7算法
      */
-    PKCS7_PADDING("PKCS7Padding"),
-    /**
-     * 无填充，特别说明无填充模式要求原文长度必须是8byte的整数倍
-     */
-    NO_PADDING("NoPadding");
+    PKCS7_PADDING("PKCS7Padding");
 
     private final String name;
 

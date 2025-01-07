@@ -84,7 +84,7 @@ public class SM4Util {
             }
             return cipher.doFinal(contentBytes);
         } catch (Exception e) {
-            throw new RuntimeException("sm2 encrypt:" + e.getMessage());
+            throw new RuntimeException("sm4 encrypt:" + e.getMessage());
         }
     }
 
