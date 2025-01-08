@@ -24,4 +24,13 @@ public enum PaddingEnum {
     public String getName() {
         return name;
     }
+
+    public static PaddingEnum getEnumByName(String name) {
+        for (PaddingEnum padding : values()) {
+            if (padding.getName().equalsIgnoreCase(name)) {
+                return padding;
+            }
+        }
+        throw new IllegalArgumentException("No enum constant with name: " + name);
+    }
 }

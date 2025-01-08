@@ -23,4 +23,13 @@ public enum KeyModeEnum {
     public String getName() {
         return name;
     }
+
+    public static KeyModeEnum getEnumByName(String name) {
+        for (KeyModeEnum keyMode : values()) {
+            if (keyMode.getName().equalsIgnoreCase(name)) {
+                return keyMode;
+            }
+        }
+        throw new IllegalArgumentException("No enum constant with name: " + name);
+    }
 }
