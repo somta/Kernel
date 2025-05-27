@@ -35,5 +35,13 @@ public class StringUtil {
         return str.replaceAll("\n","");
     }
 
+    /**
+     * 对象转字符串
+     * @param obj obj
+     * @return 返回字符串
+     */
+    public static String valueOf(Object obj) {
+        return (obj == null) ? null : obj.toString();
+    }
 
 }
