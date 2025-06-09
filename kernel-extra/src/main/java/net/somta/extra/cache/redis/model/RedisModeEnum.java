@@ -1,4 +1,4 @@
-package net.somta.core.cache.redis.model;
+package net.somta.extra.cache.redis.model;
 
 public enum RedisModeEnum {
 

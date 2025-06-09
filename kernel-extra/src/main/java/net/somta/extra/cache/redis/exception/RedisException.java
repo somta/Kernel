@@ -1,7 +1,8 @@
-package net.somta.core.cache.redis.exception;
+package net.somta.extra.cache.redis.exception;
 
 import net.somta.core.base.IBaseError;
 import net.somta.core.exception.SysException;
+
 /**
  * Redis自定义异常
  * @author: husong

@@ -1,6 +1,5 @@
-package net.somta.core.cache.redis.serialize;
+package net.somta.extra.cache.redis.serialize;
 
-import net.somta.core.exception.SysException;
 import net.somta.core.helper.JsonSerializeHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

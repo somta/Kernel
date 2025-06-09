@@ -1,5 +1,6 @@
-package net.somta.core.cache.redis.client;
+package net.somta.extra.cache.redis.client;
 
+import net.somta.core.cache.redis.client.AbstractRedisClient;
 import net.somta.core.cache.redis.model.RedisConfigItem;
 import org.apache.commons.lang3.StringUtils;
 import org.redisson.config.Config;
@@ -9,7 +10,7 @@ import org.redisson.config.SingleServerConfig;
  * 单机的Redis客户端
  * @author: husong
  **/
-public class SingleRedisClient extends AbstractRedisClient{
+public class SingleRedisClient extends AbstractRedisClient {
     @Override
     protected void initClientConfig(Config redisConfig, RedisConfigItem redisConfigItem) {
         String address = redisConfigItem.getAddress()[0].trim();

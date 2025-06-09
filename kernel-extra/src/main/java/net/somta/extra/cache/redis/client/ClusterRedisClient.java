@@ -1,6 +1,6 @@
-package net.somta.core.cache.redis.client;
+package net.somta.extra.cache.redis.client;
 
-import net.somta.core.cache.redis.model.RedisConfigItem;
+import net.somta.extra.cache.redis.model.RedisConfigItem;
 import org.apache.commons.lang3.StringUtils;
 import org.redisson.config.ClusterServersConfig;
 import org.redisson.config.Config;

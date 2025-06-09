@@ -1,4 +1,4 @@
-package net.somta.core.cache.redis.serialize;
+package net.somta.extra.cache.redis.serialize;
 
 /**
  * 标准序列化接口

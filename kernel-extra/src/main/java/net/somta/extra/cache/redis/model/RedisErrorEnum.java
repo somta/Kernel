@@ -1,7 +1,7 @@
-package net.somta.core.cache.redis.model;
+package net.somta.extra.cache.redis.model;
 
-import net.somta.core.constants.SystemConstants;
 import net.somta.core.base.IBaseError;
+import net.somta.core.constants.SystemConstants;
 
 /**
  * Redis异常枚举

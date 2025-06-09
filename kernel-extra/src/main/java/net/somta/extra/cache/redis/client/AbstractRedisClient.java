@@ -1,8 +1,8 @@
-package net.somta.core.cache.redis.client;
+package net.somta.extra.cache.redis.client;
 
 
-import net.somta.core.cache.redis.model.RedisConfigItem;
-import net.somta.core.cache.redis.serialize.InterfaceSerializable;
+import net.somta.extra.cache.redis.model.RedisConfigItem;
+import net.somta.extra.cache.redis.serialize.InterfaceSerializable;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.client.codec.StringCodec;

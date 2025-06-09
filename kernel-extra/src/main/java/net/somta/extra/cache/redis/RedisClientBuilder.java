@@ -1,15 +1,15 @@
-package net.somta.core.cache.redis;
+package net.somta.extra.cache.redis;
 
-import net.somta.core.cache.redis.client.AbstractRedisClient;
-import net.somta.core.cache.redis.client.ClusterRedisClient;
-import net.somta.core.cache.redis.client.SentinelRedisClient;
-import net.somta.core.cache.redis.client.SingleRedisClient;
-import net.somta.core.cache.redis.exception.RedisException;
-import net.somta.core.cache.redis.model.RedisConfigItem;
-import net.somta.core.cache.redis.model.RedisErrorEnum;
-import net.somta.core.cache.redis.model.RedisModeEnum;
-import net.somta.core.cache.redis.serialize.InterfaceSerializable;
-import net.somta.core.cache.redis.serialize.JsonSerializable;
+import net.somta.extra.cache.redis.client.AbstractRedisClient;
+import net.somta.extra.cache.redis.client.ClusterRedisClient;
+import net.somta.extra.cache.redis.client.SentinelRedisClient;
+import net.somta.extra.cache.redis.client.SingleRedisClient;
+import net.somta.extra.cache.redis.exception.RedisException;
+import net.somta.extra.cache.redis.model.RedisConfigItem;
+import net.somta.extra.cache.redis.model.RedisErrorEnum;
+import net.somta.extra.cache.redis.model.RedisModeEnum;
+import net.somta.extra.cache.redis.serialize.InterfaceSerializable;
+import net.somta.extra.cache.redis.serialize.JsonSerializable;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.Arrays;
@@ -22,7 +22,7 @@ import java.util.Map;
  **/
 public class RedisClientBuilder {
 
-    private static Map<String,AbstractRedisClient> redisClients = new HashMap<>();
+    private static Map<String, AbstractRedisClient> redisClients = new HashMap<>();
 
     /**
      * 构建Redis客户端
