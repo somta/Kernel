@@ -39,7 +39,7 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <!-- core start -->
-        <spring-boot.version>3.3.2</spring-boot.version>
+        <spring-boot.version>3.4.6</spring-boot.version>
         <spring-cloud.version>2022.0.0</spring-cloud.version>
         <spring-cloud-alibaba.version>2022.0.0.0-RC2</spring-cloud-alibaba.version>
         <spring-cloud-openfeign.version>4.0.0</spring-cloud-openfeign.version>
