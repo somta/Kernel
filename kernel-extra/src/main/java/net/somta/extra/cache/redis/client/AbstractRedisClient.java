@@ -1,6 +1,5 @@
 package net.somta.extra.cache.redis.client;
 
-
 import net.somta.extra.cache.redis.model.RedisConfigItem;
 import net.somta.extra.cache.redis.serialize.InterfaceSerializable;
 import org.redisson.Redisson;
