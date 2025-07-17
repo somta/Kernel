@@ -18,7 +18,7 @@ import java.util.Map;
 
 /**
  * Redis客户端构建类，构建不同类型的client
- * @author: husong
+ * @author husong
  **/
 public class RedisClientBuilder {
 

@@ -7,7 +7,7 @@ import org.redisson.config.SingleServerConfig;
 
 /**
  * 单机的Redis客户端
- * @author: husong
+ * @author husong
  **/
 public class SingleRedisClient extends AbstractRedisClient {
     @Override

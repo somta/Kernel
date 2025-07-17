@@ -9,7 +9,7 @@ import org.redisson.config.Config;
 
 /**
  * 抽象的Redis客户端
- * @author: husong
+ * @author husong
  **/
 public abstract class AbstractRedisClient {
 

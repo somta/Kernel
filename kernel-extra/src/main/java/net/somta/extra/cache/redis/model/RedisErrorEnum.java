@@ -5,7 +5,7 @@ import net.somta.core.constants.SystemConstants;
 
 /**
  * Redis异常枚举
- * @author: husong
+ * @author husong
  **/
 public enum RedisErrorEnum implements IBaseError {
 

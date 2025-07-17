@@ -2,7 +2,7 @@ package net.somta.extra.cache.redis.serialize;
 
 /**
  * 标准序列化接口
- * @author: husong
+ * @author husong
  **/
 public interface InterfaceSerializable {
 

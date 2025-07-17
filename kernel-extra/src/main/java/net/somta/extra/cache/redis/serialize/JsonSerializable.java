@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Json的序列化实现
- * @author: husong
+ * @author husong
  **/
 public class JsonSerializable implements InterfaceSerializable {
 

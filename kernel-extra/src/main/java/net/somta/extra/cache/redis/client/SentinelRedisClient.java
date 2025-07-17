@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * 哨兵的Redis客户端
- * @author: husong
+ * @author husong
  **/
 public class SentinelRedisClient extends AbstractRedisClient {
     @Override

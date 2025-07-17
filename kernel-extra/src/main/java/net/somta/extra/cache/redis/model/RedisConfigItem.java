@@ -2,7 +2,7 @@ package net.somta.extra.cache.redis.model;
 
 /**
  * Redis配置类
- * @author: husong
+ * @author husong
  **/
 public class RedisConfigItem {
 

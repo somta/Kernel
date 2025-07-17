@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * 集群的Redis客户端
- * @author: husong
+ * @author husong
  **/
 public class ClusterRedisClient extends AbstractRedisClient {
     @Override
