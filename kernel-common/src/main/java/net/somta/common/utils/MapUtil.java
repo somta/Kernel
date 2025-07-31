@@ -8,7 +8,7 @@ import java.util.*;
 
 /**
  * Map相关操作工具类
- * @author: husong
+ * @author husong
  **/
 public class MapUtil {
 

@@ -6,7 +6,7 @@
 
     <groupId>net.somta</groupId>
     <artifactId>kernel-dependencies</artifactId>
-    <version>3.1.0</version>
+    <version>3.1.1</version>
     <packaging>pom</packaging>
 
     <name>kernel-dependencies</name>
@@ -47,14 +47,13 @@
         <!-- core end -->
 
         <!-- util start -->
-        <commons-lang3.version>3.17.0</commons-lang3.version>
+        <commons-lang3.version>3.18.0</commons-lang3.version>
         <commons-collections.version>4.4</commons-collections.version>
         <commons-io.version>2.17.0</commons-io.version>
         <http-client.version>5.4.4</http-client.version>
         <!-- util start -->
 
         <!-- doc start -->
-       <!-- <knife4j.version>4.5.0</knife4j.version>-->
         <swagger.version>2.2.29</swagger.version>
         <!-- doc end -->
 
@@ -70,13 +69,13 @@
         <!-- test start -->
         <mockito.version>3.6.28</mockito.version>
         <podam.version>7.2.9.RELEASE</podam.version>
-        <h2.version>2.3.232</h2.version>
+        <h2.version>2.3.230</h2.version>
         <!-- test end -->
 
         <!-- kernel start -->
         <kernel-core.version>3.1.0</kernel-core.version>
-        <kernel-common.version>3.1.0</kernel-common.version>
-        <kernel-extra.version>3.1.0</kernel-extra.version>
+        <kernel-common.version>3.1.1</kernel-common.version>
+        <kernel-extra.version>3.1.1</kernel-extra.version>
         <!-- kernel end -->
 
         <!--第三方依赖 start -->
@@ -84,7 +83,7 @@
         <reflections.version>0.9.11</reflections.version>
         <hibernate-validator.version>6.2.5.Final</hibernate-validator.version>
         <nacos.version>2.2.0</nacos.version>
-        <redisson.version>3.49.0</redisson.version>
+        <redisson.version>3.50.0</redisson.version>
         <jsoup.version>1.15.2</jsoup.version>
         <bcprov.version>1.78.1</bcprov.version>
         <!--第三方依赖 end -->
@@ -150,11 +149,6 @@
             <!-- util start -->
 
             <!-- doc start -->
-           <!-- <dependency>
-                <groupId>com.github.xiaoymin</groupId>
-                <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
-                <version>${knife4j.version}</version>
-            </dependency>-->
             <dependency>
                 <groupId>io.swagger.core.v3</groupId>
                 <artifactId>swagger-annotations-jakarta</artifactId>

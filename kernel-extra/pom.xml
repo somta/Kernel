@@ -6,7 +6,7 @@
 
     <groupId>net.somta</groupId>
     <artifactId>kernel-extra</artifactId>
-    <version>3.1.0</version>
+    <version>3.1.1</version>
 
     <name>kernel-extra</name>
     <description>kernel extra</description>
@@ -39,7 +39,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        <kernel-dependencies.varsion>3.1.0</kernel-dependencies.varsion>
+        <kernel-dependencies.varsion>3.1.1</kernel-dependencies.varsion>
     </properties>
 
     <dependencies>

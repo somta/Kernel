@@ -3,11 +3,8 @@ package net.somta.common.utils;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * String工具
- * Blog: https://www.somta.net/
- * Date: 2021/3/4
- * @author 明天的地平线
- * @version 1.0.0
+ * String util
+ * @author husong
  */
 public class StringUtil {
 
