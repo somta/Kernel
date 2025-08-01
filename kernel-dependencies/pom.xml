@@ -62,10 +62,6 @@
         <mybatis.version>3.0.3</mybatis.version>
         <!-- db end -->
 
-        <!-- es start -->
-        <elasticsearch.version>7.14.2</elasticsearch.version>
-        <!-- es end -->
-
         <!-- test start -->
         <mockito.version>3.6.28</mockito.version>
         <podam.version>7.2.9.RELEASE</podam.version>
@@ -168,24 +164,6 @@
                 <version>${mybatis.version}</version>
             </dependency>
             <!-- db end -->
-
-            <!--es dependencies start -->
-            <dependency>
-                <groupId>org.elasticsearch</groupId>
-                <artifactId>elasticsearch</artifactId>
-                <version>${elasticsearch.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.elasticsearch.client</groupId>
-                <artifactId>elasticsearch-rest-client</artifactId>
-                <version>${elasticsearch.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.elasticsearch.client</groupId>
-                <artifactId>elasticsearch-rest-high-level-client</artifactId>
-                <version>${elasticsearch.version}</version>
-            </dependency>
-            <!--es dependencies end -->
 
             <!-- test dependencies start -->
             <dependency>
