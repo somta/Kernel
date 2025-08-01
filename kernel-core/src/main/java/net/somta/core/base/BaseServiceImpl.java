@@ -1,12 +1,10 @@
 package net.somta.core.base;
 
-import net.somta.core.exception.BizException;
 import net.somta.core.protocol.ResponseDataResult;
 import net.somta.core.protocol.ResponsePaginationDataResult;
 
 import java.util.List;
 
-import static net.somta.core.enums.SystemErrorEnum.*;
 
 public abstract class BaseServiceImpl<T> implements IBaseService<T> {
 

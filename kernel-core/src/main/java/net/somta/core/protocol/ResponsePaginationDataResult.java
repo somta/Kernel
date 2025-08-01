@@ -7,7 +7,13 @@ import java.util.List;
 
 public class ResponsePaginationDataResult<T> extends ResponseResult {
 
+    /**
+     * 总条数
+     */
     private Long total;
+    /**
+     * 结果集
+     */
     private List<T> result;
 
     public Long getTotal() {

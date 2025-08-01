@@ -2,11 +2,17 @@ package net.somta.core.base.page;
 
 /**
  * 标准分页参数对象，跨领域层包装传递
- * @author: husong
+ * @author husong
  **/
 public class PageParam {
 
+    /**
+     * 当前页码
+     */
     private Integer pageNum = 1;
+    /**
+     * 每页数量
+     */
     private Integer pageSize = 10;
 
     public Integer getPageNum() {

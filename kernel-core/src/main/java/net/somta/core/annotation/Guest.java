@@ -3,6 +3,7 @@ package net.somta.core.annotation;
 import java.lang.annotation.*;
 
 /**
+ * guest annotation
  * @author Gavin
  */
 @Documented

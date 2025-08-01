@@ -1,5 +1,9 @@
 package net.somta.core.exception;
 
+/**
+ * 异常常量类
+ * @author husong
+ */
 public class ExceptionConstants {
     /**
      * 业务异常

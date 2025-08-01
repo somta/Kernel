@@ -2,6 +2,10 @@ package net.somta.core.base;
 
 import java.util.List;
 
+/**
+ * 基础mapper
+ * @author husong
+ */
 public interface IBaseMapper {
     /**
      * 新增

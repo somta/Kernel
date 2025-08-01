@@ -10,7 +10,13 @@ import feign.Util;
  */
 public class FeignBizException extends FeignException {
 
+    /**
+     * 错误码
+     */
     private long errorCode;
+    /**
+     * 错误信息
+     */
     private String errorMsg;
 
     public FeignBizException(long errorCode, int status, String message, Request request) {

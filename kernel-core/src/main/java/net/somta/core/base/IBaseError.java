@@ -5,8 +5,16 @@ package net.somta.core.base;
  */
 public interface IBaseError {
 
+    /***
+     * 错误码
+     * @return 错误码
+     */
     long getErrorCode();
 
+    /**
+     * 错误信息
+     * @return 错误信息
+     */
     String getErrorMsg();
 
 }

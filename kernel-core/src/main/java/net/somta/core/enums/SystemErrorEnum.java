@@ -5,13 +5,19 @@ import net.somta.core.constants.SystemConstants;
 
 /**
  * 核心系统最基础的异常枚举，以0001 - 1000
- * @author: husong
+ * @author husong
  **/
 public enum SystemErrorEnum implements IBaseError {
 
     ;
-    private int errorCode;
-    private String errorMsg;
+    /**
+     * 错误码
+     */
+    private final int errorCode;
+    /**
+     * 错误信息
+     */
+    private final String errorMsg;
 
     SystemErrorEnum(int errorCode, String errorMsg) {
         this.errorCode = errorCode;

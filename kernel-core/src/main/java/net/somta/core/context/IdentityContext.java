@@ -11,12 +11,12 @@ public class IdentityContext {
     /**
      * 用户id
      */
-    private Long userId;
+    private final Long userId;
 
     /**
      * 租户id
      */
-    private Long tenantId;
+    private final Long tenantId;
 
     /**
      * 扩展map

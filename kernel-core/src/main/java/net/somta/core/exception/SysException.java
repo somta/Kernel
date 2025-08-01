@@ -2,6 +2,10 @@ package net.somta.core.exception;
 
 import net.somta.core.base.IBaseError;
 
+/**
+ * 系统异常类
+ * @author husong
+ */
 public class SysException extends BaseException {
 
     public SysException(IBaseError baseError, Object... args) {

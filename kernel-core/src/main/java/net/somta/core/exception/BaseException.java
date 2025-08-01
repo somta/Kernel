@@ -1,5 +1,9 @@
 package net.somta.core.exception;
 
+/**
+ * 基础异常类
+ * @author husong
+ */
 public abstract class BaseException extends RuntimeException {
 
     /**

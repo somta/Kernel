@@ -5,10 +5,13 @@ import net.somta.core.base.IBaseError;
 
 /**
  * 统一响应类
- * @author: husong
+ * @author husong
  **/
 public class ResponseDataResult<T> extends ResponseResult {
 
+    /**
+     * 响应数据
+     */
     private T result;
 
     public T getResult() {

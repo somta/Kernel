@@ -1,6 +1,9 @@
 package net.somta.core.protocol;
 
-
+/**
+ * 响应类父类
+ * @author husong
+ **/
 public class ResponseResult {
 
 	/**

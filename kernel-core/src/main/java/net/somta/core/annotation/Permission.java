@@ -3,6 +3,7 @@ package net.somta.core.annotation;
 import java.lang.annotation.*;
 
 /**
+ * permission annotation
  * @author Gavin
  */
 @Documented

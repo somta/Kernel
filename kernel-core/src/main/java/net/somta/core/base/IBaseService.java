@@ -6,6 +6,10 @@ import net.somta.core.protocol.ResponsePaginationDataResult;
 
 import java.util.List;
 
+/**
+ * 基础service
+ * @author husong
+ */
 public interface IBaseService<T> {
 
     abstract IBaseMapper getMapper();

@@ -1,5 +1,9 @@
 package net.somta.core.enums;
 
+/**
+ * 传输枚举类
+ * @author husong
+ */
 public enum TransportHttpHeaderKeyEnum {
 
     /**
@@ -19,6 +23,9 @@ public enum TransportHttpHeaderKeyEnum {
      */
     REMOTE_APPLICATION_NAME("S-Remote-Application-Name");
 
+    /**
+     * http请求头key
+     */
     private String httpHeaderKey;
 
     TransportHttpHeaderKeyEnum(String httpHeaderKey) {

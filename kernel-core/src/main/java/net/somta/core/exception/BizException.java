@@ -2,6 +2,10 @@ package net.somta.core.exception;
 
 import net.somta.core.base.IBaseError;
 
+/**
+ * 业务异常类
+ * @author husong
+ */
 public class BizException extends BaseException {
 
     public BizException(IBaseError baseError, Object... args) {

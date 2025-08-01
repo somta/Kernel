@@ -4,19 +4,17 @@ import java.util.List;
 
 /**
  * 标准分页对象包装类，跨领域层包装传递
- * @author: husong
+ * @author husong
  **/
 public class PageDataResult<T extends List> {
 
     /**
-     * @desc: 总页数
-     * @isNull: 不可为空
+     * 总页数
      **/
     private Long total;
 
     /**
      * 分页数据列表
-     * @isNull: 返回错误的时候可为空
      **/
     private T list;
 

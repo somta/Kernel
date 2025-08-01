@@ -5,6 +5,9 @@ package net.somta.core.context;
  * @author husong
  */
 public class AppContext {
+    /**
+     * 灰度版本
+     */
     private String grayVersion;
 
     protected AppContext(String grayVersion) {

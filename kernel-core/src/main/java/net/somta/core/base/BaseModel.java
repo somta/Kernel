@@ -3,6 +3,7 @@ package net.somta.core.base;
 import java.util.Date;
 
 /**
+ * 基础model
  * @author husong
  */
 public class BaseModel {
