@@ -1,4 +1,4 @@
-package net.somta.core.helper;
+package net.somta.common.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -10,14 +10,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * 统一序列化类
  * @author husong
  **/
-@Deprecated
-public final class JsonSerializeHelper {
+public final class JsonUtil {
 
     public final static ObjectMapper objectMapper = new ObjectMapper();
 
     static {
-        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-                .configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        objectMapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
+    }
+
+    /**
+     * 获取一个ObjectMapper实例
+     * @return ObjectMapper Instance
+     */
+    public static ObjectMapper getObjectMapper(){
+        return objectMapper;
     }
 
     /**
@@ -48,14 +55,6 @@ public final class JsonSerializeHelper {
      */
     public static <T> T deserialize(String data, Class<T> clazz, Class<?> elementClass) throws JsonProcessingException {
       return objectMapper.readValue(data, getGenericsType(clazz, elementClass));
-    }
-
-    /**
-     * 获取一个ObjectMapper实例
-     * @return ObjectMapper Instance
-     */
-    public static ObjectMapper getObjectMapper(){
-        return objectMapper;
     }
 
     /**
