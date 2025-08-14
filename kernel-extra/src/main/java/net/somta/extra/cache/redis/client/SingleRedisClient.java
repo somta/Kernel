@@ -18,6 +18,7 @@ public class SingleRedisClient extends AbstractRedisClient {
         int retryInterval = redisConfigItem.getRetryInterval();
         int poolSize = redisConfigItem.getPoolSize();
         int poolMinIdle = redisConfigItem.getPoolMinIdle();
+        String username = redisConfigItem.getUsername();
         String password = redisConfigItem.getPassword();
 
         SingleServerConfig singleServerConfig = redisConfig.useSingleServer()
@@ -32,6 +33,9 @@ public class SingleRedisClient extends AbstractRedisClient {
                 .setConnectionMinimumIdleSize(poolMinIdle)
                 .setDatabase(redisConfigItem.getDatabase());
 
+        if (StringUtils.isNotBlank(username)) {
+            singleServerConfig.setUsername(username);
+        }
         if (StringUtils.isNotBlank(password)) {
             singleServerConfig.setPassword(password);
         }

@@ -25,6 +25,7 @@ public class ClusterRedisClient extends AbstractRedisClient {
         int poolMinIdleSize = redisConfigItem.getPoolMinIdle();
         int masterConnectionPoolSize = redisConfigItem.getMasterConnectionPoolSize();
         int slaveConnectionPoolSize = redisConfigItem.getSlaveConnectionPoolSize();
+        String username = redisConfigItem.getUsername();
         String password = redisConfigItem.getPassword();
 
         List<String> clusterNodeList = new ArrayList<>(clusterNodes.length);
@@ -45,6 +46,9 @@ public class ClusterRedisClient extends AbstractRedisClient {
                 .setSlaveConnectionMinimumIdleSize(poolMinIdleSize)
                 .setTimeout(timeout);
 
+        if (StringUtils.isNotBlank(username)) {
+            clusterServersConfig.setUsername(username);
+        }
         if (StringUtils.isNotBlank(password)) {
             clusterServersConfig.setPassword(password);
         }

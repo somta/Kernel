@@ -27,6 +27,7 @@ public class SentinelRedisClient extends AbstractRedisClient {
         int timeout = redisConfigItem.getTimeout();
         int poolSize = redisConfigItem.getPoolSize();
         int poolMinIdleSize = redisConfigItem.getPoolMinIdle();
+        String username = redisConfigItem.getUsername();
         String password = redisConfigItem.getPassword();
 
         List<String> sentinelNodeList = new ArrayList<>(sentinelNodes.length);
@@ -46,6 +47,9 @@ public class SentinelRedisClient extends AbstractRedisClient {
                 .setSlaveConnectionMinimumIdleSize(poolMinIdleSize)
                 .setDatabase(redisConfigItem.getDatabase());
 
+        if (StringUtils.isNotBlank(username)) {
+            sentinelServersConfig.setUsername(username);
+        }
         if (StringUtils.isNotBlank(password)) {
             sentinelServersConfig.setPassword(password);
         }
