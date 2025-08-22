@@ -9,7 +9,7 @@ somta-core是somta平台下的核心包，提供了统一方法返回，常用�
 
 ```
 <dependency>
-    <groupId>com.somta</groupId>
+    <groupId>com.matecoder</groupId>
     <artifactId>somta-core</artifactId>
     <version>1.0.0-RELEASE</version>
 </dependency>

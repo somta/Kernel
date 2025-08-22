@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>net.somta</groupId>
+    <groupId>com.matecoder</groupId>
     <artifactId>kernel-extra</artifactId>
-    <version>3.1.1</version>
+    <version>3.2.0</version>
 
     <name>kernel-extra</name>
     <description>kernel extra</description>
@@ -39,46 +39,27 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        <kernel-dependencies.varsion>3.1.1</kernel-dependencies.varsion>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>net.somta</groupId>
-            <artifactId>kernel-core</artifactId>
-            <version>3.1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-collections4</artifactId>
+            <groupId>com.matecoder</groupId>
+            <artifactId>kernel-common</artifactId>
+            <version>3.2.0</version>
         </dependency>
         <dependency>
             <groupId>org.redisson</groupId>
             <artifactId>redisson</artifactId>
+            <version>3.50.0</version>
         </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
+            <version>5.11.4</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>net.somta</groupId>
-                <artifactId>kernel-dependencies</artifactId>
-                <version>${kernel-dependencies.varsion}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <plugins>

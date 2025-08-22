@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>net.somta</groupId>
+    <groupId>com.matecoder</groupId>
     <artifactId>kernel-dependencies</artifactId>
-    <version>3.1.1</version>
+    <version>3.2.0</version>
     <packaging>pom</packaging>
 
     <name>kernel-dependencies</name>
-    <description>Use Somta for dependencies</description>
+    <description>Use matecoder for dependencies</description>
     <url>https://github.com/somta/Kernel</url>
 
     <licenses>
@@ -69,12 +69,12 @@
         <!-- test end -->
 
         <!-- kernel start -->
-        <kernel-core.version>3.1.0</kernel-core.version>
-        <kernel-common.version>3.1.1</kernel-common.version>
-        <kernel-extra.version>3.1.1</kernel-extra.version>
+        <kernel-core.version>3.2.0</kernel-core.version>
+        <kernel-common.version>3.2.0</kernel-common.version>
+        <kernel-extra.version>3.2.0</kernel-extra.version>
         <!-- kernel end -->
 
-        <!--第三方依赖 start -->
+        <!--third start -->
         <jackson.version>2.18.4</jackson.version>
         <reflections.version>0.9.11</reflections.version>
         <hibernate-validator.version>6.2.5.Final</hibernate-validator.version>
@@ -82,7 +82,7 @@
         <redisson.version>3.50.0</redisson.version>
         <jsoup.version>1.15.2</jsoup.version>
         <bcprov.version>1.78.1</bcprov.version>
-        <!--第三方依赖 end -->
+        <!--third end -->
 
     </properties>
 
@@ -185,18 +185,23 @@
 
             <!-- kernel start -->
             <dependency>
-                <groupId>net.somta</groupId>
+                <groupId>com.matecoder</groupId>
                 <artifactId>kernel-core</artifactId>
                 <version>${kernel-core.version}</version>
             </dependency>
             <dependency>
-                <groupId>net.somta</groupId>
+                <groupId>com.matecoder</groupId>
                 <artifactId>kernel-common</artifactId>
                 <version>${kernel-common.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.matecoder</groupId>
+                <artifactId>kernel-extra</artifactId>
+                <version>${kernel-extra.version}</version>
+            </dependency>
             <!-- kernel start -->
 
-            <!--第三方依赖 start -->
+            <!--third start -->
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
@@ -232,7 +237,7 @@
                 <artifactId>bcprov-jdk18on</artifactId>
                 <version>${bcprov.version}</version>
             </dependency>
-            <!--第三方依赖 end -->
+            <!--third end -->
         </dependencies>
     </dependencyManagement>
 

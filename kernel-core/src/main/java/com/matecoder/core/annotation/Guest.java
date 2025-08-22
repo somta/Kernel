@@ -1,0 +1,13 @@
+package com.matecoder.core.annotation;
+
+import java.lang.annotation.*;
+
+/**
+ * guest annotation
+ * @author Gavin
+ */
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface Guest {
+}
