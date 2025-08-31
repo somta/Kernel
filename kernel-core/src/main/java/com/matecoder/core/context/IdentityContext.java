@@ -8,6 +8,9 @@ import java.util.Map;
  * @author husong
  */
 public class IdentityContext {
+    public static final String USER_ID = "userId";
+    public static final String TENANT_ID = "tenantId";
+    public static final String EXTEND = "extend";
     /**
      * 用户id
      */
@@ -23,7 +26,7 @@ public class IdentityContext {
      */
     private Map<String,String> extend = new HashMap<>();
 
-    protected IdentityContext(Long userId, Long tenantId, Map<String, String> extend) {
+    public IdentityContext(Long userId, Long tenantId, Map<String, String> extend) {
         this.userId = userId;
         this.tenantId = tenantId;
         this.extend = extend;
