@@ -1,19 +1,18 @@
-package com.matecoder.common.utils;
+package com.matecoder.core.context;
 
-import com.matecoder.core.context.IdentityContext;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class JwtUtilTest {
+public class JwtHelperTest {
 
     @Test
     public void generateTokenTest() throws Exception {
         Map<String, Object> payload = new HashMap<>();
         payload.put("userId", 1L);
         payload.put("tenantId", 8888L);
-        String token = JwtUtil.generateToken("matecoder",payload, null);
+        String token = JwtHelper.generateToken("matecoder",payload, null);
         System.out.println(token);
     }
 
@@ -22,9 +21,9 @@ public class JwtUtilTest {
         Map<String, Object> payload = new HashMap<>();
         payload.put("userId", 1L);
         payload.put("tenantId", 8888L);
-        String token = JwtUtil.generateToken("matecoder",payload, null);
+        String token = JwtHelper.generateToken("matecoder",payload, null);
         System.out.println(token);
-        Boolean verifyExpired = JwtUtil.verifyExpired(token, null);
+        Boolean verifyExpired = JwtHelper.verifyExpired(token, null);
         System.out.println(verifyExpired);
     }
 
@@ -33,8 +32,8 @@ public class JwtUtilTest {
         Map<String, Object> payload = new HashMap<>();
         payload.put("userId", 1L);
         payload.put("tenantId", 8888L);
-        String token = JwtUtil.generateToken("matecoder",payload, null);
-        IdentityContext identityContext = JwtUtil.parseToken(token, null);
+        String token = JwtHelper.generateToken("matecoder",payload, null);
+        IdentityContext identityContext = JwtHelper.parseToken(token, null);
         System.out.println(identityContext.getTenantId());
         System.out.println(identityContext.getUserId());
         System.out.println(identityContext.getExtend());

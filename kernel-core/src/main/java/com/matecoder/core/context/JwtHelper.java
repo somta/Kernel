@@ -1,6 +1,5 @@
-package com.matecoder.common.utils;
+package com.matecoder.core.context;
 
-import com.matecoder.core.context.IdentityContext;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtParserBuilder;
 import io.jsonwebtoken.Jwts;
@@ -15,11 +14,22 @@ import java.util.Map;
 
 /**
  * @author husong
+ * @since 3.1.1
  */
-public class JwtUtil {
+public class JwtHelper {
     private static final SecretKey DEFAULT_SIGN_KEY = Keys.hmacShaKeyFor("www.matecoder.com##www.somta.net".getBytes(StandardCharsets.UTF_8));
 
     private static final Integer DEFAULT_EXPIRE_HOUR = 2;
+
+    /**
+     * 生成token
+     * @param issuer   签发者
+     * @param payload 载荷,需要在token中存放的数据
+     * @return token字符串
+     */
+    public static String generateToken(String issuer, Map<String, Object> payload) {
+        return generateToken(issuer, payload, null, DEFAULT_EXPIRE_HOUR);
+    }
 
     /**
      * 生成token
@@ -31,6 +41,7 @@ public class JwtUtil {
     public static String generateToken(String issuer, Map<String, Object> payload,String signKeyStr) {
         return generateToken(issuer, payload, signKeyStr, DEFAULT_EXPIRE_HOUR);
     }
+
     /**
      * 生成token
      * @param issuer   签发者

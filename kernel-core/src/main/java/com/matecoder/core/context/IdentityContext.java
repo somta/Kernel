@@ -26,7 +26,7 @@ public class IdentityContext {
      */
     private Map<String,String> extend = new HashMap<>();
 
-    public IdentityContext(Long userId, Long tenantId, Map<String, String> extend) {
+    protected IdentityContext(Long userId, Long tenantId, Map<String, String> extend) {
         this.userId = userId;
         this.tenantId = tenantId;
         this.extend = extend;
