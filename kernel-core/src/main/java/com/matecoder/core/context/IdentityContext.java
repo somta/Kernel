@@ -8,6 +8,9 @@ import java.util.Map;
  * @author husong
  */
 public class IdentityContext {
+    public static final String USER_ID = "userId";
+    public static final String TENANT_ID = "tenantId";
+    public static final String EXTEND = "extend";
     /**
      * 用户id
      */
