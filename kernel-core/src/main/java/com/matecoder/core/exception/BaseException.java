@@ -27,7 +27,7 @@ public abstract class BaseException extends RuntimeException {
     private Throwable throwable;
 
     protected BaseException(long errorCode, String errorMsg, String errorType) {
-        super("BaseException(errorCode=" + errorCode + ",errorMsg=" + errorMsg + ",errorType=" + errorType + ")");
+        super("errorCode:" + errorCode + ",errorMsg:" + errorMsg);
         this.errorCode = errorCode;
         this.errorMsg = errorMsg;
         this.errorType = errorType;
@@ -35,7 +35,7 @@ public abstract class BaseException extends RuntimeException {
     }
 
     protected BaseException(long errorCode, String errorMsg, String errorType,Throwable throwable) {
-        super("BaseException(errorCode=" + errorCode + ",errorMsg=" + errorMsg + ",errorType=" + errorType + ")",throwable);
+        super("errorCode:" + errorCode + ",errorMsg:" + errorMsg,throwable);
         this.errorCode = errorCode;
         this.errorMsg = errorMsg;
         this.errorType = errorType;
