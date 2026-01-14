@@ -8,8 +8,8 @@ import java.util.Map;
  * @author husong
  **/
 public class ApplicationContext {
-    private static ThreadLocal<IdentityContext> identityContextThreadLocal = new ThreadLocal<>();
-    private static ThreadLocal<AppContext> appContextThreadLocal = new ThreadLocal<>();
+    private static final ThreadLocal<IdentityContext> identityContextThreadLocal = new ThreadLocal<>();
+    private static final ThreadLocal<AppContext> appContextThreadLocal = new ThreadLocal<>();
 
     public static IdentityContext getIdentityContext(){
         return identityContextThreadLocal.get();
@@ -28,8 +28,8 @@ public class ApplicationContext {
         return appContextThreadLocal.get();
     }
 
-    public static void putAppContext(String grayVersion){
-        AppContext appContext = new AppContext(grayVersion);
+    public static void putAppContext(){
+        AppContext appContext = new AppContext();
         appContextThreadLocal.set(appContext);
     }
 

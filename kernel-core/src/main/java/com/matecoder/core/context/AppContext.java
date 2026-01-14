@@ -10,11 +10,14 @@ public class AppContext {
      */
     private String grayVersion;
 
-    protected AppContext(String grayVersion) {
-        this.grayVersion = grayVersion;
+    protected AppContext() {
     }
 
     public String getGrayVersion() {
         return grayVersion;
+    }
+
+    public void setGrayVersion(String grayVersion) {
+        this.grayVersion = grayVersion;
     }
 }
