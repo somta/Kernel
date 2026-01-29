@@ -7,13 +7,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.6</version>
+        <version>3.5.10</version>
         <relativePath/>
     </parent>
 
     <groupId>com.matecoder</groupId>
     <artifactId>kernel-boot-starter-parent</artifactId>
-    <version>3.2.0</version>
+    <version>3.3.0</version>
     <packaging>pom</packaging>
 
     <name>kernel-boot-starter-parent</name>
@@ -45,7 +45,7 @@
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        <kernel-dependencies.varsion>3.2.0</kernel-dependencies.varsion>
+        <kernel-dependencies.varsion>3.3.0</kernel-dependencies.varsion>
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     </properties>
