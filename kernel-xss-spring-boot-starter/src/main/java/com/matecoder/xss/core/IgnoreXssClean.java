@@ -4,7 +4,7 @@ import java.lang.annotation.*;
 
 /**
  * 添加在方法上忽略清理
- * @author: husong
+ * @author husong
  **/
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

@@ -10,7 +10,6 @@ import org.springframework.web.servlet.AsyncHandlerInterceptor;
 /**
  * xss清理处理拦截器
  * @author husong
- * @date 2022/8/13
  **/
 public class XssCleanInterceptor implements AsyncHandlerInterceptor {
 	private final XssProperties xssProperties;

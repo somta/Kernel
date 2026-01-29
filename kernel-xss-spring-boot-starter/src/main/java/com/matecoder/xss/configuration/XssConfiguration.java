@@ -50,9 +50,9 @@ public class XssConfiguration implements WebMvcConfigurer {
 
     /**
      * todo 这里加了自己的自定义转换后，可能会失效,要找一种优雅的方式，既能兼容xss又能支持自定义objectmapper的转换，还相互不强耦合
-     * @param properties
-     * @param xssCleaner
-     * @return
+     * @param properties xss配置类
+     * @param xssCleaner xss清理器
+     * @return Jackson2ObjectMapperBuilderCustomizer
      */
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer xssJacksonCustomizer(XssProperties properties,
