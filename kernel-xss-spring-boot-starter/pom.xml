@@ -31,6 +31,7 @@
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
         </dependency>
+        <!-- lang3的漏洞是由于 spring-boot-autoconfigure 导致的 -->
         <dependency>
             <groupId>com.matecoder</groupId>
             <artifactId>kernel-core</artifactId>

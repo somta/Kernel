@@ -69,8 +69,8 @@
         <!-- test end -->
 
         <!-- kernel start -->
-        <kernel-core.version>3.2.0</kernel-core.version>
-        <kernel-common.version>3.2.0</kernel-common.version>
+        <kernel-core.version>3.3.0</kernel-core.version>
+        <kernel-common.version>3.3.0</kernel-common.version>
         <kernel-extra.version>3.2.0</kernel-extra.version>
         <!-- kernel end -->
 
@@ -79,7 +79,7 @@
         <reflections.version>0.9.11</reflections.version>
         <hibernate-validator.version>6.2.5.Final</hibernate-validator.version>
         <nacos.version>2.5.2</nacos.version>
-        <redisson.version>3.50.0</redisson.version>
+        <redisson.version>4.1.0</redisson.version>
         <jsoup.version>1.22.1</jsoup.version>
         <bcprov.version>1.78.1</bcprov.version>
         <!--third end -->

@@ -1,12 +1,12 @@
 package com.matecoder.core.context;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.JwtParserBuilder;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.security.Keys;
+import com.nimbusds.jose.*;
+import com.nimbusds.jose.crypto.MACSigner;
+import com.nimbusds.jose.crypto.MACVerifier;
+import com.nimbusds.jwt.JWTClaimsSet;
+import com.nimbusds.jwt.SignedJWT;
 import org.apache.commons.lang3.StringUtils;
 
-import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.util.Calendar;
 import java.util.Date;
@@ -17,14 +17,17 @@ import java.util.Map;
  * @since 3.1.1
  */
 public class JwtHelper {
-    private static final SecretKey DEFAULT_SIGN_KEY = Keys.hmacShaKeyFor("www.matecoder.com##www.somta.net".getBytes(StandardCharsets.UTF_8));
-
+    // 默认签名密钥
+    private static final byte[] DEFAULT_SIGN_KEY_BYTES = "www.matecoder.com##www.somta.net".getBytes(StandardCharsets.UTF_8);
+    // 默认过期时间（小时）
     private static final Integer DEFAULT_EXPIRE_HOUR = 2;
+    // JWT 算法
+    private static final JWSAlgorithm JWT_ALGORITHM = JWSAlgorithm.HS256;
 
     /**
-     * 生成token
+     * 生成token（默认密钥+默认过期时间）
      * @param issuer   签发者
-     * @param payload 载荷,需要在token中存放的数据
+     * @param payload  载荷,需要在token中存放的数据
      * @return token字符串
      */
     public static String generateToken(String issuer, Map<String, Object> payload) {
@@ -32,107 +35,142 @@ public class JwtHelper {
     }
 
     /**
-     * 生成token
-     * @param issuer   签发者
-     * @param payload 载荷,需要在token中存放的数据
+     * 生成token（自定义密钥+默认过期时间）
+     * @param issuer     签发者
+     * @param payload    载荷,需要在token中存放的数据
      * @param signKeyStr 签名的密钥字符串
      * @return token字符串
      */
-    public static String generateToken(String issuer, Map<String, Object> payload,String signKeyStr) {
+    public static String generateToken(String issuer, Map<String, Object> payload, String signKeyStr) {
         return generateToken(issuer, payload, signKeyStr, DEFAULT_EXPIRE_HOUR);
     }
 
     /**
-     * 生成token
-     * @param issuer   签发者
-     * @param payload 载荷,需要在token中存放的数据
+     * 生成token（自定义密钥+自定义过期时间）
+     * @param issuer     签发者
+     * @param payload    载荷,需要在token中存放的数据
      * @param signKeyStr 签名的密钥字符串
      * @param expireHour token过期时间,单位小时
      * @return token字符串
      */
-    public static String generateToken(String issuer, Map<String, Object> payload,String signKeyStr,Integer expireHour) {
-        Calendar instance = Calendar.getInstance();
-        instance.add(Calendar.HOUR, expireHour);
-        Date expireDate = instance.getTime();
-        return Jwts.builder()
-                // 设置头部信息header
-                .header()
-                    .add("typ", "JWT")
-                    .add("alg", "HS256")
-                    .and()
-                // 设置自定义负载信息payload
-                .claims()
-                    .add(payload)
-                    .and()
-                .issuer(issuer)
-                //发行时间
-                .issuedAt(new Date())
-                //过期时间
-                .expiration(expireDate)
-                .signWith(getSignKey(signKeyStr))
-                .compact();
+    public static String generateToken(String issuer, Map<String, Object> payload, String signKeyStr, Integer expireHour) {
+        try {
+            // 1. 构建JWS头部（对应原header，保持typ=JWT、alg=HS256）
+            JWSHeader jwsHeader = new JWSHeader.Builder(JWT_ALGORITHM)
+                    .type(JOSEObjectType.JWT)
+                    .build();
+
+            // 2. 计算过期时间
+            Calendar instance = Calendar.getInstance();
+            instance.add(Calendar.HOUR, expireHour);
+            Date expireDate = instance.getTime();
+
+            // 3. 构建JWT Claims（对应原payload）
+            JWTClaimsSet.Builder claimsBuilder = new JWTClaimsSet.Builder()
+                    .issuer(issuer)          // 签发者
+                    .issueTime(new Date())   // 发行时间
+                    .expirationTime(expireDate); // 过期时间
+
+            // 4. 添加自定义载荷
+            if (payload != null && !payload.isEmpty()) {
+                for (Map.Entry<String, Object> entry : payload.entrySet()) {
+                    claimsBuilder.claim(entry.getKey(), entry.getValue());
+                }
+            }
+            JWTClaimsSet claimsSet = claimsBuilder.build();
+
+            // 5. 创建签名器并生成Token
+            SignedJWT signedJWT = new SignedJWT(jwsHeader, claimsSet);
+            MACSigner signer = new MACSigner(getSignKeyBytes(signKeyStr));
+            signedJWT.sign(signer);
+
+            // 6. 序列化为字符串（对应原compact()）
+            return signedJWT.serialize();
+
+        } catch (JOSEException e) {
+            throw new RuntimeException("生成JWT Token失败", e);
+        }
     }
- 
+
     /**
      * 校验token是否过期
-     * @param token token数据
-     * @return ture:过期  false：未过期
+     * @param token      token数据
+     * @param signKeyStr 签名密钥
+     * @return true:过期/无效  false：未过期/有效
      */
-    public static Boolean verifyExpired(String token,String signKeyStr) {
-        if(StringUtils.isEmpty(token)){
+    public static Boolean verifyExpired(String token, String signKeyStr) {
+        if (StringUtils.isEmpty(token)) {
             return true;
         }
         try {
-            Claims claimsJws = getClaimsJws(token,signKeyStr);
-            return claimsJws.getExpiration().before(new Date());
+            // 解析并验证Token
+            JWTClaimsSet claimsSet = getJWTClaimsSet(token, signKeyStr);
+            // 检查过期时间
+            return claimsSet.getExpirationTime().before(new Date());
         } catch (Exception e) {
+            // 任何异常都视为过期/无效
             return true;
         }
     }
 
     /**
      * 解析token
-     * @param token token数据
+     * @param token      token数据
+     * @param signKeyStr 签名密钥
      * @return 身份上下文
      */
     public static IdentityContext parseToken(String token, String signKeyStr) {
-        Claims claimsJws = getClaimsJws(token,signKeyStr);
-        IdentityContext identityContext = null;
-        if(claimsJws != null){
-            Long userId = Long.valueOf(String.valueOf(claimsJws.get(IdentityContext.USER_ID)));
-            Long tenantId = Long.valueOf(String.valueOf(claimsJws.get(IdentityContext.TENANT_ID)));
-            Map<String, String> extend = (Map<String, String>) claimsJws.get(IdentityContext.EXTEND);
-            identityContext = new IdentityContext(userId,tenantId,extend);
+        try {
+            JWTClaimsSet claimsSet = getJWTClaimsSet(token, signKeyStr);
+            if (claimsSet == null) {
+                return null;
+            }
+            Long userId = Long.valueOf(String.valueOf(claimsSet.getClaim(IdentityContext.USER_ID)));
+            Long tenantId = Long.valueOf(String.valueOf(claimsSet.getClaim(IdentityContext.TENANT_ID)));
+            Map<String, String> extend = (Map<String, String>) claimsSet.getClaim(IdentityContext.EXTEND);
+
+            return new IdentityContext(userId, tenantId, extend);
+        } catch (Exception e) {
+            throw new RuntimeException("解析JWT Token失败", e);
         }
-        return identityContext;
     }
 
     /**
-     * 获取ClaimsJws
-     * @param token token数据
-     * @return Claims
+     * 解析并验证Token，获取Claims（核心私有方法）
+     * @param token      token数据
+     * @param signKeyStr 签名密钥
+     * @return JWTClaimsSet
+     * @throws Exception 解析/验证异常
      */
-    private static Claims getClaimsJws(String token,String signKeyStr) {
-        JwtParserBuilder jwtParserBuilder = Jwts.parser();
-        //设置签名的密钥
-        jwtParserBuilder.verifyWith(getSignKey(signKeyStr));
-        //解析内容,获得payload
-        return jwtParserBuilder.build().parseSignedClaims(token).getPayload();
+    private static JWTClaimsSet getJWTClaimsSet(String token, String signKeyStr) throws Exception {
+        // 1. 解析SignedJWT
+        SignedJWT signedJWT = SignedJWT.parse(token);
+
+        // 2. 验证签名（对应原verifyWith）
+        MACVerifier verifier = new MACVerifier(getSignKeyBytes(signKeyStr));
+        if (!signedJWT.verify(verifier)) {
+            throw new JOSEException("JWT Token签名验证失败");
+        }
+
+        // 3. 验证算法（防止算法篡改）
+        if (!JWT_ALGORITHM.equals(signedJWT.getHeader().getAlgorithm())) {
+            throw new JOSEException("JWT Token算法不匹配，预期HS256");
+        }
+
+        // 4. 返回Claims（对应原getPayload）
+        return signedJWT.getJWTClaimsSet();
     }
 
     /**
-     * 获取签名的私钥
+     * 获取签名密钥字节数组
      * @param signKeyStr 密钥字符串
-     * @return 密钥
+     * @return 密钥字节数组
      */
-    private static SecretKey getSignKey(String signKeyStr) {
-        SecretKey signKey;
-        if(StringUtils.isBlank(signKeyStr)){
-            signKey = DEFAULT_SIGN_KEY;
-        }else {
-            signKey = Keys.hmacShaKeyFor(signKeyStr.getBytes(StandardCharsets.UTF_8));
+    private static byte[] getSignKeyBytes(String signKeyStr) {
+        if (StringUtils.isBlank(signKeyStr)) {
+            return DEFAULT_SIGN_KEY_BYTES;
+        } else {
+            return signKeyStr.getBytes(StandardCharsets.UTF_8);
         }
-        return signKey;
     }
-
 }
