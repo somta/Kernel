@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.databind.type.TypeFactory;
 
 /**
  * 统一序列化类
@@ -12,12 +14,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  **/
 public final class JsonUtil {
 
-    public final static ObjectMapper objectMapper = new ObjectMapper();
-
-    static {
-        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        objectMapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
-    }
+    public final static JsonMapper objectMapper = JsonMapper.builder()
+            // 遇到JSON中未知的属性时不报错（兼容多余字段）
+            .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            //属性名大小写不敏感匹配（如UserName <-> userName）
+            .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
+            // 空字符串转null
+            .enable(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT)
+            .build();
+    private static final TypeFactory TYPE_FACTORY = objectMapper.getTypeFactory();
 
     /**
      * 获取一个ObjectMapper实例
@@ -53,8 +58,31 @@ public final class JsonUtil {
      * @param elementClass 元素类型
      * @return deserialize object instance
      */
-    public static <T> T deserialize(String data, Class<T> clazz, Class<?> elementClass) throws JsonProcessingException {
-      return objectMapper.readValue(data, getGenericsType(clazz, elementClass));
+    public static <T> T deserialize(String data, Class<?> clazz, Class<?> elementClass) throws JsonProcessingException {
+        JavaType javaType = TYPE_FACTORY.constructParametricType(clazz, elementClass);
+        return objectMapper.readValue(data, javaType);
+    }
+
+    /**
+     * 反序列化，支持泛型类,泛型Map等
+     * @param data JSON字符串
+     * @param mainClass 主类类型
+     * @param genericClasses 泛型类类型
+     * @return 反序列化后的泛型对象
+     */
+    public static <T> T deserialize(String data, Class<?> mainClass, Class<?>... genericClasses) throws JsonProcessingException {
+        JavaType javaType = TYPE_FACTORY.constructParametricType(mainClass, genericClasses);
+        return objectMapper.readValue(data, javaType);
+    }
+
+    /**
+     * 反序列化：支持嵌套泛型
+     * @param data JSON字符串
+     * @param javaType 完整的嵌套泛型类型（如ResponseDataResult<List<Student>>的JavaType）
+     * @return 反序列化后的嵌套泛型对象
+     */
+    public static <T> T deserialize(String data, JavaType javaType) throws JsonProcessingException {
+        return objectMapper.readValue(data, javaType);
     }
 
     /**
@@ -63,8 +91,19 @@ public final class JsonUtil {
      * @param elementClasses 主类下的泛型类类型
      * @return JavaType
      */
-    private static JavaType getGenericsType(Class<?> clazz, Class<?>... elementClasses) {
-        return objectMapper.getTypeFactory().constructParametricType(clazz, elementClasses);
+    public static JavaType getGenericsType(Class<?> clazz, Class<?>... elementClasses) {
+        return TYPE_FACTORY.constructParametricType(clazz, elementClasses);
+    }
+
+    /**
+     * 获取嵌套泛型JavaType
+     * 例如：构建 ResponseDataResult<List<Student>> 的JavaType
+     * @param mainClass 最外层类（如ResponseDataResult.class）
+     * @param nestedTypes 嵌套的泛型类型（如List<Student>的JavaType）
+     * @return 完整的嵌套泛型JavaType
+     */
+    public static JavaType getNestedGenericsType(Class<?> mainClass, JavaType... nestedTypes) {
+        return TYPE_FACTORY.constructParametricType(mainClass, nestedTypes);
     }
 }
 
