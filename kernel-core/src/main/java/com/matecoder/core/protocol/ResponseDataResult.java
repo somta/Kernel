@@ -22,31 +22,31 @@ public class ResponseDataResult<T> extends ResponseResult {
         this.result = result;
     }
 
-    public static ResponseDataResult setResponseResult() {
+    public static <T> ResponseDataResult<T> setResponseResult() {
     	return setResponseResult(null);
     }
 
-    public static ResponseDataResult setResponseResult(Object data) {
-        ResponseDataResult r = new ResponseDataResult();
+    public static <T> ResponseDataResult<T> setResponseResult(T data) {
+        ResponseDataResult<T> r = new ResponseDataResult<>();
         r.setSuccess(true);
         r.setResult(data);
         return r;
     }
 
-    public static ResponseDataResult setErrorResponseResult(IBaseError baseError) {
+    public static <T> ResponseDataResult<T> setErrorResponseResult(IBaseError baseError) {
         return setErrorResponseResult(baseError.getErrorCode(),baseError.getErrorMsg(), null);
     }
 
-    public static ResponseDataResult setErrorResponseResult(IBaseError baseError, Object... args) {
+    public static <T> ResponseDataResult<T> setErrorResponseResult(IBaseError baseError, Object... args) {
         return setErrorResponseResult(baseError.getErrorCode(),String.format(baseError.getErrorMsg(),args), null);
     }
 
-    public static ResponseDataResult setErrorResponseResult(long errorCode ,String errorMsg) {
+    public static <T> ResponseDataResult<T> setErrorResponseResult(long errorCode ,String errorMsg) {
     	return setErrorResponseResult(errorCode,errorMsg, null);
     }
 
-    public static ResponseDataResult setErrorResponseResult(long errorCode ,String errorMsg,Object data) {
-        ResponseDataResult r = new ResponseDataResult();
+    public static <T> ResponseDataResult<T> setErrorResponseResult(long errorCode ,String errorMsg,T data) {
+        ResponseDataResult<T> r = new ResponseDataResult<>();
         r.setSuccess(false);
         r.setErrorCode(errorCode);
         r.setErrorMsg(errorMsg);

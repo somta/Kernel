@@ -13,7 +13,7 @@ public class JsonUtilTest {
 
     @Test
     public void serializeTest() throws JsonProcessingException {
-        ResponseDataResult responseDataResult = new ResponseDataResult();
+        ResponseDataResult<Student> responseDataResult = new ResponseDataResult<>();
         responseDataResult.setSuccess(true);
 
         Student student = new Student();
