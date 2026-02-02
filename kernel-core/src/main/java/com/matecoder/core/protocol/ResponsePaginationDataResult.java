@@ -10,6 +10,7 @@ public class ResponsePaginationDataResult<T> extends ResponseResult {
     /**
      * 总条数
      */
+    @JsonSerialize(using = NumberSerializer.class)
     private Long total;
     /**
      * 结果集
