@@ -2,8 +2,8 @@ package com.matecoder.core.protocol;
 
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.NumberSerializer;
 import com.matecoder.core.base.IBaseError;
+import com.matecoder.core.serializer.LongSerializer;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public class ResponsePaginationDataResult<T> extends ResponseResult {
     /**
      * 总条数
      */
-    @JsonSerialize(using = NumberSerializer.class)
+    @JsonSerialize(using = LongSerializer.class)
     private Long total;
     /**
      * 结果集
