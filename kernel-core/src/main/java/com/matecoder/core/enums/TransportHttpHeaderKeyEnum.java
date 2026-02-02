@@ -9,24 +9,24 @@ public enum TransportHttpHeaderKeyEnum {
     /**
      * 用户ID
      */
-    USER_ID("S-User-Id"),
+    USER_ID("M-User-Id"),
     /**
      * 租户ID
      */
-    TENANT_ID("S-Tenant-Id"),
+    TENANT_ID("M-Tenant-Id"),
     /**
      * 灰度版本标识
      */
-    GRAY_VERSION("S-Gray-Version"),
+    GRAY_VERSION("M-Gray-Version"),
     /**
      * 远程应用名称
      */
-    REMOTE_APPLICATION_NAME("S-Remote-Application-Name");
+    REMOTE_APPLICATION_NAME("M-Remote-Application-Name");
 
     /**
      * http请求头key
      */
-    private String httpHeaderKey;
+    private final String httpHeaderKey;
 
     TransportHttpHeaderKeyEnum(String httpHeaderKey) {
         this.httpHeaderKey = httpHeaderKey;

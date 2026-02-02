@@ -43,7 +43,7 @@ public interface IBaseMapper {
      * @param object 请求参数
      * @return 实体列表总数
      */
-    long queryListCount(Object object);
+    Long queryListCount(Object object);
 
     /**
      * 查询列表

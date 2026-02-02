@@ -1,6 +1,8 @@
 package com.matecoder.core.protocol;
 
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.NumberSerializer;
 import com.matecoder.core.base.IBaseError;
 
 import java.util.List;

@@ -12,32 +12,31 @@ public abstract class BaseServiceImpl<T> implements IBaseService<T> {
     public abstract IBaseMapper getMapper();
 
     @Override
-    public <T> ResponseDataResult add(T t){
+    public ResponseDataResult<Boolean> add(T t){
         getMapper().add(t);
-        return ResponseDataResult.setResponseResult();
+        return ResponseDataResult.setResponseResult(true);
     }
 
     @Override
-    public ResponseDataResult deleteById(Object id){
+    public ResponseDataResult<Boolean> deleteById(Object id){
         getMapper().deleteById(id);
-        return ResponseDataResult.setResponseResult();
+        return ResponseDataResult.setResponseResult(true);
     }
 
     @Override
-    public <T> ResponseDataResult update(T t){
+    public ResponseDataResult<Boolean> update(T t){
         getMapper().update(t);
-        return ResponseDataResult.setResponseResult();
+        return ResponseDataResult.setResponseResult(true);
     }
 
     @Override
-    public <T> T queryById(Object id){
+    public T queryById(Object id){
         return getMapper().queryById(id);
     }
 
     @Override
-    public <T> List<T> queryByList(Object param){
-        List<T> list = getMapper().queryByList(param);
-        return list;
+    public List<T> queryByList(Object param){
+        return getMapper().queryByList(param);
     }
 
     @Override
@@ -46,10 +45,10 @@ public abstract class BaseServiceImpl<T> implements IBaseService<T> {
     }
 
     @Override
-    public <T> ResponsePaginationDataResult queryByPageList(Integer pageNum, Integer pageSize, Object param){
+    public ResponsePaginationDataResult<T> queryByPageList(Integer pageNum, Integer pageSize, Object param){
         Long count = getMapper().queryListCount(param);
         if(count > 0){
-            List list = getMapper().queryByList(param);
+            List<T> list = getMapper().queryByList(param);
             return ResponsePaginationDataResult.setPaginationDataResult(count,list);
         }
         return ResponsePaginationDataResult.setPaginationDataResult(0L,null);

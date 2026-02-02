@@ -6,7 +6,7 @@ import java.util.List;
  * 标准分页对象包装类，跨领域层包装传递
  * @author husong
  **/
-public class PageDataResult<T extends List> {
+public class PageDataResult<T extends List<T>> {
 
     /**
      * 总页数
