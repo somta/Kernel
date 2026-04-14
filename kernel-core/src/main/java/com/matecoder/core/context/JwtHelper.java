@@ -126,6 +126,16 @@ public class JwtHelper {
                 return null;
             }
             Long userId = Long.valueOf(String.valueOf(claimsSet.getClaim(IdentityContext.USER_ID)));
+            String accountName = null;
+            Object accountNameObject = claimsSet.getClaim(IdentityContext.ACCOUNT_NAME);
+            if(accountNameObject != null){
+                accountName = String.valueOf(accountNameObject);
+            }
+            String nickName = null;
+            Object nickNameObject = claimsSet.getClaim(IdentityContext.NICK_NAME);
+            if(nickNameObject != null){
+                nickName = String.valueOf(nickNameObject);
+            }
             Long tenantId = null;
             Object tenantIdObject = claimsSet.getClaim(IdentityContext.TENANT_ID);
             if(tenantIdObject != null){
@@ -136,7 +146,7 @@ public class JwtHelper {
             if (extendObject != null){
                 extend = (Map<String, String>) extendObject;
             }
-            return new IdentityContext(userId, tenantId, extend);
+            return new IdentityContext(userId, accountName, nickName,tenantId, extend);
         } catch (Exception e) {
             throw new RuntimeException("解析JWT Token失败", e);
         }

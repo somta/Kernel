@@ -20,7 +20,11 @@ public class ApplicationContext {
     }
 
     public static void putIdentityContext(Long userId, Long tenantId, Map<String,String> extend){
-        IdentityContext identityContext = new IdentityContext(userId,tenantId,extend);
+        putIdentityContext(userId, null, null, tenantId, extend);
+    }
+
+    public static void putIdentityContext(Long userId,String accountName, String nickName, Long tenantId, Map<String,String> extend){
+        IdentityContext identityContext = new IdentityContext(userId, accountName, nickName,tenantId,extend);
         identityContextThreadLocal.set(identityContext);
     }
 
