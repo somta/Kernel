@@ -116,6 +116,10 @@
                                 </goals>
                             </execution>
                         </executions>
+                        <configuration>
+                            <source>21</source>
+                            <encoding>UTF-8</encoding>
+                        </configuration>
                     </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
