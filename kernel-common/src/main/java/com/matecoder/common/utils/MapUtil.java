@@ -1,6 +1,8 @@
 package com.matecoder.common.utils;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -11,6 +13,8 @@ import java.util.*;
  * @author husong
  **/
 public class MapUtil {
+
+    private static final Logger logger = LoggerFactory.getLogger(MapUtil.class);
 
     /**
      * map转java对象
@@ -35,9 +39,9 @@ public class MapUtil {
                 field.set(object, map.get(field.getName()));
             }
         } catch (InstantiationException e) {
-            e.printStackTrace();
+            logger.error("mapToObject instantiation failed for class: {}", beanClass.getName(), e);
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            logger.error("mapToObject access denied for class: {}", beanClass.getName(), e);
         }
         return object;
     }
@@ -58,7 +62,7 @@ public class MapUtil {
             try {
                 map.put(field.getName(), field.get(obj));
             } catch (IllegalAccessException e) {
-                e.printStackTrace();
+                logger.error("objectToMap access denied for field: {}", field.getName(), e);
             }
         }
         return map;
