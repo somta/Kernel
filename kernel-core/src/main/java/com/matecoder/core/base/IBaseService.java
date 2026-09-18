@@ -22,11 +22,20 @@ public interface IBaseService<T> {
     ResponseDataResult<Boolean> add(T t);
 
     /**
-     * 根据ID删除
-     * @param id 删除ID
+     * 根据ID物理删除
+     * @param id 主键ID
+     * @param tenantId 租户ID
      * @return 返回结果
      */
-    ResponseDataResult<Boolean> deleteById(Object id);
+    ResponseDataResult<Boolean> logicalDeleteById(Long id,Long tenantId);
+
+    /**
+     * 根据ID物理删除
+     * @param id 主键ID
+     * @param tenantId 租户ID
+     * @return 返回结果
+     */
+    ResponseDataResult<Boolean> deleteById(Long id,Long tenantId);
 
     /**
      * 修改
@@ -37,10 +46,11 @@ public interface IBaseService<T> {
 
     /**
      * 根据Id查询
-     * @param id 查询ID
+     * @param id 主键ID
+     * @param tenantId 租户ID
      * @return 返回结果
      */
-    T queryById(Object id);
+    T queryById(Long id,Long tenantId);
 
     /**
      * 查询列表

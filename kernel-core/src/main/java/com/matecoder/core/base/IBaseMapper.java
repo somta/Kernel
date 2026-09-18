@@ -1,5 +1,7 @@
 package com.matecoder.core.base;
 
+import com.matecoder.core.base.vo.BaseVO;
+
 import java.util.List;
 
 /**
@@ -17,10 +19,17 @@ public interface IBaseMapper {
 
     /**
      * 根据ID物理删除
-     * @param id 删除ID
+     * @param baseVo 基础vo
      * @return 返回 0，1
      */
-    int deleteById(Object id);
+    int deleteById(BaseVO baseVo);
+
+    /**
+     * 根据ID逻辑删除
+     * @param baseVo 基础vo
+     * @return 返回 0，1
+     */
+    int logicalDeleteById(BaseVO baseVo);
 
     /**
      * 更新
@@ -32,11 +41,11 @@ public interface IBaseMapper {
 
     /**
      * 根据ID查询
-     * @param id 查询ID
-     * @param <T> 实体
+     * @param baseVo 查询ID
+     * @param <T> 基础vo
      * @return 返回结果实体
      */
-    <T> T queryById(Object id);
+    <T> T queryById(BaseVO baseVo);
 
     /**
      * 查询列表总数

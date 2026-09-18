@@ -1,5 +1,7 @@
 package com.matecoder.core.base;
 
+import com.matecoder.core.base.vo.BaseVO;
+import com.matecoder.core.context.ApplicationContext;
 import com.matecoder.core.protocol.ResponseDataResult;
 import com.matecoder.core.protocol.ResponsePaginationDataResult;
 
@@ -18,8 +20,14 @@ public abstract class BaseServiceImpl<T> implements IBaseService<T> {
     }
 
     @Override
-    public ResponseDataResult<Boolean> deleteById(Object id){
-        getMapper().deleteById(id);
+    public ResponseDataResult<Boolean> deleteById(Long id,Long tenantId){
+        getMapper().deleteById(new BaseVO(id, tenantId));
+        return ResponseDataResult.setResponseResult(true);
+    }
+
+    @Override
+    public ResponseDataResult<Boolean> logicalDeleteById(Long id,Long tenantId){
+        getMapper().logicalDeleteById(new BaseVO(id, tenantId));
         return ResponseDataResult.setResponseResult(true);
     }
 
@@ -30,8 +38,8 @@ public abstract class BaseServiceImpl<T> implements IBaseService<T> {
     }
 
     @Override
-    public T queryById(Object id){
-        return getMapper().queryById(id);
+    public T queryById(Long id,Long tenantId){
+        return getMapper().queryById(new BaseVO(id, tenantId));
     }
 
     @Override

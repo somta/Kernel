@@ -6,7 +6,7 @@
 
     <groupId>com.matecoder</groupId>
     <artifactId>kernel-dependencies</artifactId>
-    <version>3.3.0</version>
+    <version>3.4.0</version>
     <packaging>pom</packaging>
 
     <name>kernel-dependencies</name>
@@ -39,7 +39,7 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <!-- core start -->
-        <spring-boot.version>3.5.10</spring-boot.version>
+        <spring-boot.version>3.5.16</spring-boot.version>
         <spring-cloud.version>2022.0.0</spring-cloud.version>
         <spring-cloud-alibaba.version>2022.0.0.0-RC2</spring-cloud-alibaba.version>
         <spring-cloud-openfeign.version>4.0.0</spring-cloud-openfeign.version>
@@ -50,7 +50,7 @@
         <commons-lang3.version>3.20.0</commons-lang3.version>
         <commons-collections.version>4.4</commons-collections.version>
         <commons-io.version>2.17.0</commons-io.version>
-        <http-client.version>5.4.4</http-client.version>
+        <http-client.version>5.6.4</http-client.version>
         <!-- util start -->
 
         <!-- doc start -->
@@ -75,7 +75,7 @@
         <!-- kernel end -->
 
         <!--third start -->
-        <jackson.version>2.19.4</jackson.version>
+        <jackson.version>2.21.5</jackson.version>
         <reflections.version>0.9.11</reflections.version>
         <hibernate-validator.version>6.2.5.Final</hibernate-validator.version>
         <nacos.version>2.5.2</nacos.version>
