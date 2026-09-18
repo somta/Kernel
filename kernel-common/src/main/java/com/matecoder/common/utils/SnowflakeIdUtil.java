@@ -122,14 +122,6 @@ public class SnowflakeIdUtil {
         long timestamp = getCurrentTimestamp();
         while (timestamp <= lastTimestamp) {
             timestamp = getCurrentTimestamp();
-            // 增加少量休眠，减少CPU空转
-            try {
-                Thread.sleep(1);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                logger.warn("等待下一个毫秒时线程被中断", e);
-                throw new RuntimeException("生成ID时线程中断", e);
-            }
         }
         return timestamp;
     }
