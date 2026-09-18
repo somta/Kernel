@@ -9,14 +9,14 @@ import com.matecoder.core.base.IBaseError;
 public class BizException extends BaseException {
 
     public BizException(IBaseError baseError, Object... args) {
-        super(baseError.getErrorCode(), String.format(baseError.getErrorMsg(),args), ExceptionConstants.ERROR_TYPE_BIZ);
+        super(baseError.getErrorCode(), buildExceptionErrorMsg(baseError,args), ExceptionConstants.ERROR_TYPE_BIZ);
     }
 
     public BizException(IBaseError baseError,Throwable throwable,Object... args) {
-        super(baseError.getErrorCode(), String.format(baseError.getErrorMsg(),args), ExceptionConstants.ERROR_TYPE_BIZ,throwable);
+        super(baseError.getErrorCode(), buildExceptionErrorMsg(baseError,args), ExceptionConstants.ERROR_TYPE_BIZ,throwable);
     }
 
     public BizException(long errorCode,IBaseError baseError,Object... args) {
-        super(errorCode, String.format(baseError.getErrorMsg(),args), ExceptionConstants.ERROR_TYPE_BIZ);
+        super(errorCode, buildExceptionErrorMsg(baseError,args), ExceptionConstants.ERROR_TYPE_BIZ);
     }
 }

@@ -52,7 +52,7 @@ public class ResponsePaginationDataResult<T> extends ResponseResult {
         r.setTotal(0L);
         r.setSuccess(false);
         r.setErrorCode(baseError.getErrorCode());
-        r.setErrorMsg(String.format(baseError.getErrorMsg(),args));
+        r.setErrorMsg(buildErrorMsg(baseError,args));
         return r;
     }
 

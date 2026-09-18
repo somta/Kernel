@@ -1,5 +1,7 @@
 package com.matecoder.core.exception;
 
+import com.matecoder.core.base.IBaseError;
+
 /**
  * 基础异常类
  * @author husong
@@ -72,5 +74,17 @@ public abstract class BaseException extends RuntimeException {
 
     public void setThrowable(Throwable throwable) {
         this.throwable = throwable;
+    }
+
+    /**
+     * 构建异常错误信息
+     * @return 真实错误信息
+     */
+    protected static String buildExceptionErrorMsg(IBaseError baseError, Object... args){
+        if(args != null && args.length > 0){
+            return String.format(baseError.getErrorMsg(), args);
+        }else{
+            return baseError.getErrorMsg();
+        }
     }
 }

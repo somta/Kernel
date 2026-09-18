@@ -1,5 +1,7 @@
 package com.matecoder.core.protocol;
 
+import com.matecoder.core.base.IBaseError;
+
 /**
  * 响应类父类
  * @author husong
@@ -41,5 +43,17 @@ public class ResponseResult {
 
 	public void setErrorMsg(String errorMsg) {
 		this.errorMsg = errorMsg;
+	}
+
+	/**
+	 * 构建错误信息
+	 * @return 真实错误信息
+	 */
+	protected static String buildErrorMsg(IBaseError baseError,Object... args){
+		if(args != null && args.length > 0){
+			return String.format(baseError.getErrorMsg(), args);
+		}else{
+			return baseError.getErrorMsg();
+		}
 	}
 }

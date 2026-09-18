@@ -9,15 +9,15 @@ import com.matecoder.core.base.IBaseError;
 public class SysException extends BaseException {
 
     public SysException(IBaseError baseError, Object... args) {
-        super(baseError.getErrorCode(), String.format(baseError.getErrorMsg(),args), ExceptionConstants.ERROR_TYPE_SYS);
+        super(baseError.getErrorCode(), buildExceptionErrorMsg(baseError,args), ExceptionConstants.ERROR_TYPE_SYS);
     }
 
     public SysException(IBaseError baseError,Throwable throwable,Object... args) {
-        super(baseError.getErrorCode(), String.format(baseError.getErrorMsg(),args), ExceptionConstants.ERROR_TYPE_SYS,throwable);
+        super(baseError.getErrorCode(), buildExceptionErrorMsg(baseError,args), ExceptionConstants.ERROR_TYPE_SYS,throwable);
     }
 
     public SysException(long errorCode,IBaseError baseError,Throwable throwable,Object... args) {
-        super(errorCode, String.format(baseError.getErrorMsg(),args), ExceptionConstants.ERROR_TYPE_SYS,throwable);
+        super(errorCode, buildExceptionErrorMsg(baseError,args), ExceptionConstants.ERROR_TYPE_SYS,throwable);
     }
 
 }
