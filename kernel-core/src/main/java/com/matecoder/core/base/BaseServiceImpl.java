@@ -1,6 +1,8 @@
 package com.matecoder.core.base;
 
-import com.matecoder.core.base.page.PageParam;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.matecoder.core.base.vo.BaseVO;
 import com.matecoder.core.context.ApplicationContext;
 import com.matecoder.core.protocol.ResponseDataResult;
@@ -49,20 +51,11 @@ public abstract class BaseServiceImpl<T> implements IBaseService<T> {
     }
 
     @Override
-    public Long queryListCount(Object param){
-        return getMapper().queryListCount(param);
-    }
-
-    @Override
-    public ResponsePaginationDataResult<T> queryByPageList(Integer pageNum, Integer pageSize, Object param){
-        Long count = getMapper().queryListCount(param);
-        if(count > 0){
-            PageParam pageParam = new PageParam();
-            pageParam.setPageNum(pageNum);
-            pageParam.setPageSize(pageSize);
-            List<T> list = getMapper().queryByPageList(param, pageParam.getOffset(), pageSize);
-            return ResponsePaginationDataResult.setPaginationDataResult(count,list);
-        }
-        return ResponsePaginationDataResult.setPaginationDataResult(0L,null);
+    public PageInfo<T> queryByPageList(Integer pageNum, Integer pageSize, Object param){
+        Page<T> page = PageHelper.startPage(pageNum, pageSize);
+        List<T> list = getMapper().queryByList(param);
+        PageInfo<T> pageInfo = new PageInfo<>(list);
+        pageInfo.setTotal(page.getTotal());
+        return pageInfo;
     }
 }

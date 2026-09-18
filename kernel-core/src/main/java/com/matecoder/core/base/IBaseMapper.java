@@ -48,27 +48,10 @@ public interface IBaseMapper {
     <T> T queryById(BaseVO baseVo);
 
     /**
-     * 查询列表总数
-     * @param object 请求参数
-     * @return 实体列表总数
-     */
-    Long queryListCount(Object object);
-
-    /**
      * 查询列表
      * @param object 请求参数
      * @param <T> 实体
      * @return 实体列表
      */
     <T> List<T> queryByList(Object object);
-
-    /**
-     * 分页查询列表
-     * @param param 请求参数
-     * @param offset 偏移量
-     * @param limit 每页条数
-     * @param <T> 实体
-     * @return 实体列表
-     */
-    <T> List<T> queryByPageList(Object param, int offset, int limit);
 }

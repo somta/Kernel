@@ -1,6 +1,7 @@
 package com.matecoder.core.base;
 
 
+import com.github.pagehelper.PageInfo;
 import com.matecoder.core.protocol.ResponseDataResult;
 import com.matecoder.core.protocol.ResponsePaginationDataResult;
 
@@ -60,19 +61,12 @@ public interface IBaseService<T> {
     List<T> queryByList(Object param);
 
     /**
-     * 查询列表总数
-     * @param param 请求参数
-     * @return 列表总数
-     */
-    Long queryListCount(Object param);
-
-    /**
      * 查询分页列表
      * @param pageNum 页数
      * @param pageSize 每页条数
      * @param param 查询参数
      * @return 返回结果列表
      */
-    ResponsePaginationDataResult<T> queryByPageList(Integer pageNum, Integer pageSize, Object param);
+    PageInfo<T> queryByPageList(Integer pageNum, Integer pageSize, Object param);
 
 }
