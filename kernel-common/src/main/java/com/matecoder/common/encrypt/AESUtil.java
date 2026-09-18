@@ -213,11 +213,11 @@ public final class AESUtil {
         if (secretKeyStr == null) {
             throw new IllegalArgumentException("Key string cannot be null");
         }
-        int keyLength = secretKeyStr.length();
+        byte[] keyBytes = Base64Util.decodeToByte(secretKeyStr);
+        int keyLength = keyBytes.length;
         if (keyLength != DEFAULT_KEY_SIZE / 8 && keyLength != DEFAULT_KEY_SIZE * 2 / 8) {
-            throw new IllegalArgumentException("Key string must be exactly " + DEFAULT_KEY_SIZE / 8 + " or " + DEFAULT_KEY_SIZE*2 / 8 + " characters long");
+            throw new IllegalArgumentException("Key must be exactly " + DEFAULT_KEY_SIZE / 8 + " or " + DEFAULT_KEY_SIZE * 2 / 8 + " bytes after Base64 decoding");
         }
-        byte[] keyBytes = secretKeyStr.getBytes(StandardCharsets.UTF_8);
         return new SecretKeySpec(keyBytes, ALGORITHM_NAME);
     }
 
