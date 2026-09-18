@@ -100,9 +100,10 @@ public class XssUtil {
 		public static final HtmlSafeList INSTANCE = new HtmlSafeList();
 
 		public HtmlSafeList() {
-			addTags("a", "b", "blockquote", "br", "caption", "cite", "code", "col", "colgroup", "dd", "div", "span", "embed", "object", "dl", "dt",
+			addTags("a", "b", "blockquote", "br", "caption", "cite", "code", "col", "colgroup", "dd", "div", "span", "dl", "dt",
 				"em", "h1", "h2", "h3", "h4", "h5", "h6", "i", "img", "li", "ol", "p", "pre", "q", "small",
-				"strike", "strong", "sub", "sup", "table", "tbody", "td", "tfoot", "th", "thead", "tr", "u", "ul", "hr", "s");
+				"strike", "strong", "sub", "sup", "table", "tbody", "td", "tfoot", "th", "thead", "tr", "u", "ul", "hr", "s",
+				"video", "source");
 
 			addAttributes("a", "href", "title", "target");
 			addAttributes("blockquote", "cite");
@@ -114,38 +115,50 @@ public class XssUtil {
 			addAttributes("table", "summary");
 			addAttributes("td", "abbr", "axis", "colspan", "rowspan", "width");
 			addAttributes("th", "abbr", "axis", "colspan", "rowspan", "scope", "width");
-			addAttributes("video", "src", "autoplay", "controls", "loop", "muted", "poster", "preload");
-			addAttributes("object", "width", "height", "classid", "codebase");
-			addAttributes("param", "name", "value");
-			addAttributes("embed", "src", "quality", "width", "height", "allowFullScreen", "allowScriptAccess", "flashvars", "name", "type", "pluginspage");
+			addAttributes("video", "src", "loop", "muted", "poster", "preload", "controls", "width", "height");
+			addAttributes("source", "src", "type");
 
 			addAttributes(":all", "class", "style", "height", "width", "type", "id", "name");
 
 			addProtocols("blockquote", "cite", "http", "https");
 			addProtocols("cite", "cite", "http", "https");
 			addProtocols("q", "cite", "http", "https");
-
-			//如果添加以下的协议，那么href 必须是http、 https 等开头，相对路径则被过滤掉了
-			//addProtocols("a", "href", "ftp", "http", "https", "mailto", "tel");
-
-			//如果添加以下的协议，那么src必须是http 或者 https 开头，相对路径则被过滤掉了，
-			//所以必须注释掉，允许相对路径的图片资源
-			//addProtocols("img", "src", "http", "https");
+			addProtocols("a", "href", "http", "https", "mailto", "tel");
+			addProtocols("img", "src", "http", "https", "data");
 		}
 
 		@Override
 		public boolean isSafeAttribute(String tagName, Element el, Attribute attr) {
-			//不允许 javascript 开头的 src 和 href
-			if ("src".equalsIgnoreCase(attr.getKey()) || "href".equalsIgnoreCase(attr.getKey())) {
-				String value = attr.getValue();
-				if (StringUtils.hasText(value) && value.toLowerCase().startsWith("javascript")) {
+			String key = attr.getKey();
+			String value = attr.getValue();
+			if (!StringUtils.hasText(value)) {
+				return super.isSafeAttribute(tagName, el, attr);
+			}
+
+			if ("src".equalsIgnoreCase(key) || "href".equalsIgnoreCase(key)) {
+				String lowerValue = value.toLowerCase().trim();
+				// 拦截 javascript: / vbscript: / data:text/html 等危险协议
+				if (lowerValue.startsWith("javascript:")
+						|| lowerValue.startsWith("vbscript:")
+						|| lowerValue.startsWith("data:text/html")) {
+					return false;
+				}
+				// 拦截含空白符的变体，如 "java\tscript:"、"java\nscript:"
+				if (lowerValue.replaceAll("\\s+", "").startsWith("javascript:")
+						|| lowerValue.replaceAll("\\s+", "").startsWith("vbscript:")) {
 					return false;
 				}
 			}
-			//允许 base64 的图片内容
-			if ("img".equals(tagName) && "src".equals(attr.getKey()) && attr.getValue().startsWith("data:;base64")) {
-				return true;
+
+			// 允许 img 的 data: URI（仅限图片类型）
+			if ("img".equals(tagName) && "src".equals(key)) {
+				String lowerValue = value.toLowerCase();
+				if (lowerValue.startsWith("data:image/")) {
+					return true;
+				}
+				return super.isSafeAttribute(tagName, el, attr);
 			}
+
 			return super.isSafeAttribute(tagName, el, attr);
 		}
 	}
