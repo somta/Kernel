@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.MapperFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 
@@ -14,7 +13,7 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
  **/
 public final class JsonUtil {
 
-    public final static JsonMapper objectMapper = JsonMapper.builder()
+    private final static JsonMapper objectMapper = JsonMapper.builder()
             // 遇到JSON中未知的属性时不报错（兼容多余字段）
             .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
             //属性名大小写不敏感匹配（如UserName <-> userName）
@@ -25,10 +24,10 @@ public final class JsonUtil {
     private static final TypeFactory TYPE_FACTORY = objectMapper.getTypeFactory();
 
     /**
-     * 获取一个ObjectMapper实例
-     * @return ObjectMapper Instance
+     * 获取一个JsonMapper实例（只读，禁止外部修改配置）
+     * @return JsonMapper Instance
      */
-    public static ObjectMapper getObjectMapper(){
+    public static JsonMapper getObjectMapper(){
         return objectMapper;
     }
 
