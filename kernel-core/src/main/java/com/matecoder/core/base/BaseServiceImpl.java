@@ -1,5 +1,6 @@
 package com.matecoder.core.base;
 
+import com.matecoder.core.base.page.PageParam;
 import com.matecoder.core.base.vo.BaseVO;
 import com.matecoder.core.context.ApplicationContext;
 import com.matecoder.core.protocol.ResponseDataResult;
@@ -56,7 +57,10 @@ public abstract class BaseServiceImpl<T> implements IBaseService<T> {
     public ResponsePaginationDataResult<T> queryByPageList(Integer pageNum, Integer pageSize, Object param){
         Long count = getMapper().queryListCount(param);
         if(count > 0){
-            List<T> list = getMapper().queryByList(param);
+            PageParam pageParam = new PageParam();
+            pageParam.setPageNum(pageNum);
+            pageParam.setPageSize(pageSize);
+            List<T> list = getMapper().queryByPageList(param, pageParam.getOffset(), pageSize);
             return ResponsePaginationDataResult.setPaginationDataResult(count,list);
         }
         return ResponsePaginationDataResult.setPaginationDataResult(0L,null);
