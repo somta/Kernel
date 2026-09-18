@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.util.*;
 
@@ -28,7 +29,7 @@ public class MapUtil {
         }
         Object object = null;
         try {
-            object = beanClass.newInstance();
+            object = beanClass.getDeclaredConstructor().newInstance();
             Field[] fields = beanClass.getDeclaredFields();
             for (Field field : fields) {
                 int mod = field.getModifiers();
@@ -38,10 +39,8 @@ public class MapUtil {
                 field.setAccessible(true);
                 field.set(object, map.get(field.getName()));
             }
-        } catch (InstantiationException e) {
-            logger.error("mapToObject instantiation failed for class: {}", beanClass.getName(), e);
-        } catch (IllegalAccessException e) {
-            logger.error("mapToObject access denied for class: {}", beanClass.getName(), e);
+        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            logger.error("mapToObject failed for class: {}", beanClass.getName(), e);
         }
         return object;
     }
