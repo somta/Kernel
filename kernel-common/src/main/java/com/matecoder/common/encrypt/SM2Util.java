@@ -30,6 +30,9 @@ public class SM2Util {
 
     private static final X9ECParameters X_9_EC_PARAMETERS = GMNamedCurves.getByName("sm2p256v1");
 
+    private static final ECDomainParameters EC_DOMAIN_PARAMETERS = new ECDomainParameters(
+        X_9_EC_PARAMETERS.getCurve(), X_9_EC_PARAMETERS.getG(), X_9_EC_PARAMETERS.getN());
+
     static {
         if (Objects.isNull(Security.getProvider(BouncyCastleProvider.PROVIDER_NAME))) {
             Security.addProvider(new BouncyCastleProvider());
@@ -44,10 +47,8 @@ public class SM2Util {
         try {
             ECKeyPairGenerator keyPairGenerator = new ECKeyPairGenerator();
 
-            ECDomainParameters ecDomainParameters = new ECDomainParameters(X_9_EC_PARAMETERS.getCurve(),
-                X_9_EC_PARAMETERS.getG(), X_9_EC_PARAMETERS.getN());
             ECKeyGenerationParameters ecKeyGenerationParameters =
-                new ECKeyGenerationParameters(ecDomainParameters, SecureRandom.getInstance("SHA1PRNG"));
+                new ECKeyGenerationParameters(EC_DOMAIN_PARAMETERS, SecureRandom.getInstance("SHA1PRNG"));
             keyPairGenerator.init(ecKeyGenerationParameters);
 
             AsymmetricCipherKeyPair asymmetricCipherKeyPair = keyPairGenerator.generateKeyPair();
@@ -86,8 +87,7 @@ public class SM2Util {
     public static byte[] encrypt(byte[] byteContent, String publicKey) {
         try {
             byte[] encoded = Base64Util.decodeToByte(publicKey);
-            ECDomainParameters ecDomainParameters = new ECDomainParameters(X_9_EC_PARAMETERS.getCurve(),
-                X_9_EC_PARAMETERS.getG(), X_9_EC_PARAMETERS.getN());
+            ECDomainParameters ecDomainParameters = EC_DOMAIN_PARAMETERS;
             ECPoint ecPoint = ecDomainParameters.getCurve().decodePoint(encoded);
             SM2Engine sm2Engine = new SM2Engine(SM2Engine.Mode.C1C3C2);
             sm2Engine.init(true,new ParametersWithRandom(new ECPublicKeyParameters(ecPoint, ecDomainParameters), new SecureRandom()));
@@ -120,8 +120,7 @@ public class SM2Util {
     public static byte[] decrypt(byte[] byteContent, String privateKey) {
         try {
             byte[] decoded = Base64Util.decodeToByte(privateKey);
-            ECDomainParameters ecDomainParameters = new ECDomainParameters(X_9_EC_PARAMETERS.getCurve(),
-                X_9_EC_PARAMETERS.getG(), X_9_EC_PARAMETERS.getN());
+            ECDomainParameters ecDomainParameters = EC_DOMAIN_PARAMETERS;
             SM2Engine sm2Engine = new SM2Engine(SM2Engine.Mode.C1C3C2);
             sm2Engine.init(false, new ECPrivateKeyParameters(new BigInteger(decoded), ecDomainParameters));
             return sm2Engine.processBlock(byteContent, 0, byteContent.length);
@@ -151,8 +150,7 @@ public class SM2Util {
      */
     public static byte[] signToByte(byte[] data, String privateKey) {
         try {
-            ECDomainParameters ecDomainParameters = new ECDomainParameters(X_9_EC_PARAMETERS.getCurve(),
-                X_9_EC_PARAMETERS.getG(), X_9_EC_PARAMETERS.getN());
+            ECDomainParameters ecDomainParameters = EC_DOMAIN_PARAMETERS;
             ECPrivateKeyParameters privateKeyParameters =
                 new ECPrivateKeyParameters(new BigInteger(Base64Util.decodeToByte(privateKey)), ecDomainParameters);
 
@@ -191,8 +189,7 @@ public class SM2Util {
      */
     public static boolean verify(byte[] data, byte[] sign, String publicKey) {
         try {
-            ECDomainParameters domainParameters = new ECDomainParameters(X_9_EC_PARAMETERS.getCurve(),
-                X_9_EC_PARAMETERS.getG(), X_9_EC_PARAMETERS.getN());
+            ECDomainParameters domainParameters = EC_DOMAIN_PARAMETERS;
             // 提取公钥点
             ECPoint pukPoint = X_9_EC_PARAMETERS.getCurve().decodePoint(Base64Util.decodeToByte(publicKey));
             ECPublicKeyParameters publicKeyParameters = new ECPublicKeyParameters(pukPoint, domainParameters);
