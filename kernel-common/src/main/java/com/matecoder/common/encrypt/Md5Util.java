@@ -18,15 +18,14 @@ public class Md5Util {
         if(srcStr == null){
             return null;
         }
-        MessageDigest messageDigest = null;
+        MessageDigest messageDigest;
         try {
             messageDigest = MessageDigest.getInstance("MD5");
-            messageDigest.reset();
-            messageDigest.update(srcStr.getBytes(StandardCharsets.UTF_8));
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            throw new RuntimeException("MD5 algorithm not available", e);
         }
-        assert messageDigest != null;
+        messageDigest.reset();
+        messageDigest.update(srcStr.getBytes(StandardCharsets.UTF_8));
         byte[] byteArray = messageDigest.digest();
         StringBuilder md5StrBuff = new StringBuilder();
         for (byte b : byteArray) {
