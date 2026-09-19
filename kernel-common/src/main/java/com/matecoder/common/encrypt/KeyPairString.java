@@ -15,10 +15,18 @@ public class KeyPairString {
      */
     private String publicKey;
 
+    /**
+     * 无参构造器
+     */
     public KeyPairString() {
 
     }
 
+    /**
+     * 全参构造器
+     * @param privateKey 私钥
+     * @param publicKey 公钥
+     */
     public KeyPairString(String privateKey, String publicKey) {
         this.privateKey = privateKey;
         this.publicKey = publicKey;

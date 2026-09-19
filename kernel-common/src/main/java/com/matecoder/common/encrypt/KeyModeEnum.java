@@ -20,10 +20,20 @@ public enum KeyModeEnum {
         this.name = name;
     }
 
+    /**
+     * 获取枚举名称
+     * @return 枚举名称
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * 根据名称获取枚举
+     * @param name 枚举名称
+     * @return 对应的枚举实例
+     * @throws IllegalArgumentException 未找到对应枚举时抛出
+     */
     public static KeyModeEnum getEnumByName(String name) {
         for (KeyModeEnum keyMode : values()) {
             if (keyMode.getName().equalsIgnoreCase(name)) {

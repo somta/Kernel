@@ -13,6 +13,9 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
  **/
 public final class JsonUtil {
 
+    private JsonUtil() {
+    }
+
     private final static JsonMapper objectMapper = JsonMapper.builder()
             // 遇到JSON中未知的属性时不报错（兼容多余字段）
             .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
@@ -44,9 +47,11 @@ public final class JsonUtil {
 
     /**
      * 反序列化
-     * @param value deserialize data
-     * @param valueClass deserialize class
-     * @return deserialize object instance
+     * @param <T> 泛型类型
+     * @param value JSON字符串
+     * @param valueClass 目标类型
+     * @return 反序列化后的对象
+     * @throws JsonProcessingException 反序列化异常
      */
     public static <T> T deserialize(String value, Class<T> valueClass) throws JsonProcessingException {
        return objectMapper.readValue(value, valueClass);
@@ -54,10 +59,12 @@ public final class JsonUtil {
 
     /**
      * 反序列化,支持反序列化带有泛型的类，并且序列化后的类携带泛型类，避免强转的问题
-     * @param data deserialize data
+     * @param <T> 泛型类型
+     * @param data JSON字符串
      * @param clazz 集合类型
      * @param elementClass 元素类型
-     * @return deserialize object instance
+     * @return 反序列化后的对象
+     * @throws JsonProcessingException 反序列化异常
      */
     public static <T> T deserialize(String data, Class<?> clazz, Class<?> elementClass) throws JsonProcessingException {
         JavaType javaType = TYPE_FACTORY.constructParametricType(clazz, elementClass);
@@ -66,10 +73,12 @@ public final class JsonUtil {
 
     /**
      * 反序列化，支持泛型类,泛型Map等
+     * @param <T> 泛型类型
      * @param data JSON字符串
      * @param mainClass 主类类型
      * @param genericClasses 泛型类类型
      * @return 反序列化后的泛型对象
+     * @throws JsonProcessingException 反序列化异常
      */
     public static <T> T deserialize(String data, Class<?> mainClass, Class<?>... genericClasses) throws JsonProcessingException {
         JavaType javaType = TYPE_FACTORY.constructParametricType(mainClass, genericClasses);
@@ -78,9 +87,11 @@ public final class JsonUtil {
 
     /**
      * 反序列化：支持嵌套泛型
+     * @param <T> 泛型类型
      * @param data JSON字符串
-     * @param javaType 完整的嵌套泛型类型（如ResponseDataResult<List<Student>>的JavaType）
+     * @param javaType 完整的嵌套泛型类型（如ResponseDataResult的JavaType）
      * @return 反序列化后的嵌套泛型对象
+     * @throws JsonProcessingException 反序列化异常
      */
     public static <T> T deserialize(String data, JavaType javaType) throws JsonProcessingException {
         return objectMapper.readValue(data, javaType);
@@ -98,9 +109,8 @@ public final class JsonUtil {
 
     /**
      * 获取嵌套泛型JavaType
-     * 例如：构建 ResponseDataResult<List<Student>> 的JavaType
      * @param mainClass 最外层类（如ResponseDataResult.class）
-     * @param nestedTypes 嵌套的泛型类型（如List<Student>的JavaType）
+     * @param nestedTypes 嵌套的泛型类型（如List的JavaType）
      * @return 完整的嵌套泛型JavaType
      */
     public static JavaType getNestedGenericsType(Class<?> mainClass, JavaType... nestedTypes) {
