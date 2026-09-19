@@ -6,6 +6,9 @@ package com.matecoder.common.utils;
  */
 public class DevUtil {
 
+    private DevUtil() {
+    }
+
     /**
      * 是否是开发模式
      * @return boolean
@@ -40,6 +43,10 @@ public class DevUtil {
         return false;
     }
 
+    /**
+     * 获取机器CPU位数
+     * @return CPU位数（32或64）
+     */
     public static int getMachineCpuBit() {
         return Integer.valueOf(System.getProperty("sun.arch.data.model"));
     }

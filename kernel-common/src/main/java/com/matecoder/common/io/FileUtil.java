@@ -9,12 +9,25 @@ import java.io.*;
  */
 public class FileUtil {
 
+    private FileUtil() {
+    }
+
     /**
      * 基本文件操作
      */
     public static String FILE_READING_ENCODING = "UTF-8";
+    /**
+     * 文件写入编码
+     */
     public static String FILE_WRITING_ENCODING = "UTF-8";
 
+    /**
+     * 读取文件内容
+     * @param _sFileName 文件名称(含路径）
+     * @param _sEncoding 文件编码
+     * @return 文件内容字符串
+     * @throws Exception IO异常
+     */
     public static String readFile(String _sFileName, String _sEncoding) throws Exception {
         StringBuffer buffContent = null;
         String sLine;
@@ -120,6 +133,11 @@ public class FileUtil {
         return fileExists(sPath);
     }
 
+    /**
+     * 检查指定文件是否存在
+     * @param _sPathFileName 文件名称(含路径）
+     * @return 若存在，则返回true；否则，返回false
+     */
     public static boolean fileExists(String _sPathFileName) {
         File file = new File(_sPathFileName);
         return file.exists();
@@ -168,6 +186,11 @@ public class FileUtil {
         return line;
     }
 
+    /**
+     * 获取文件扩展名（包含点号）
+     * @param fileName 文件名称
+     * @return 文件扩展名，如 ".txt"；若无扩展名则返回空字符串
+     */
     public static String getFileExtension(String fileName) {
         int idx = fileName.lastIndexOf(".");
         if (idx == -1) return "";

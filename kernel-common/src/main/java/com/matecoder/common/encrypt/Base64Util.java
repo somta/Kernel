@@ -9,6 +9,9 @@ import java.util.Base64;
  **/
 public final class Base64Util {
 
+    private Base64Util() {
+    }
+
     /**
      * 将原字符串进行base64
      * @param srcStr: 原文字符串

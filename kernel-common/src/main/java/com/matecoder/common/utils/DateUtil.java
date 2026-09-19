@@ -14,6 +14,9 @@ import java.text.SimpleDateFormat;
  */
 public class DateUtil {
 
+    private DateUtil() {
+    }
+
     /**
      * 日期转换成字符串
      * @param date 日期

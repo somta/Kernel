@@ -15,6 +15,9 @@ import java.security.SecureRandom;
  **/
 public final class AESUtil {
 
+    private AESUtil() {
+    }
+
     private static final String ALGORITHM_NAME = "AES";
 
     /**

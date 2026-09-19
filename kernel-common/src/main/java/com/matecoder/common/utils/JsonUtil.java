@@ -33,8 +33,10 @@ public final class JsonUtil {
 
     /**
      * 序列化
-     * @param value deserialize data
-     * @return deserialize object instance
+     * @param <T> 泛型类型
+     * @param value 待序列化的对象
+     * @return JSON字符串
+     * @throws JsonProcessingException 序列化异常
      */
     public static <T> String serialize(T value) throws JsonProcessingException {
        return objectMapper.writeValueAsString(value);

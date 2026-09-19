@@ -10,6 +10,9 @@ import java.security.NoSuchAlgorithmException;
  */
 public class DigestUtil {
 
+    private DigestUtil() {
+    }
+
     /**
      * 十六进制字符数组，用于快速转换。
      * '0' 到 '9' 对应 0-9, 'a' 到 'f' 对应 10-15。
@@ -19,6 +22,12 @@ public class DigestUtil {
             '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'
     };
 
+    /**
+     * 计算字符串的 SHA-1 哈希值，并返回其十六进制字符串表示。
+     *
+     * @param data 要计算哈希的字符串，可以为 null
+     * @return SHA-1 哈希值的十六进制字符串，如果输入为 null 则返回 null
+     */
     public static String sha1Hex(String data) {
         if (data == null) {
             return null;
