@@ -15,6 +15,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Redis客户端构建类，构建不同类型的client
@@ -22,7 +23,7 @@ import java.util.Map;
  **/
 public class RedisClientBuilder {
 
-    private static Map<String, AbstractRedisClient> redisClients = new HashMap<>();
+    private static final Map<String, AbstractRedisClient> redisClients = new HashMap<>();
 
     /**
      * 构建Redis客户端
@@ -44,7 +45,7 @@ public class RedisClientBuilder {
         if(ArrayUtils.isEmpty(redisConfigItem.getAddress())){
             throw new RedisException(RedisErrorEnum.REDIS_ADDRESS_ERROR);
         }
-        AbstractRedisClient cacheRedisClient = redisClients.get(Arrays.toString(redisConfigItem.getAddress()));
+        AbstractRedisClient cacheRedisClient = redisClients.get(buildClientCacheKey(redisConfigItem));
         if(cacheRedisClient != null){
             return cacheRedisClient;
         }
@@ -70,7 +71,19 @@ public class RedisClientBuilder {
         // 挂载序列化器
         redisClient.setInterfaceSerializable(interfaceSerializable);
         // 存储本地缓存
-        redisClients.put(Arrays.toString(redisConfigItem.getAddress()),redisClient);
+        redisClients.put(buildClientCacheKey(redisConfigItem),redisClient);
         return redisClient;
+    }
+
+    /**
+     * 根据配置项生成缓存key
+     * @param redisConfigItem redis配置
+     * @return 缓存key
+     */
+    private static String buildClientCacheKey(RedisConfigItem redisConfigItem) {
+        return Objects.hash(
+                redisConfigItem.getModel(),
+                Arrays.toString(redisConfigItem.getAddress())
+        ) + "";
     }
 }
