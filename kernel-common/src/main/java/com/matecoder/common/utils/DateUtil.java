@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 /**
+ * 日期操作工具类
  * @author husong
  */
 public class DateUtil {

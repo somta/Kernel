@@ -1,6 +1,7 @@
 package com.matecoder.common.utils;
 
 /**
+ * 环境判断工具类
  * @author husong
  */
 public class DevUtil {

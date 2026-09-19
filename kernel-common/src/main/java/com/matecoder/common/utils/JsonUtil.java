@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 
 /**
- * 统一序列化类
+ * json工具类
  * @author husong
  **/
 public final class JsonUtil {

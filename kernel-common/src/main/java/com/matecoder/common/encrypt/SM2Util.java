@@ -120,9 +120,8 @@ public class SM2Util {
     public static byte[] decrypt(byte[] byteContent, String privateKey) {
         try {
             byte[] decoded = Base64Util.decodeToByte(privateKey);
-            ECDomainParameters ecDomainParameters = EC_DOMAIN_PARAMETERS;
             SM2Engine sm2Engine = new SM2Engine(SM2Engine.Mode.C1C3C2);
-            sm2Engine.init(false, new ECPrivateKeyParameters(new BigInteger(decoded), ecDomainParameters));
+            sm2Engine.init(false, new ECPrivateKeyParameters(new BigInteger(decoded), EC_DOMAIN_PARAMETERS));
             return sm2Engine.processBlock(byteContent, 0, byteContent.length);
         } catch (Exception e) {
             throw new RuntimeException("sm2 decrypt:" + e.getMessage());
@@ -150,9 +149,8 @@ public class SM2Util {
      */
     public static byte[] signToByte(byte[] data, String privateKey) {
         try {
-            ECDomainParameters ecDomainParameters = EC_DOMAIN_PARAMETERS;
             ECPrivateKeyParameters privateKeyParameters =
-                new ECPrivateKeyParameters(new BigInteger(Base64Util.decodeToByte(privateKey)), ecDomainParameters);
+                new ECPrivateKeyParameters(new BigInteger(Base64Util.decodeToByte(privateKey)), EC_DOMAIN_PARAMETERS);
 
             SM2Signer sm2Signer = new SM2Signer();
             sm2Signer.init(true,
@@ -189,10 +187,9 @@ public class SM2Util {
      */
     public static boolean verify(byte[] data, byte[] sign, String publicKey) {
         try {
-            ECDomainParameters domainParameters = EC_DOMAIN_PARAMETERS;
             // 提取公钥点
             ECPoint pukPoint = X_9_EC_PARAMETERS.getCurve().decodePoint(Base64Util.decodeToByte(publicKey));
-            ECPublicKeyParameters publicKeyParameters = new ECPublicKeyParameters(pukPoint, domainParameters);
+            ECPublicKeyParameters publicKeyParameters = new ECPublicKeyParameters(pukPoint, EC_DOMAIN_PARAMETERS);
 
             SM2Signer sm2Signer = new SM2Signer();
             sm2Signer.init(false, new ParametersWithID(publicKeyParameters, Strings.toByteArray("2014567812345678")));
