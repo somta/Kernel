@@ -7,7 +7,7 @@ public class Md5UtilTest {
 
     private final String srcStr = "https://matecoder.com";
 
-    private final String md5Str = "a4884b8e8a0c7a44b8d3d58a8c1e9291";
+    private final String md5Str = "69931075beaf4ad131d874a59c241506";
 
     @Test
     public void md5Test(){

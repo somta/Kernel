@@ -7,7 +7,7 @@ public class Base64UtilTest {
 
     private final String srcStr = "https://matecoder.com";
 
-    private final String base64Str = "aHR0cHM6Ly9zb210YS5uZXQ=";
+    private final String base64Str = "aHR0cHM6Ly9tYXRlY29kZXIuY29t";
 
     @Test
     public void encodeTest(){
