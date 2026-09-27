@@ -2,6 +2,7 @@ package com.matecoder.common.utils;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -66,8 +67,8 @@ class MapUtilTest {
     void removeNullValueRemovesEmptyCollections() {
         Map<String, Object> map = new HashMap<>();
         map.put("key1", "value1");
-        map.put("key2", java.util.Collections.emptyList());
-        map.put("key3", java.util.Collections.emptyMap());
+        map.put("key2", Collections.emptyList());
+        map.put("key3", Collections.emptyMap());
 
         MapUtil.removeNullValue(map);
 
